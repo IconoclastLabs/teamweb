@@ -1,0 +1,22 @@
+= form_for @coordinator do |f|
+  - if @coordinator.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@coordinator.errors.count, "error")} prohibited this coordinator from being saved:"
+      %ul
+        - @coordinator.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :about
+    = f.text_field :about
+  .field
+    = f.label :location
+    = f.text_field :location
+  .field
+    = f.label :contact
+    = f.text_field :contact
+  .actions
+    = f.submit 'Save'

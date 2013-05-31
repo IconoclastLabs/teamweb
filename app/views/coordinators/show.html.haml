@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @coordinator.name
+%p
+  %b About:
+  = @coordinator.about
+%p
+  %b Location:
+  = @coordinator.location
+%p
+  %b Contact:
+  = @coordinator.contact
+
+= link_to 'Edit', edit_coordinator_path(@coordinator)
+\|
+= link_to 'Back', coordinators_path

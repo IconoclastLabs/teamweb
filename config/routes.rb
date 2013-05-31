@@ -1,4 +1,13 @@
 Teamweb::Application.routes.draw do
+  resources :teams
+
+
+  resources :events
+
+
+  resources :coordinators
+
+
   get "home/index"
 
 

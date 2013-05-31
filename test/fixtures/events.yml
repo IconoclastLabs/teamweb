@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  about: MyString
+  coordinator: 
+  location: MyString
+  start: 2013-05-31
+  end: 2013-05-31
+
+two:
+  name: MyString
+  about: MyString
+  coordinator: 
+  location: MyString
+  start: 2013-05-31
+  end: 2013-05-31

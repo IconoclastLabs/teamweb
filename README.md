@@ -31,3 +31,14 @@ teamweb
 $ rails g boilerplate:install #For HTML5 Base awesomeness
 
 `--> COMMIT PROJECT`
+
+$ rails g scaffold Coordinator name:string about:string location:string contact:string 
+
+$ rails g scaffold Event name:string about:string coordinator:references location:string start:date end:date
+
+$ rails g scaffold Team name:string event:references 
+
+$ rake db:migrate 
+
+* Modified Models to have has_many relationships (belongs_to was already
+  done by references) 
