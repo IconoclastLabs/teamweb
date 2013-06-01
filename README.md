@@ -1,5 +1,12 @@
-teamweb
+Team Web
 =======
+
+
+## Teaching Project
+Site for building teams for events and signup.  
+Phase 1: Functional Base
+Phase 2: Stripe Integration
+Phase 3: Profit
 
 ## Project History Path
   
