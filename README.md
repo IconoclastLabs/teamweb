@@ -50,10 +50,18 @@ $ rake db:migrate
 * Modified Models to have has_many relationships (belongs_to was already
   done by references) 
 
---> CMMIT PROJECT
+--> COMMIT PROJECT
 
 * Added gem 'compass-rails'
 
 $ bundle update
 
 $ compass install bootstrap
+
+* IMPLEMENTED TWITTER BOOTSTRAP TEMPLATE with Partials
+
+--> COMMIT PROJECT
+
+* Converted erb to haml with html2haml gem
+
+--> COMMIT PROJECT
