@@ -49,3 +49,11 @@ $ rake db:migrate
 
 * Modified Models to have has_many relationships (belongs_to was already
   done by references) 
+
+--> CMMIT PROJECT
+
+* Added gem 'compass-rails'
+
+$ bundle update
+
+$ compass install bootstrap
