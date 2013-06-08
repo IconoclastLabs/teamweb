@@ -5,6 +5,11 @@ Team Web
 ## Teaching Project
 Site for building teams for events and signup.  
 Phase 1: Functional Base
+* RoR Site with Twitter Bootstrap and HTML5 Boilerplate
+* Cucumber and Loose specs
+* User accounts via Devise
+* Admin via RailsAdmin
+* Functional Site
 Phase 2: Stripe Integration
 Phase 3: Profit
 
@@ -50,7 +55,7 @@ $ rake db:migrate
 * Modified Models to have has_many relationships (belongs_to was already
   done by references) 
 
---> COMMIT PROJECT
+`--> COMMIT PROJECT`
 
 * Added gem 'compass-rails'
 
@@ -60,8 +65,8 @@ $ compass install bootstrap
 
 * IMPLEMENTED TWITTER BOOTSTRAP TEMPLATE with Partials
 
---> COMMIT PROJECT
+`--> COMMIT PROJECT`
 
 * Converted erb to haml with html2haml gem
 
---> COMMIT PROJECT
+`--> COMMIT PROJECT`
