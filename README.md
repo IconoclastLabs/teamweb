@@ -10,7 +10,9 @@ Phase 1: Functional Base
 * User accounts via Devise
 * Admin via RailsAdmin
 * Functional Site
+
 Phase 2: Stripe Integration
+
 Phase 3: Profit
 
 ## Project History Path
