@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130531160541) do
+ActiveRecord::Schema.define(:version => 20130611205009) do
 
   create_table "coordinators", :force => true do |t|
     t.string   "name"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130531160541) do
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.decimal  "rank"
   end
 
   add_index "teams", ["event_id"], :name => "index_teams_on_event_id"
