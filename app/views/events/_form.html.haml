@@ -1,10 +1,10 @@
-= form_for @event do |f|
+-# Event based off of coordinator object!
+= form_for [@coordinator, @event] do |f|
   - if @event.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
-      %ul
-        - @event.errors.full_messages.each do |msg|
-          %li= msg
+    %h2= "#{pluralize(@event.errors.count, "error")} prohibited this event from being saved:"
+    %ul
+      - @event.errors.full_messages.each do |msg|
+        %li= msg
 
   .field
     = f.label :name
@@ -12,9 +12,6 @@
   .field
     = f.label :about
     = f.text_field :about
-  .field
-    = f.label :coordinator
-    = f.text_field :coordinator
   .field
     = f.label :location
     = f.text_field :location

@@ -20,10 +20,10 @@
       %td= event.location
       %td= event.start
       %td= event.end
-      %td= link_to 'Show', event
-      %td= link_to 'Edit', edit_event_path(event)
-      %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', coordinator_event_path(event.coordinator, event)
+      %td= link_to 'Edit', edit_coordinator_event_path(event.coordinator, event)
+      %td= link_to 'Destroy', coordinator_event_path(event.coordinator, event), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Event', new_event_path
+= link_to 'New Event', new_coordinator_event_path

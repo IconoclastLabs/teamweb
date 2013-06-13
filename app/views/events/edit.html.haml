@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', @event
+= link_to 'Show', coordinator_event_path(@event.coordinator, @event)
 \|
-= link_to 'Back', events_path
+= link_to 'Back', coordinator_events_path

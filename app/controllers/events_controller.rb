@@ -1,4 +1,10 @@
 class EventsController < ApplicationController
+  before_filter :get_coordinator
+
+  def get_coordinator
+    @coordinator = Coordinator.find(params[:coordinator_id])
+  end
+
   # GET /events
   # GET /events.json
   def index
@@ -13,7 +19,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
+    @event = @coordinator.events.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +30,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = Event.new
+    @event = @coordinator.events.build(params[:event])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,18 +40,18 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @event = @coordinator.events.find(params[:id])
   end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
+    @event = @coordinator.events.new(params[:event])
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render json: @event, status: :created, location: @event }
+        format.html { redirect_to [@coordinator, @event], notice: 'Event was successfully created.' }
+        format.json { render json: [@coordinator, @event], status: :created, location: @event }
       else
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -56,11 +62,11 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
-    @event = Event.find(params[:id])
+    @event = @coordinator.events.find(params[:id])
 
     respond_to do |format|
       if @event.update_attributes(params[:event])
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
+        format.html { redirect_to [@coordinator, @event], notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +82,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to events_url }
+      format.html { redirect_to coordinator_events_url }
       format.json { head :no_content }
     end
   end
