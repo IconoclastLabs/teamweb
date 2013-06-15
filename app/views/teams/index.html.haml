@@ -12,10 +12,13 @@
     %tr
       %td= team.name
       %td= team.event
-      %td= link_to 'Show', team
-      %td= link_to 'Edit', edit_team_path(team)
-      %td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      -#%td= link_to 'Show', team
+      -#%td= link_to 'Edit', edit_team_path(team)
+      -#%td= link_to 'Destroy', team, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', coordinator_event_team_path(team.event.coordinator, team)
+      %td= link_to 'Edit', edit_coordinator_event_team_path(team.event.coordinator, team)
+      %td= link_to 'Destroy', coordinator_event_team_path(team.event.coordinator, team), :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Team', new_team_path
+= link_to 'New Team', new_coordinator_event_team_path

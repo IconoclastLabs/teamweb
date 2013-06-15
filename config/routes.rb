@@ -1,11 +1,13 @@
 Teamweb::Application.routes.draw do
 
 
-  resources :teams
+  #resources :teams
 
 
   resources :coordinators do
-    resources :events
+    resources :events do
+      resources :teams
+    end
   end
 
 
