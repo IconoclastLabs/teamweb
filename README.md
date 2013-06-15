@@ -72,3 +72,8 @@ $ compass install bootstrap
 * Converted erb to haml with html2haml gem
 
 `--> COMMIT PROJECT`
+
+* Moved events resources under coordinators and made all cascading changes needed.
+* Large commit on the project, which can be explained in the commit page link [https://github.com/GantMan/teamweb/commit/6ba46f798f6fac3cc21830ebbe36d3340a6a42ad](https://github.com/GantMan/teamweb/commit/6ba46f798f6fac3cc21830ebbe36d3340a6a42ad)
+
+`--> COMMIT PROJECT`
