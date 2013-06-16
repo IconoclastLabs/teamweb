@@ -1,5 +1,5 @@
 - # = form_for @team do |f|
-= form_for [@event, @team] do |f|
+= form_for [@coordinator, @event, @team] do |f|
   - if @team.errors.any?
     %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
     %ul
@@ -10,7 +10,7 @@
     = f.label :name
     = f.text_field :name
   -#.field
-   -# = f.label :event
-   -# = f.text_field :event
+    -# = f.label :event
+    -# = f.text_field :event
   .actions
     = f.submit 'Save'
