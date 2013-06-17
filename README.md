@@ -77,3 +77,9 @@ $ compass install bootstrap
 * Large commit on the project, which can be explained in the commit page link [https://github.com/GantMan/teamweb/commit/6ba46f798f6fac3cc21830ebbe36d3340a6a42ad](https://github.com/GantMan/teamweb/commit/6ba46f798f6fac3cc21830ebbe36d3340a6a42ad)
 
 `--> COMMIT PROJECT`
+
+* Lots of changes adding teams as resources under events
+* Changes made by daddymac - [https://github.com/GantMan/teamweb/commit/2b60e8d134bca92dc626ae89e348a6be51fd4b50](https://github.com/GantMan/teamweb/commit/2b60e8d134bca92dc626ae89e348a6be51fd4b50)
+* Changes made by GantMan - [https://github.com/GantMan/teamweb/commit/628936b7c6648b4f31a9b7fb8ad5522d4d19232c](https://github.com/GantMan/teamweb/commit/628936b7c6648b4f31a9b7fb8ad5522d4d19232c)
+
+`--> Project Point`
