@@ -16,6 +16,8 @@
 -#    = f.submit 'Save'
 
 = simple_form_for [@coordinator, @event, @team] do |f|
- = f.input :name, label: "Your team name please"
+ = f.input :name, label: "Your team name please", hint: "  in bed"
  .actions
   = f.submit 'Save'
+
+
