@@ -83,3 +83,8 @@ $ compass install bootstrap
 * Changes made by GantMan - [https://github.com/GantMan/teamweb/commit/628936b7c6648b4f31a9b7fb8ad5522d4d19232c](https://github.com/GantMan/teamweb/commit/628936b7c6648b4f31a9b7fb8ad5522d4d19232c)
 
 `--> Project Point`
+
+$ rails generate simple_form:install --bootstrap
+* Converted some forms and styles to twitter bootstrap and simple_form
+
+`--> Project Point`
