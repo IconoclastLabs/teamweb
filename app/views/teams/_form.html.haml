@@ -5,7 +5,8 @@
     %ul
       - @team.errors.full_messages.each do |msg|
         %li= msg
-  = f.input :name, label: "Your team name please", hint: "  in bed"
-  = f.submit 'Save'
+  %fieldset
+    = f.input :name, label: "Your team name please", hint: "  in bed"
+    = f.submit 'Save'
 
 
