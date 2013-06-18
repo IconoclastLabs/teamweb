@@ -1,23 +1,11 @@
 - # = form_for @team do |f|
-- #= form_for [@coordinator, @event, @team] do |f|
--#  - if @team.errors.any?
--#    %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
--#    %ul
--#      - @team.errors.full_messages.each do |msg|
--#        %li= msg
--#
--#  .field
--#    = f.label :name
--#    = f.text_field :name
--#  -#.field
--#    -# = f.label :event
--#    -# = f.text_field :event
--#  .actions
--#    = f.submit 'Save'
-
-= simple_form_for [@coordinator, @event, @team] do |f|
- = f.input :name, label: "Your team name please", hint: "  in bed"
- .actions
+= simple_form_for [@coordinator, @event, @team], :html => {:class => 'form-horizontal' } do |f|
+  - if @team.errors.any?
+    %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
+    %ul
+      - @team.errors.full_messages.each do |msg|
+        %li= msg
+  = f.input :name, label: "Your team name please", hint: "  in bed"
   = f.submit 'Save'
 
 

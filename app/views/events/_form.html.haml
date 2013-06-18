@@ -1,4 +1,9 @@
 = simple_form_for [@coordinator, @event] do |f|
+  - if @event.errors.any?
+    %h2= "#{pluralize(@event.errors.count, "error")} prohibited this team from being saved:"
+    %ul
+      - @event.errors.full_messages.each do |msg|
+        %li= msg
  = f.input :name, label: "Name for this event"
  = f.input :location, label: "Location (place to be)"
  = f.input :about, label: "Describe the event"
