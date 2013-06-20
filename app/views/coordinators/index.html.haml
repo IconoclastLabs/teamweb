@@ -1,14 +1,15 @@
 %h1 Listing coordinators
 
-%table
-  %tr
-    %th Name
-    %th About
-    %th Location
-    %th Contact
-    %th
-    %th
-    %th
+%table.table.table-striped.span12
+  %thead
+    %tr
+      %th Name
+      %th About
+      %th Location
+      %th Contact
+      %th
+      %th
+      %th
 
   - @coordinators.each do |coordinator|
     %tr
@@ -16,9 +17,9 @@
       %td= coordinator.about
       %td= coordinator.location
       %td= coordinator.contact
-      %td= link_to 'Show', coordinator
-      %td= link_to 'Edit', edit_coordinator_path(coordinator)
-      %td= link_to 'Destroy', coordinator, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', coordinator, class: "btn btn-primary"
+      %td= link_to 'Edit', edit_coordinator_path(coordinator), class: "btn btn-info"
+      %td= link_to 'Destroy', coordinator, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 
