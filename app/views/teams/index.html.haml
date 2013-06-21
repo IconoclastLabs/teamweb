@@ -12,9 +12,9 @@
     %tr
       %td= team.name
       %td= team.event
-      %td= link_to 'Show', coordinator_event_teams_path(@coordinator, @event, team)
-      %td= link_to 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team)
-      %td= link_to 'Destroy', coordinator_event_teams_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', coordinator_event_teams_path(@coordinator, @event, team), class: "btn btn-primary"
+      %td= link_to 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
+      %td= link_to 'Destroy', coordinator_event_teams_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 
