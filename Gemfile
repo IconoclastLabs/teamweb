@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
 gem 'rails', '3.2.13'
 
@@ -74,5 +74,17 @@ group :development, :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
+  
+  # Additions suggested by article 
+  # http://www.codebeerstartups.com/2013/04/must-have-gems-for-development-machine-in-ruby-on-rails/
+  gem 'bullet'
+  gem 'localtunnel' #exposes site as needed ($ localtunnel-beta 8000)
+  gem 'mailcatcher'
+  gem 'lol_dba' # site optimization? ($ rake db:find_indexes > $ )
+  gem 'reek' # check for code smells ($ reek -q .)
+  gem 'rails_best_practices' # check for best practice fixes ($ rails_best_practices .)
+  gem 'request-log-analyzer' # check out the live website request logs for performance issues/info 
+  #                         ($ request-log-analyzer --parse-strategy assume-correct log/development.log)
+  gem 'smusher' # optimize images ($ smusher app/assets/images)
 end
 
