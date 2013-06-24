@@ -2284,7 +2284,7 @@ input[type="submit"].btn.btn-mini {
 .dropdown-menu > li > a:hover > [class*=" icon-"],
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: image-url("glyphicons-halflings-white.png");
 }
 .icon-glass {
   background-position: 0      0;

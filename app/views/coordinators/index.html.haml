@@ -17,11 +17,11 @@
       %td= coordinator.about
       %td= coordinator.location
       %td= coordinator.contact
-      %td= link_to 'Show', coordinator, class: "btn btn-primary"
-      %td= link_to 'Events', coordinator_events_path(coordinator), class: "btn btn-info"
-      %td= link_to 'Edit', edit_coordinator_path(coordinator), class: "btn btn-info"
-      %td= link_to 'Destroy', coordinator, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+      %td= link_to icon_tag("play") + 'Show', coordinator, class: "btn btn-primary"
+      %td= link_to icon_tag("calendar") + 'Events', coordinator_events_path(coordinator), class: "btn btn-info"
+      %td= link_to icon_tag("wrench") + 'Edit', edit_coordinator_path(coordinator), class: "btn btn-info"
+      %td= link_to icon_tag("trash") + 'Destroy', coordinator, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 
-= link_to 'New Coordinator', new_coordinator_path
+= link_to icon_tag("star-empty") + 'New Coordinator', new_coordinator_path, class: "btn btn-success"
