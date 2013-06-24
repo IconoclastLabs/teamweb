@@ -1,20 +1,21 @@
 %h1 Listing teams
 
-%table
-  %tr
-    %th Name
-    %th Event
-    %th
-    %th
-    %th
-
-  - @teams.each do |team|
+%table.table.table-striped.span12
+  %thead
     %tr
-      %td= team.name
-      %td= team.event
-      %td= link_to 'Show', coordinator_event_teams_path(@coordinator, @event, team), class: "btn btn-primary"
-      %td= link_to 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
-      %td= link_to 'Destroy', coordinator_event_teams_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+      %th Name
+      %th Event
+      %th
+      %th
+      %th
+
+    - @teams.each do |team|
+      %tr
+        %td= team.name
+        %td= team.event
+        %td= link_to icon_tag("play") + 'Show', coordinator_event_teams_path(@coordinator, @event, team), class: "btn btn-primary"
+        %td= link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
+        %td= link_to icon_tag("trash") + 'Destroy', coordinator_event_teams_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 
