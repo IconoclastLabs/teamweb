@@ -51,7 +51,7 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     #@team = Team.new(params[:team])
-    @team = Team.new(params[:team])
+    @team = @event.teams.new(params[:team])
 
     respond_to do |format|
       if @team.save
