@@ -55,6 +55,8 @@
                 %li
                   %a{:href => "#"} Contact
         / /.navbar
+        / Breadcrumbs via helper
+        = render_breadcrumbs
         / Add your site or application content here
         = yield
       = render "shared/template_footer"
