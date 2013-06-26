@@ -88,3 +88,9 @@ $ rails generate simple_form:install --bootstrap
 * Converted some forms and styles to twitter bootstrap and simple_form
 
 `--> Project Point`
+
+* Moved tables/breadcrumbs/buttons over to Twitter bootstrap style.
+* Updated breadcrumbs to add/style themselves via navigation helper [COMMIT](https://github.com/GantMan/teamweb/commit/71fd221dc4343b33e9e98d3d4243f51a713fec5a)
+* Updated navbar to style itself via navigation helper [COMMIT](https://github.com/GantMan/teamweb/commit/2e2cdcd515c6b0ae852607c48bfec6c4390b9ffd)
+
+`--> Project Point`
