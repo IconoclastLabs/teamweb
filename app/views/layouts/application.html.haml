@@ -38,25 +38,7 @@
     .container
       .masthead
         %h3.muted TeamWeb
-        .navbar
-          .navbar-inner
-            .container
-              %ul.nav
-                %li.active
-                  = link_to "Home", root_path
-                %li
-                  %a{:href => "#"} Projects
-                %li
-                  %a{:href => "#"} Services
-                %li
-                  %a{:href => "#"} Downloads
-                %li
-                  %a{:href => "#"} About
-                %li
-                  %a{:href => "#"} Contact
-        / /.navbar
-        / Breadcrumbs via helper
-        = render_breadcrumbs
+        = render "shared/navbar"
         / Add your site or application content here
         = yield
       = render "shared/template_footer"

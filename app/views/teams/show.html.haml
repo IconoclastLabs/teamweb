@@ -5,7 +5,7 @@
   = @team.name
 %p
   %b Event:
-  = @team.event
+  = @team.event.name
 
 = link_to 'Edit', edit_coordinator_event_team_path(@coordinator, @event, @team)
 \|

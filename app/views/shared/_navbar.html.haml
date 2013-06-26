@@ -1,0 +1,11 @@
+.navbar
+  .navbar-inner
+    .container
+      %ul.nav
+        = nav_link "Home", root_path
+        = nav_link "Coordinators", coordinators_path
+        = nav_link "About", '#'
+        = nav_link "Contact", '#'
+/ /.navbar
+/ Breadcrumbs via helper
+= render_breadcrumbs
