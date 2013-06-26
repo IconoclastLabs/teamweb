@@ -1,8 +1,9 @@
-%ul.breadcrumb
-  - nav.each_with_index do |n, index|
-    %li
-      - if index == nav.size - 1
-        = n[:title]
-      - else
-        = link_to n[:title], n[:url]
-        %span.divider /
+- unless nav.blank?
+  %ul.breadcrumb
+    - nav.each_with_index do |n, index|
+      %li
+        - if index == nav.size - 1
+          = n[:title]
+        - else
+          = link_to n[:title], n[:url]
+          %span.divider /

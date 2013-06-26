@@ -6,6 +6,12 @@
         = nav_link "Coordinators", coordinators_path
         = nav_link "About", '#'
         = nav_link "Contact", '#'
+        - if user_signed_in?
+          = nav_link "Profile", edit_user_registration_path
+          = nav_link "Logout", destroy_user_session_path, method: :delete
+        - else
+          = nav_link "Sign Up", new_user_registration_path
+          = nav_link "Login", new_user_session_path
 / /.navbar
 / Breadcrumbs via helper
 = render_breadcrumbs

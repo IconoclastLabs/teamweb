@@ -2,7 +2,7 @@
 .jumbotron
   %h1 Marketing stuff!
   %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
-  %a.btn.btn-large.btn-success{:href => "#"} Get started today
+  = link_to "Get started today", new_user_registration_path, class: "btn btn-large btn-success"
 %hr/
 / Example row of columns
 .row-fluid

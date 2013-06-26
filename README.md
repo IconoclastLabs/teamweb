@@ -94,3 +94,9 @@ $ rails generate simple_form:install --bootstrap
 * Updated navbar to style itself via navigation helper [COMMIT](https://github.com/GantMan/teamweb/commit/2e2cdcd515c6b0ae852607c48bfec6c4390b9ffd)
 
 `--> Project Point`
+
+* Added devise gem
+$ rails generate devise:install
+$ rails generate devise user
+* Added devise links to navigation header
+* Added devise `authenticate_user!` to all controllers

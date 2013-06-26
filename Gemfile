@@ -26,6 +26,7 @@ gem "haml-rails"
 gem "bootstrap-sass", ">= 2.3.0.0"
 
 gem "rails-boilerplate"
+gem "devise"
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
