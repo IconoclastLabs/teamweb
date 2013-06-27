@@ -74,13 +74,13 @@ $ compass install bootstrap
 `--> COMMIT PROJECT`
 
 * Moved events resources under coordinators and made all cascading changes needed.
-* Large commit on the project, which can be explained in the commit page link [https://github.com/GantMan/teamweb/commit/6ba46f798f6fac3cc21830ebbe36d3340a6a42ad](https://github.com/GantMan/teamweb/commit/6ba46f798f6fac3cc21830ebbe36d3340a6a42ad)
+* Large commit on the project, which can be explained in the commit page link [COMMIT](https://github.com/GantMan/teamweb/commit/6ba46f798f6fac3cc21830ebbe36d3340a6a42ad)
 
 `--> COMMIT PROJECT`
 
 * Lots of changes adding teams as resources under events
-* Changes made by daddymac - [https://github.com/GantMan/teamweb/commit/2b60e8d134bca92dc626ae89e348a6be51fd4b50](https://github.com/GantMan/teamweb/commit/2b60e8d134bca92dc626ae89e348a6be51fd4b50)
-* Changes made by GantMan - [https://github.com/GantMan/teamweb/commit/628936b7c6648b4f31a9b7fb8ad5522d4d19232c](https://github.com/GantMan/teamweb/commit/628936b7c6648b4f31a9b7fb8ad5522d4d19232c)
+* Changes made by daddymac - [COMMIT]https://github.com/GantMan/teamweb/commit/2b60e8d134bca92dc626ae89e348a6be51fd4b50)
+* Changes made by GantMan - [COMMIT](https://github.com/GantMan/teamweb/commit/628936b7c6648b4f31a9b7fb8ad5522d4d19232c)
 
 `--> Project Point`
 
@@ -100,3 +100,9 @@ $ rails generate devise:install
 $ rails generate devise user
 * Added devise links to navigation header
 * Added devise `authenticate_user!` to all controllers
+
+`--> Project Point`
+
+* Server switched over to `puma` multithreaded [COMMIT](https://github.com/GantMan/teamweb/commit/5655e39b0885f24916ac039c0ddca75eab54cc89) [GIST](https://gist.github.com/subelsky/3987140)
+
+`--> COMMIT PROJECT`

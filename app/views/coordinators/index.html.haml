@@ -4,7 +4,6 @@
   %thead
     %tr
       %th Name
-      %th About
       %th Location
       %th Contact
       %th
@@ -14,7 +13,6 @@
   - @coordinators.each do |coordinator|
     %tr
       %td= coordinator.name
-      %td= coordinator.about
       %td= coordinator.location
       %td= coordinator.contact
       %td= link_to icon_tag("play") + 'Show', coordinator, class: "btn btn-primary"
