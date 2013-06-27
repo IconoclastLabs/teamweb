@@ -7,6 +7,6 @@
   %b Event:
   = @team.event.name
 
-= link_to 'Edit', edit_coordinator_event_team_path(@coordinator, @event, @team)
+= link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_team_path(@coordinator, @event, @team), class: "btn btn-info"
 \|
-= link_to 'Back', coordinator_event_teams_path
+= link_to icon_tag("backward") + 'Back', coordinator_event_teams_path, class: "btn btn-primary"

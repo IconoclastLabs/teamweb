@@ -2,6 +2,6 @@
 
 = render 'form'
 
-= link_to 'Show', coordinator_event_path(@event.coordinator, @event)
+= link_to icon_tag("play") + 'Show', coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"
 \|
-= link_to 'Back', coordinator_events_path
+= link_to icon_tag("backward") + 'Back', coordinator_events_path, class: "btn btn-primary"
