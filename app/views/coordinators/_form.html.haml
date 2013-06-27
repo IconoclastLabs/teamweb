@@ -1,14 +1,14 @@
-= simple_form_for @coordinator do |f|
+= simple_form_for @coordinator, :html => {:class => 'form-horizontal' } do |f|
   - if @coordinator.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@coordinator.errors.count, "error")} prohibited this coordinator from being saved:"
-      %ul
-        - @coordinator.errors.full_messages.each do |msg|
-          %li= msg
+    %h2= "#{pluralize(@coordinator.errors.count, "error")} prohibited this coordinator from being saved:"
+    %ul
+      - @coordinator.errors.full_messages.each do |msg|
+        %li= msg
 
   = f.input :name
   = f.input :about
   = f.input :location
   = f.input :contact
   .actions
-    = f.submit 'Save', :class => 'btn btn-primary btn-large btn-block'
+    %button.btn.btn-danger.btn-small{type: "submit"}
+      = icon_tag('thumbs-up') + 'Save'

@@ -4,11 +4,12 @@
     %ul
       - @event.errors.full_messages.each do |msg|
         %li= msg
-  %fieldset
-    = f.input :name, label: "Name for this event"
-    = f.input :location, label: "Location (place to be)"
-    = f.input :about, label: "Describe the event"
-    = f.input :start
-    = f.input :end
-    .actions
-      = f.submit 'Save', class: 'btn'
+
+  = f.input :name, label: "Name for this event"
+  = f.input :location, label: "Location (place to be)"
+  = f.input :about, label: "Describe the event"
+  = f.input :start
+  = f.input :end
+  .actions
+    %button.btn.btn-danger.btn-small{type: "submit"}
+      = icon_tag('thumbs-up') + 'Save'

@@ -5,8 +5,9 @@
     %ul
       - @team.errors.full_messages.each do |msg|
         %li= msg
-  %fieldset
-    = f.input :name, label: "Your team name please"
-    = f.submit 'Save'
+
+  = f.input :name, label: "Your team name please"
+  %button.btn.btn-danger.btn-small{type: "submit"}
+    = icon_tag('thumbs-up') + 'Save'
 
 
