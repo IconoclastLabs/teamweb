@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(:version => 20130626202800) do
     t.integer  "event_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.decimal  "rank"
   end
 
   add_index "teams", ["event_id"], :name => "index_teams_on_event_id"
