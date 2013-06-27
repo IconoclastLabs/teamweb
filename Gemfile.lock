@@ -362,6 +362,7 @@ DEPENDENCIES
   pry
   pry-doc
   pry-rails
+  puma
   quiet_assets (>= 1.0.1)
   rails (= 3.2.13)
   rails-boilerplate
@@ -377,5 +378,4 @@ DEPENDENCIES
   simple_form
   smusher
   sqlite3
-  thin
   uglifier (>= 1.0.3)
