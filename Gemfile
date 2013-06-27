@@ -30,7 +30,7 @@ gem "devise"
 gem 'jbuilder'
 
 gem "devise"
-gem 'puma'
+gem 'thin'
 
 gem 'simple_form'
 
