@@ -42,7 +42,7 @@
             %button.close{:type => "button", :"data-dismiss" => "alert"} &times;
             %strong ALERT:
             = alert
-        - else notice
+        - elsif notice
           .alert.alert-info
             %button.close{:type => "button", :"data-dismiss" => "alert"} &times;
             %strong NOTICE:
