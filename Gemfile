@@ -24,7 +24,7 @@ gem 'jbuilder'
 gem "devise", '~> 3.0.0.rc'
 gem 'puma'
 
-gem "simple_form", "~> 2.1.0"
+gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 
 # Production for Heroku
 group :production do
