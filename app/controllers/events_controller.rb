@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = @coordinator.events.build(params[:event])
+    @event = @coordinator.events.build(event_params)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = @coordinator.events.new(params[:event])
+    @event = @coordinator.events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -65,7 +65,7 @@ class EventsController < ApplicationController
     @event = @coordinator.events.find(params[:id])
 
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if @event.update_attributes(event_params)
         format.html { redirect_to [@coordinator, @event], notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
@@ -85,5 +85,10 @@ class EventsController < ApplicationController
       format.html { redirect_to coordinator_events_url }
       format.json { head :no_content }
     end
+  end
+
+
+  def event_params
+    params.require(:event).permit(:about, :end, :location, :name, :start)
   end
 end

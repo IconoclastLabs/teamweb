@@ -33,7 +33,7 @@ class TeamsController < ApplicationController
   # GET /teams/new.json
   def new
     #@team = Team.new
-    @team = @event.teams.build(params[:team])
+    @team = @event.teams.build(team_params)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -51,7 +51,7 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     #@team = Team.new(params[:team])
-    @team = @event.teams.new(params[:team])
+    @team = @event.teams.new(team_params)
 
     respond_to do |format|
       if @team.save
@@ -73,7 +73,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
 
     respond_to do |format|
-      if @team.update_attributes(params[:team])
+      if @team.update_attributes(team_params)
         format.html { redirect_to [@coordinator, @event, @team], notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
@@ -93,5 +93,9 @@ class TeamsController < ApplicationController
       format.html { redirect_to event_teams_url }
       format.json { head :no_content }
     end
+  end
+
+  def team_params
+    params.require(:team).permit(:name)
   end
 end
