@@ -40,7 +40,7 @@ class CoordinatorsController < ApplicationController
   # POST /coordinators
   # POST /coordinators.json
   def create
-    @coordinator = Coordinator.new(params[:coordinator])
+    @coordinator = Coordinator.new(coordinator_params)
 
     respond_to do |format|
       if @coordinator.save
@@ -59,7 +59,7 @@ class CoordinatorsController < ApplicationController
     @coordinator = Coordinator.find(params[:id])
 
     respond_to do |format|
-      if @coordinator.update_attributes(params[:coordinator])
+      if @coordinator.update_attributes(coordinator_params)
         format.html { redirect_to @coordinator, notice: 'Coordinator was successfully updated.' }
         format.json { head :no_content }
       else
@@ -79,5 +79,9 @@ class CoordinatorsController < ApplicationController
       format.html { redirect_to coordinators_url }
       format.json { head :no_content }
     end
+  end
+
+  def coordinator_params
+    params.require(:coordinator).permit(:about, :contact, :location, :name)
   end
 end

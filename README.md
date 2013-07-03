@@ -106,3 +106,13 @@ $ rails generate devise user
 * Server switched over to `puma` multithreaded [COMMIT](https://github.com/GantMan/teamweb/commit/5655e39b0885f24916ac039c0ddca75eab54cc89) [GIST](https://gist.github.com/subelsky/3987140)
 
 `--> COMMIT PROJECT`
+
+### SWITCH TO RAILS 4 ###
+* installed rails4 (gem install rails)
+* Gemfile - updated rails version and removed assets group
+* changed application config to simply use bundler
+$ gem update
+$ rm Gemfile.lock
+$ bundle update
+$ bundle outdated
+* Added version tags to various gems to use rails 4
