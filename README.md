@@ -111,8 +111,14 @@ $ rails generate devise user
 * installed rails4 (gem install rails)
 * Gemfile - updated rails version and removed assets group
 * changed application config to simply use bundler
+* did environment updates
 $ gem update
 $ rm Gemfile.lock
 $ bundle update
 $ bundle outdated
 * Added version tags to various gems to use rails 4
+* Removed attr_accessibles and moved to strong params approach
+* Renamed secret token
+* Removed vendor/plugins directory (no longer allowed)
+
+`--> Merged Branch`
