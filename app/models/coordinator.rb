@@ -13,5 +13,6 @@
 
 class Coordinator < ActiveRecord::Base
   has_many :events
-  validates :name, presence: true
+  validates :name, :contact, presence: true
+  validates :name, length: {in: 2..38}
 end

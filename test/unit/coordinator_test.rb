@@ -11,4 +11,8 @@ class CoordinatorTest < ActiveSupport::TestCase
     simple_coordinator.name = nil
     simple_coordinator.valid?.must_equal false
   end
+  it 'requires contact info' do
+    simple_coordinator.contact = nil
+    simple_coordinator.valid?.must_equal false
+  end
 end

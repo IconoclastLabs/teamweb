@@ -16,4 +16,5 @@
 class Event < ActiveRecord::Base
   belongs_to :coordinator
   has_many :teams
+  validates :name, presence: true
 end
