@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class CoordinatorsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+
   setup do
     @coordinator = coordinators(:one)
   end

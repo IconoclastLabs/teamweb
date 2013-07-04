@@ -32,7 +32,6 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
-    #@team = Team.new
     @team = @event.teams.build(team_params)
 
     respond_to do |format|
@@ -50,7 +49,6 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    #@team = Team.new(params[:team])
     @team = @event.teams.new(team_params)
 
     respond_to do |format|

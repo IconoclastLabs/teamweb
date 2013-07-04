@@ -1,12 +1,16 @@
 require 'test_helper'
 
 class TeamsControllerTest < ActionController::TestCase
+  include Devise::TestHelpers
+    
   setup do
     @team = teams(:one)
+    @team.event = Event.first
+    @team.event.coordinator = Coordinator.first
   end
 
   test "should get index" do
-    get :index
+    get :index, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id
     assert_response :success
     assert_not_nil assigns(:teams)
   end
