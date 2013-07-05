@@ -32,7 +32,7 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
-    @team = @event.teams.build(team_params)
+    @team = @event.teams.build(params[:team])
 
     respond_to do |format|
       format.html # new.html.erb
