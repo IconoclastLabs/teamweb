@@ -100,6 +100,8 @@ $ rails generate devise:install
 $ rails generate devise user
 * Added devise links to navigation header
 * Added devise `authenticate_user!` to all controllers
+$ rails generate devise:views
+* Views styled by @daddymac
 
 `--> Project Point`
 
