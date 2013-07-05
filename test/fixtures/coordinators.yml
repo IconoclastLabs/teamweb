@@ -1,12 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+coord_one:
   name: MyString
   about: MyString
   location: MyString
   contact: MyString
 
-two:
+coord_two:
   name: MyString
   about: MyString
   location: MyString

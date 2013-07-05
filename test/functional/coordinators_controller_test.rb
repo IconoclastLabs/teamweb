@@ -4,7 +4,7 @@ class CoordinatorsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @coordinator = coordinators(:one)
+    @coordinator = coordinators(:coord_one)
   end
 
   test "should get index" do

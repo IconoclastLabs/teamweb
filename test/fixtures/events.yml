@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+event_one:
   name: MyString
   about: MyString
-  coordinator: Coordinator.first.id
+  coordinator: coord_one
   location: MyString
   start: 2013-05-31
   end: 2013-05-31
 
-two:
+event_two:
   name: MyString
   about: MyString
-  coordinator: Coordinator.first.id
+  coordinator: coord_two
   location: MyString
   start: 2013-05-31
   end: 2013-05-31

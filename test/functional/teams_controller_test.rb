@@ -5,8 +5,6 @@ class TeamsControllerTest < ActionController::TestCase
     
   setup do
     @team = teams(:one)
-    @team.event = Event.first
-    @team.event.coordinator = Coordinator.first
   end
 
   test "should get index" do
@@ -16,38 +14,38 @@ class TeamsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
-    get :new
+    get :new, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id
     assert_response :success
   end
 
   test "should create team" do
     assert_difference('Team.count') do
-      post :create, team: { name: @team.name }
+      post :create, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id, @team: { name: @team.name }
     end
 
-    assert_redirected_to team_path(assigns(:team))
+    assert_redirected_to team_path(coordinator_id: @team.event.coordinator_id, event_id: @team.event_id, assigns(:team))
   end
 
   test "should show team" do
-    get :show, id: @team
+    get :show, id: @team, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @team
+    get :edit, id: @team, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id
     assert_response :success
   end
 
   test "should update team" do
-    put :update, id: @team, team: { name: @team.name }
-    assert_redirected_to team_path(assigns(:team))
+    put :update, id: @team, team: { name: @team.name }, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id
+    assert_redirected_to team_path(coordinator_id: @team.event.coordinator_id, event_id: @team.event_id, assigns(:team))
   end
 
   test "should destroy team" do
     assert_difference('Team.count', -1) do
-      delete :destroy, id: @team
+      delete :destroy, id: @team, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id
     end
 
-    assert_redirected_to teams_path
+    assert_redirected_to coordinator_event_teams_path
   end
 end

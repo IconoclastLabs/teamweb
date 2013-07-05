@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  event: 
+  event: event_one
 
 two:
-  name: MyString
-  event: 
+  name: Two 
+  event: event_two
