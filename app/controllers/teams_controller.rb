@@ -88,7 +88,7 @@ class TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to event_teams_url }
+      format.html { redirect_to coordinator_event_teams_url(@team.event.coordinator, @team.event) }
       format.json { head :no_content }
     end
   end

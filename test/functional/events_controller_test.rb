@@ -8,18 +8,31 @@ class EventsControllerTest < ActionController::TestCase
     @event = events(:event_one)
   end
 
-  test "should get index" do
+  test "get index" do
     get :index, coordinator_id: @event.coordinator_id
     assert_response :success
     assert_not_nil assigns(:events)
   end
 
-  test "should get new" do
+  test "require login to get new" do
     get :new, coordinator_id: @event.coordinator_id
-    assert_response :success
+    assert_response :redirect #302
   end
 
-  test "should create event" do
+  test "get new" do
+    sign_in User.first
+    get :new, coordinator_id: @event.coordinator_id
+    assert_response :success
+  end  
+
+  test "require login to create event" do
+    assert_no_difference('Event.count') do
+      post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start }
+    end
+  end
+
+  test "create event" do
+    sign_in User.first
     assert_difference('Event.count') do
       post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start }
     end
@@ -27,26 +40,45 @@ class EventsControllerTest < ActionController::TestCase
     assert_redirected_to coordinator_event_path(@event.coordinator, assigns(:event))
   end
 
-  test "should show event" do
+  test "show event" do
     get :show, id: @event, coordinator_id: @event.coordinator_id
     assert_response :success
   end
 
-  test "should get edit" do
+  test "require login to get edit" do
+    get :edit, id: @event, coordinator_id: @event.coordinator_id
+    assert_response :redirect #302
+  end
+
+  test "get edit" do
+    sign_in User.first
     get :edit, id: @event, coordinator_id: @event.coordinator_id
     assert_response :success
   end
 
-  test "should update event" do
+  test "require login to update event" do
+    put :update, coordinator_id: @event.coordinator_id, id: @event, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start }
+    assert_redirected_to user_session_path
+  end
+
+  test "update event" do
+    sign_in User.first
     put :update, coordinator_id: @event.coordinator_id, id: @event, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start }
     assert_redirected_to coordinator_event_path(@event.coordinator, assigns(:event))
   end
 
-  test "should destroy event" do
+  test "require login to destroy event" do
+    assert_no_difference('Event.count') do
+      delete :destroy, id: @event, coordinator_id: @event.coordinator_id
+    end
+  end
+
+  test "destroy event" do
+    sign_in User.first
     assert_difference('Event.count', -1) do
       delete :destroy, id: @event, coordinator_id: @event.coordinator_id
     end
 
-    assert_redirected_to events_path
+    assert_redirected_to coordinator_events_path(@event.coordinator)
   end
 end

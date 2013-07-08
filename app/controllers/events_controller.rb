@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = @coordinator.events.build(event_params)
+    @event = @coordinator.events.build(params[:event])
 
     respond_to do |format|
       format.html # new.html.erb
