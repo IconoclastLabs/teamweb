@@ -369,6 +369,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails-boilerplate
   rails_best_practices
+  rake
   rb-fchange
   rb-fsevent
   rb-inotify
