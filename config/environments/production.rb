@@ -71,6 +71,4 @@ Teamweb::Application.configure do
   #required by devise
   config.action_mailer.default_url_options = { :host => 'teamweb.herokuapp.com' }
 
-  # threadsafe
-  config.threadsafe!
 end
