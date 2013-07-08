@@ -1,0 +1,11 @@
+<h2>Resend confirmation instructions</h2>
+
+= simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+  = f.error_notification
+  = f.full_error :confirmation_token
+
+  = f.input :email, :required => true, :autofocus => true
+
+  .actions
+    %button.btn.btn-primary{type: "submit"}
+      = icon_tag('retweet') + 'Resend confirmation instructions'
