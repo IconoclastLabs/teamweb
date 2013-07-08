@@ -1,19 +1,7 @@
 Team Web
 =======
 
-
-## Teaching Project
-Site for building teams for events and signup.  
-Phase 1: Functional Base
-* RoR Site with Twitter Bootstrap and HTML5 Boilerplate
-* Cucumber and Loose specs
-* User accounts via Devise
-* Admin via RailsAdmin
-* Functional Site
-
-Phase 2: Stripe Integration
-
-Phase 3: Profit
+![Travis-CI](https://api.travis-ci.org/GantMan/teamweb.png)
 
 ## Project History Path
   
