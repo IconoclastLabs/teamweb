@@ -18,5 +18,6 @@
   = @event.end
 
 .btn-group
-  = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"
   = link_to icon_tag("hand-left") + 'Back', coordinator_events_path, class: "btn btn-primary"
+  = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"
+  
