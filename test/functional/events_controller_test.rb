@@ -43,6 +43,8 @@ class EventsControllerTest < ActionController::TestCase
   test "show event" do
     get :show, id: @event, coordinator_id: @event.coordinator_id
     assert_response :success
+    assert_not_nil assigns(:event)
+    assert_not_nil assigns(:coordinator)
   end
 
   test "require login to get edit" do

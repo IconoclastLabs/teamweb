@@ -1,6 +1,11 @@
 %p.clearfix
 .footer.well
-  %p 
-    &copy; TeamsWeb
-    = Time.zone.now.year
+  .span3
+    %p 
+      &copy; TeamsWeb
+      = Time.zone.now.year
+  .span8
+    %p.pull-right
+      %a{href: "https://github.com/GantMan/teamweb/issues?state=open"}
+        Github
 / /container
