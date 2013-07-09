@@ -1,7 +1,7 @@
 Team Web
 =======
 
-![Travis-CI](https://api.travis-ci.org/GantMan/teamweb.png)
+[![Travis-CI](https://api.travis-ci.org/GantMan/teamweb.png)](https://travis-ci.org/GantMan/teamweb)
 
 ## Project History Path
   
@@ -112,3 +112,8 @@ $ bundle outdated
 * Removed vendor/plugins directory (no longer allowed)
 
 `--> Merged Branch`
+
+* Fixed all tests to pass!
+* ADDED Travis-CI for continual integration testing - Format [travis.yml](https://github.com/GantMan/teamweb/blob/master/.travis.yml)
+
+`--> Project Point`
