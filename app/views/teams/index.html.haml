@@ -13,9 +13,11 @@
       %tr
         %td= team.name
         %td= team.event.name
-        %td= link_to icon_tag("play") + 'Show', coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-primary"
-        %td= link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
-        %td= link_to icon_tag("trash") + 'Destroy', coordinator_event_team_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+        %td.btn-group
+          - if user_signed_in?
+            = link_to icon_tag("play") + 'Show', coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-primary"
+            = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
+            = link_to icon_tag("trash") + 'Destroy', coordinator_event_team_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 

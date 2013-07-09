@@ -3,5 +3,6 @@
 = render 'form'
 
 .btn-group
-  = link_to icon_tag("play") + 'Show', coordinator_event_team_path(@coordinator, @event, @team), class: "btn btn-info"
   = link_to icon_tag("hand-left") + 'Back', coordinator_event_teams_path, class: "btn btn-primary"
+  = link_to icon_tag("play") + 'Show', coordinator_event_team_path(@coordinator, @event, @team), class: "btn btn-info"
+  
