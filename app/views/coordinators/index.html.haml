@@ -15,10 +15,13 @@
       %td= coordinator.name
       %td= coordinator.location
       %td= coordinator.contact
-      %td= link_to icon_tag("play") + 'Show', coordinator, class: "btn btn-primary"
-      %td= link_to icon_tag("calendar") + 'Events', coordinator_events_path(coordinator), class: "btn btn-info"
-      %td= link_to icon_tag("wrench") + 'Edit', edit_coordinator_path(coordinator), class: "btn btn-info"
-      %td= link_to icon_tag("trash") + 'Destroy', coordinator, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+      %td.btn-group
+        - if user_signed_in?
+          = link_to icon_tag("play") + 'Show', coordinator, class: "btn btn-info"
+        = link_to icon_tag("calendar") + 'Events', coordinator_events_path(coordinator), class: "btn btn-info"
+        - if user_signed_in?
+          = link_to icon_tag("wrench") + 'Edit', edit_coordinator_path(coordinator), class: "btn btn-info"
+          = link_to icon_tag("trash") + 'Delete', coordinator, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 
