@@ -1,37 +1,15 @@
 %h1
   = @event.name
-<<<<<<< HEAD
-%p
-  %b About:
-  = @event.about
-%p
-  %b Coordinator:
-  = @event.coordinator.name
-%p
-  %b Location:
-  = @event.location
-%p
-  %b Start:
-  = @event.start
-%p
-  %b End:
-  = @event.end
-
-.btn-group
-  = link_to icon_tag("hand-left") + 'Back', coordinator_events_path, class: "btn btn-primary"
-  = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"
-  
-=======
 .span7
   %p
     %strong About:
     = @event.about
   %p
     %strong Start:
-    = @event.start
+    = @event.start.try(:format_like, "Jan 1st 2000")
   %p
     %strong End:
-    = @event.end
+    = @event.end.try(:format_like, "Jan 1st 2000")
   .well.span6
     %h4 Coordinator info
     %p
@@ -50,4 +28,3 @@
   .btn-group
     = link_to icon_tag("hand-left") + 'Back', coordinator_events_path, class: "btn btn-primary"
     = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"
->>>>>>> 8a3c78485ba2ce5b530b98ed7022fc2ed4b2a92b

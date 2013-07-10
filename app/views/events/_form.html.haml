@@ -8,8 +8,8 @@
   = f.input :name, label: "Name for this event"
   = f.input :location, label: "Location (place to be)"
   = f.input :about, label: "Describe the event"
-  = f.input :start
-  = f.input :end
+  = f.input :start, as: :string, input_html: { type: "date"}
+  = f.input :end, as: :string, input_html: { type: "date" }
   .actions
     %button.btn.btn-info{type: "submit"}
       = icon_tag('thumbs-up') + 'Save'

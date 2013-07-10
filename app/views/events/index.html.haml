@@ -8,16 +8,13 @@
       %th Location
       %th Start
       %th
-      %th
-      %th
-      %th
 
   - @events.each do |event|
     %tr
       %td= event.name
       %td= event.coordinator.name
       %td= event.location
-      %td= event.start.try(:strftime, "%B %Y")
+      %td= event.start.try(:format_like, "Jan 1st")
       %td.btn-group
         - if user_signed_in?
           = link_to icon_tag("play") + 'Show', coordinator_event_path(event.coordinator, event), class: "btn btn-info"

@@ -26,6 +26,8 @@ gem 'puma'
 
 gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 
+gem "stamp"
+
 # Production for Heroku
 group :production do
   gem 'pg'
