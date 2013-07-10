@@ -1,16 +1,23 @@
 %h1
   = @event.name
 .span7{style: "min-height:450px;"}
-  %p
-    %strong About:
-    = @event.about
-  %p
-    %strong Start:
-    = @event.start.try(:format_like, "Jan 1st 2000")
-  %p
-    %strong End:
-    = @event.end.try(:format_like, "Jan 1st 2000")
-  %h4
+  .span4
+    %p
+      %strong About:
+      = @event.about
+    %p
+      %strong Start:
+      = @event.start.try(:format_like, "Jan 1st 2000")
+    %p
+      %strong End:
+      = @event.end.try(:format_like, "Jan 1st 2000")
+  .span2.well
+    %p
+      %strong Total Teams:
+      = @event.teams.count
+      %br/
+      = link_to icon_tag("flag") + 'View Teams', coordinator_event_teams_path(@event.coordinator, @event), class: "btn btn-info"
+  %h4{style: "clear: left;"}
     %strong Event Details
   %p
     = LiterateRandomizer.paragraphs(paragraphs: 4)
