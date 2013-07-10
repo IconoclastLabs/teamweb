@@ -1,6 +1,6 @@
 %h1
   = @event.name
-.span7
+.span7{style: "min-height:450px;"}
   %p
     %strong About:
     = @event.about
@@ -10,21 +10,25 @@
   %p
     %strong End:
     = @event.end.try(:format_like, "Jan 1st 2000")
-  .well.span6
-    %h4 Coordinator info
-    %p
-      %strong
-        = @coordinator.name
-    %p
-      = @coordinator.about
-    %p
-      = @coordinator.contact
-.span3
-  -# Google Maps hardcoded for now, until we get a Google API key
-  %iframe{:frameborder => "0", :height => "300", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=New+Orleans,+LA&amp;aq=0&amp;oq=new+orleans&amp;sll=30.937336,-91.40087&amp;sspn=9.180712,16.907959&amp;ie=UTF8&amp;hq=&amp;hnear=New+Orleans,+Orleans,+Louisiana&amp;t=m&amp;ll=29.95077,-90.071411&amp;spn=0.178484,0.205994&amp;z=11&amp;iwloc=A&amp;output=embed".html_safe, :width => "300"}
+  %h4
+    %strong Event Details
   %p
+    = LiterateRandomizer.paragraphs(paragraphs: 4)
+.span3
+  = gmaps4rails(@maps_json)
+  %p
+    %strong Location
     = @event.location
+.well.span4
+  %h4 Coordinator info
+  %p
+    %strong
+      = @coordinator.name
+  %p
+    = @coordinator.about
+  %p
+    = @coordinator.contact
 .span12
   .btn-group
     = link_to icon_tag("hand-left") + 'Back', coordinator_events_path, class: "btn btn-primary"
-    = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"
+    = link_to icon_tag("wrench") + 'Edit!', edit_coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"

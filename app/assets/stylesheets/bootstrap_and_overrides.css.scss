@@ -1,2 +1,9 @@
 @import "bootstrap";
 @import "bootstrap-responsive";
+
+#map img { 
+  max-width: none;
+}
+#map label { 
+  width: auto; display:inline; 
+} 

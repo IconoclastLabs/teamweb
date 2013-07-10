@@ -20,6 +20,9 @@ class EventsController < ApplicationController
   # GET /events/1.json
   def show
     @event = @coordinator.events.find(params[:id])
+    @maps_json = @event.to_gmaps4rails do |event, marker|
+      marker.title event.name 
+    end
 
     respond_to do |format|
       format.html # show.html.erb

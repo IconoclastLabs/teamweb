@@ -24,9 +24,12 @@ gem 'jbuilder'
 gem "devise", '~> 3.0.0.rc'
 gem 'puma'
 
+# point at github for rails 4
 gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 
 gem "stamp"
+gem "gmaps4rails"
+gem "literate_randomizer"
 
 # Production for Heroku
 group :production do
