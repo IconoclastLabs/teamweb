@@ -27,14 +27,14 @@ class EventsControllerTest < ActionController::TestCase
 
   test "require login to create event" do
     assert_no_difference('Event.count') do
-      post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start }
+      post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start}
     end
   end
 
   test "create event" do
     sign_in User.first
     assert_difference('Event.count') do
-      post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start }
+      post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start}
     end
 
     assert_redirected_to coordinator_event_path(@event.coordinator, assigns(:event))

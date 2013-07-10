@@ -1,10 +1,28 @@
+# == Schema Information
+#
+# Table name: events
+#
+#  id             :integer          not null, primary key
+#  name           :string(255)
+#  about          :string(255)
+#  coordinator_id :integer
+#  location       :string(255)
+#  start          :date
+#  end            :date
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  latitude       :float
+#  longitude      :float
+#  gmaps          :boolean
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 event_one:
   name: MyString
   about: MyString
   coordinator: coord_one
-  location: MyString
+  location: New Orleans 
   start: 2013-05-31
   end: 2013-05-31
 
@@ -12,6 +30,6 @@ event_two:
   name: MyString
   about: MyString
   coordinator: coord_two
-  location: MyString
+  location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
