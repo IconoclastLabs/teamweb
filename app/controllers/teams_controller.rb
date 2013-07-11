@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    @teams = @event.teams
 
     respond_to do |format|
       format.html # index.html.erb
