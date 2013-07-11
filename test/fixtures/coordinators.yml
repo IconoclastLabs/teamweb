@@ -14,13 +14,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 coord_one:
-  name: MyString
-  about: MyString
-  location: MyString
-  contact: MyString
+  name: Joe Smith
+  about: I like to plan races
+  location: Kansas
+  contact: jo.schmo@yahoo.com
 
 coord_two:
-  name: MyString
-  about: MyString
-  location: MyString
-  contact: MyString
+  name: Bob
+  about: Tech Coordinator
+  location: 515 Poydras St. New Orleans
+  contact: bobbert@techjob.com

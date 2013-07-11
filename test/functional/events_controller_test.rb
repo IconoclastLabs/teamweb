@@ -6,6 +6,10 @@ class EventsControllerTest < ActionController::TestCase
 
   setup do
     @event = events(:event_one)
+    
+    @new_event = events(:event_two) 
+    @new_event.id = nil
+    @new_event.name = "Different"
   end
 
   test "get index" do
@@ -27,14 +31,14 @@ class EventsControllerTest < ActionController::TestCase
 
   test "require login to create event" do
     assert_no_difference('Event.count') do
-      post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start}
+      post :create, coordinator_id: @new_event.coordinator_id, event: { about: @new_event.about, end: @new_event.end, location: @new_event.location, name: @new_event.name, start: @new_event.start}
     end
   end
 
   test "create event" do
     sign_in User.first
     assert_difference('Event.count') do
-      post :create, coordinator_id: @event.coordinator_id, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start}
+      post :create, coordinator_id: @event.coordinator_id, event: { about: @new_event.about, end: @new_event.end, location: @new_event.location, name: @new_event.name, start: @new_event.start}
     end
 
     assert_redirected_to coordinator_event_path(@event.coordinator, assigns(:event))

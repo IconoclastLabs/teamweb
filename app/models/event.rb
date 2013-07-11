@@ -19,7 +19,7 @@
 class Event < ActiveRecord::Base
   belongs_to :coordinator
   has_many :teams
-  validates :name, presence: true, uniqueness: {case_sensitive: false}
+  validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :coordinator_id}
   acts_as_gmappable
 
   def gmaps4rails_address

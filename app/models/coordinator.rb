@@ -13,6 +13,5 @@
 
 class Coordinator < ActiveRecord::Base
   has_many :events
-  validates :name, :contact, presence: true
-  validates :name, uniqueness: {case_sensitive: false}, length: {in: 2..38}
+  validates :name, :contact, presence: true, length: {in: 2..38}
 end

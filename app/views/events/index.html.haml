@@ -16,8 +16,7 @@
       %td= event.location
       %td= event.start.try(:format_like, "Jan 1st")
       %td.btn-group
-        - if user_signed_in?
-          = link_to icon_tag("play") + 'Show', coordinator_event_path(event.coordinator, event), class: "btn btn-info"
+        = link_to icon_tag("play") + 'Show', coordinator_event_path(event.coordinator, event), class: "btn btn-info"
         = link_to icon_tag("flag") + 'Teams', coordinator_event_teams_path(event.coordinator, event), class: "btn btn-info"
         - if user_signed_in?
           = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_path(event.coordinator, event), class: "btn btn-info"

@@ -19,16 +19,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 event_one:
-  name: MyString
-  about: MyString
+  name: Running of the Bulls
+  about: Famous San Firmin Running of the bulls
   coordinator: coord_one
-  location: New Orleans 
+  location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
 
 event_two:
-  name: MyString
-  about: MyString
+  name: BLT Ball
+  about: Wild and crazy Mardi Gras party
   coordinator: coord_two
   location: New Orleans
   start: 2013-05-31
