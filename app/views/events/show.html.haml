@@ -16,7 +16,7 @@
       %strong Total Teams:
       = @event.teams.count
       %br/
-      = link_to icon_tag("flag") + 'View Teams', coordinator_event_teams_path(@event.coordinator, @event), class: "btn btn-info"
+      = link_to icon_tag("flag") + 'View Teams', coordinator_event_teams_path(@event.coordinator, @event), class: "btn btn-info" if @event.teams.count > 0
   %h4{style: "clear: left;"}
     %strong Event Details
   %p

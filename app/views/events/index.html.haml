@@ -24,4 +24,4 @@
 
 %br
 
-= link_to icon_tag("star-empty") + 'New Event', new_coordinator_event_path, class: "btn btn-success"
+= link_to icon_tag("star-empty") + 'New Event', new_coordinator_event_path, class: "btn btn-success" if user_signed_in?

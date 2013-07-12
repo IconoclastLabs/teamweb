@@ -14,8 +14,7 @@
       %td= coordinator.location
       %td= coordinator.contact
       %td.btn-group
-        - if user_signed_in?
-          = link_to icon_tag("play") + 'Show', coordinator, class: "btn btn-info"
+        = link_to icon_tag("play") + 'Show', coordinator, class: "btn btn-info"
         = link_to icon_tag("calendar") + 'Events', coordinator_events_path(coordinator), class: "btn btn-info"
         - if user_signed_in?
           = link_to icon_tag("wrench") + 'Edit', edit_coordinator_path(coordinator), class: "btn btn-info"
@@ -23,4 +22,4 @@
 
 %br
 
-= link_to icon_tag("star-empty") + 'New Coordinator', new_coordinator_path, class: "btn btn-success"
+= link_to icon_tag("star-empty") + 'New Coordinator', new_coordinator_path, class: "btn btn-success" if user_signed_in?
