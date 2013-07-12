@@ -12,10 +12,10 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+team_one:
   name: MyString
   event: event_one
 
-two:
+team_two:
   name: Two 
   event: event_two

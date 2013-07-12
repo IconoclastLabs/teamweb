@@ -4,7 +4,11 @@ class TeamsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
     
   setup do
-    @team = teams(:one)
+    @team = teams(:team_one)
+
+    @new_team = teams(:team_two) 
+    @new_team.id = nil
+    @new_team.name = "Different"
   end
 
   test "get index" do
@@ -42,14 +46,14 @@ class TeamsControllerTest < ActionController::TestCase
 
   test "require login to create team" do
     assert_no_difference('Team.count') do
-      post :create, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id, team: { name: @team.name }
+      post :create, coordinator_id: @new_team.event.coordinator_id, event_id: @new_team.event_id, team: { name: @new_team.name }
     end
   end
 
   test "create team" do
     sign_in User.first
     assert_difference('Team.count') do
-      post :create, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id, team: { name: @team.name }
+      post :create, coordinator_id: @team.event.coordinator_id, event_id: @team.event_id, team: { name: @new_team.name }
     end
 
     assert_redirected_to coordinator_event_team_path(@team.event.coordinator, @team.event, assigns(:team))
