@@ -117,3 +117,7 @@ $ bundle outdated
 * ADDED Travis-CI for continual integration testing - Format [travis.yml](https://github.com/GantMan/teamweb/blob/master/.travis.yml)
 
 `--> Project Point`
+
+* Added a nice rake task to populate table with junk data via `rake db:populate`
+
+`--> Project Point`

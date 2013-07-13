@@ -29,6 +29,10 @@ gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 
 gem "stamp"
 gem "gmaps4rails"
+
+# sample data stuff
+gem 'populator'
+gem 'forgery'
 gem "literate_randomizer"
 
 # Production for Heroku
@@ -85,8 +89,5 @@ group :development, :test do
   #                         ($ request-log-analyzer --parse-strategy assume-correct log/development.log)
   gem 'smusher' # optimize images ($ smusher app/assets/images)
 
-  # sample data for our populate rake task
-  gem 'populator'
-  gem 'forgery'
 end
 
