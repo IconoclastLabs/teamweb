@@ -84,5 +84,9 @@ group :development, :test do
   gem 'request-log-analyzer' # check out the live website request logs for performance issues/info 
   #                         ($ request-log-analyzer --parse-strategy assume-correct log/development.log)
   gem 'smusher' # optimize images ($ smusher app/assets/images)
+
+  # sample data for our populate rake task
+  gem 'populator'
+  gem 'forgery'
 end
 
