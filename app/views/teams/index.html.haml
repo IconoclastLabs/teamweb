@@ -1,16 +1,15 @@
-%h1 Listing teams
+%h1 
+  = @event.name + pluralize(@teams.count, 'Team')
 
 %table.table.table-striped.span9
   %thead
     %tr
       %th Name
-      %th Event
       %th
 
     - @teams.each do |team|
       %tr
         %td= team.name
-        %td= team.event.name
         %td.btn-group
           = link_to icon_tag("play") + 'Show', coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
           - if user_signed_in?
