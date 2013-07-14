@@ -12,6 +12,6 @@
 #
 
 class Coordinator < ActiveRecord::Base
-  has_many :events
+  has_many :events, dependant: :destroy_all
   validates :name, :contact, presence: true, length: {in: 2..38}
 end

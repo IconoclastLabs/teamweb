@@ -18,7 +18,7 @@
 
 class Event < ActiveRecord::Base
   belongs_to :coordinator
-  has_many :teams
+  has_many :teams, dependant: :destroy_all
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :coordinator_id}
   acts_as_gmappable
 
