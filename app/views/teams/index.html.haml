@@ -1,20 +1,20 @@
 %h1 
   = @event.name + pluralize(@teams.count, 'Team')
 
-%table.table.table-striped.span9
+%table.table.table-striped
   %thead
     %tr
       %th Name
       %th
 
-    - @teams.each do |team|
-      %tr
-        %td= team.name
-        %td.btn-group
-          = link_to icon_tag("play") + 'Show', coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
-          - if user_signed_in?
-            = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
-            = link_to icon_tag("trash") + 'Delete', coordinator_event_team_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+  - @teams.each do |team|
+    %tr
+      %td= team.name
+      %td.btn-group
+        = link_to icon_tag("play") + 'Show', coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
+        - if user_signed_in?
+          = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_team_path(@coordinator, @event, team), class: "btn btn-info"
+          = link_to icon_tag("trash") + 'Delete', coordinator_event_team_path(@coordinator, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 

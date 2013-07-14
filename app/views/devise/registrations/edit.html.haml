@@ -1,24 +1,30 @@
-<h2>Edit user</h2>
+%h2 
+  Edit user
+  = resource.email
+.span8
 
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f|
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f|
 
-  = f.input :email, :required => true, :autofocus => true 
-  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-    %p 
-      Currently waiting confirmation for: 
-      = resource.unconfirmed_email
+    = f.input :email, :required => true, :autofocus => true 
+    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      %p 
+        Currently waiting confirmation for: 
+        = resource.unconfirmed_email
 
-  = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-  = f.input :password_confirmation, :required => false
-  = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
+    = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
+    = f.input :password_confirmation, :required => false
+    = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
 
-  .actions
-    %button.btn.btn-primary{type: "submit"}
-      = icon_tag('thumbs-up') + 'Update'
+    .actions
+      .btn-group
+        = link_to icon_tag("hand-left") + 'Back', root_path, class: "btn btn-info"
+        %button.btn.btn-primary{type: "submit"}
+          = icon_tag('thumbs-up') + 'Update'
 
 
-<h3>Cancel my account</h3>
-
-.btn-group
-  = link_to icon_tag("hand-left") + 'Back', root_path, class: "btn btn-info"
-  = link_to icon_tag("trash") + 'Cancel my account', registration_path(resource_name), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+.span3.alert.alert-error{style: "text-align: center;"}
+  %h3 DANGER ZONE!!!
+  %p 
+    If you would like to remove your account from this site, you may do so here.  As of right now this will not delete any of your data, but simply remove access to this site.
+  %p  
+    = link_to icon_tag("warning-sign") + 'Cancel my account?', registration_path(resource_name), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
