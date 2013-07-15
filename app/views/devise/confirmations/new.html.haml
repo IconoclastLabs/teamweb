@@ -1,4 +1,4 @@
-<h2>Resend confirmation instructions</h2>
+%h2 Resend confirmation instructions
 
 = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
   = f.error_notification
@@ -9,3 +9,5 @@
   .actions
     %button.btn.btn-primary{type: "submit"}
       = icon_tag('retweet') + 'Resend confirmation instructions'
+
+= render "devise/shared/links"
