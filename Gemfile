@@ -81,7 +81,8 @@ group :development, :test do
   # http://www.codebeerstartups.com/2013/04/must-have-gems-for-development-machine-in-ruby-on-rails/
   gem 'bullet'
   gem 'localtunnel' #exposes site as needed ($ localtunnel-beta 8000)
-  gem 'mailcatcher'
+  # gem 'mailcatcher' opting for letter_opener instead
+  gem "letter_opener"
   gem 'lol_dba' # site optimization? ($ rake db:find_indexes > $ )
   gem 'reek' # check for code smells ($ reek -q .)
   gem 'rails_best_practices' # check for best practice fixes ($ rails_best_practices .)
