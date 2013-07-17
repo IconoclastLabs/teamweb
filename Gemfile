@@ -42,6 +42,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'turn' # colored minitests
   gem 'rake'
   gem 'sqlite3'
 	gem 'awesome_print' # OF COURSE!
