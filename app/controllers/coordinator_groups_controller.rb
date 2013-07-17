@@ -1,4 +1,4 @@
-class CoordinatorsController < ApplicationController
+class CoordinatorGroupsController < ApplicationController
   # GET /coordinators
   # GET /coordinators.json
   def index
@@ -76,12 +76,12 @@ class CoordinatorsController < ApplicationController
     @coordinator.destroy
 
     respond_to do |format|
-      format.html { redirect_to coordinators_url }
+      format.html { redirect_to coordinator_groups_url }
       format.json { head :no_content }
     end
   end
 
   def coordinator_params
-    params.require(:coordinator).permit(:about, :contact, :location, :name)
+    params.require(:coordinator_group).permit(:about, :contact, :location, :name)
   end
 end

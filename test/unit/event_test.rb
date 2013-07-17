@@ -35,14 +35,14 @@ class EventTest < ActiveSupport::TestCase
   end
 
   it 'should be unique per coordinator id' do
-  	simple_event.coordinator = @coord_one
+  	simple_event.coordinator_group = @coord_one
   	simple_event.save.must_equal true
   	# try to save again with exact same info
   	new_event = simple_event.clone
   	new_event.id = nil
   	new_event.valid?.must_equal false
   	# change coordinator id and all is fixed!
-  	new_event.coordinator = @coord_two
+  	new_event.coordinator_group = @coord_two
   	new_event.valid?.must_equal true
   end
 end

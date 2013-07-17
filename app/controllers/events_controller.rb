@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_filter :get_coordinator
 
   def get_coordinator
-    @coordinator = CoordinatorGroup.find(params[:coordinator_id])
+    @coordinator = CoordinatorGroup.find(params[:coordinator_group_id])
   end
 
   # GET /events
@@ -85,7 +85,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to coordinator_events_url }
+      format.html { redirect_to coordinator_group_events_url }
       format.json { head :no_content }
     end
   end

@@ -4,7 +4,7 @@ class CoordinatorGroupsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
-    @coordinator = coordinators(:coord_one)
+    @coordinator = coordinator_groups(:coord_one)
   end
 
   test "get index" do
@@ -41,17 +41,17 @@ class CoordinatorGroupsControllerTest < ActionController::TestCase
 
   test "require login to create coordinator" do
     assert_no_difference('CoordinatorGroup.count') do
-      post :create, coordinator: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
+      post :create, coordinator_group: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
     end
   end
 
   test "create coordinator when logged in" do
     sign_in User.first
     assert_difference('CoordinatorGroup.count') do
-      post :create, coordinator: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
+      post :create, coordinator_group: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
     end
 
-    assert_redirected_to coordinator_path(assigns(:coordinator))
+    assert_redirected_to coordinator_group_path(assigns(:coordinator))
   end
 
   test "show coordinator" do
@@ -71,14 +71,14 @@ class CoordinatorGroupsControllerTest < ActionController::TestCase
   end
 
   test "require login to update coordinator" do
-    put :update, id: @coordinator, coordinator: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
+    put :update, id: @coordinator, coordinator_group: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
     assert_redirected_to user_session_path
   end
 
   test "update coordinator" do
     sign_in User.first
-    put :update, id: @coordinator, coordinator: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
-    assert_redirected_to coordinator_path(assigns(:coordinator))
+    put :update, id: @coordinator, coordinator_group: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
+    assert_redirected_to coordinator_group_path(assigns(:coordinator))
   end
 
   test "require login to destroy coordinator" do
@@ -93,6 +93,6 @@ class CoordinatorGroupsControllerTest < ActionController::TestCase
       delete :destroy, id: @coordinator
     end
 
-    assert_redirected_to coordinators_path
+    assert_redirected_to coordinator_groups_path
   end
 end

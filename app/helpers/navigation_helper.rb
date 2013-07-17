@@ -9,12 +9,12 @@ module NavigationHelper
 
     def render_breadcrumbs
         # Build breadcrumbs along association when applicable
-        navigation_add "Coordinators", coordinators_path if @coordinators || @coordinator
-        navigation_add @coordinator.name, coordinator_path(@coordinator) if defined?(@coordinator) && @coordinator.id
-        navigation_add "Events", coordinator_events_path(@coordinator)  if @events || @event
-        navigation_add @event.name, coordinator_event_path(@event.coordinator, @event) if defined?(@event) && @event.id
-        navigation_add "Teams", coordinator_event_teams_path(@coordinator, @event) if @teams || @team
-        navigation_add @team.name, coordinator_event_team_path(@coordinator, @event, @team) if defined?(@team) && @team.id
+        navigation_add "Coordinators", coordinator_groups_path if @coordinators || @coordinator
+        navigation_add @coordinator.name, coordinator_group_path(@coordinator) if defined?(@coordinator) && @coordinator.id
+        navigation_add "Events", coordinator_group_events_path(@coordinator)  if @events || @event
+        navigation_add @event.name, coordinator_group_event_path(@event.coordinator_group, @event) if defined?(@event) && @event.id
+        navigation_add "Teams", coordinator_group_event_teams_path(@coordinator, @event) if @teams || @team
+        navigation_add @team.name, coordinator_group_event_team_path(@coordinator, @event, @team) if defined?(@team) && @team.id
 
         render :partial => 'shared/navigation', :locals => { :nav => ensure_navigation }
     end

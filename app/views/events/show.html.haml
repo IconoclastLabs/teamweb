@@ -16,7 +16,7 @@
       %strong Total Teams:
       = @event.teams.count
       %br/
-      = link_to icon_tag("flag") + 'View Teams', coordinator_event_teams_path(@event.coordinator, @event), class: "btn btn-info" if @event.teams.count > 0
+      = link_to icon_tag("flag") + 'View Teams', coordinator_group_event_teams_path(@event.coordinator_group, @event), class: "btn btn-info" if @event.teams.count > 0
   %h4{style: "clear: left;"}
     %strong Event Details
   %p
@@ -37,5 +37,5 @@
     = @coordinator.contact
 .span12
   .btn-group
-    = link_to icon_tag("hand-left") + 'Back', coordinator_events_path, class: "btn btn-primary"
-    = link_to icon_tag("wrench") + 'Edit', edit_coordinator_event_path(@event.coordinator, @event), class: "btn btn-info"
+    = link_to icon_tag("hand-left") + 'Back', coordinator_group_events_path, class: "btn btn-primary"
+    = link_to icon_tag("wrench") + 'Edit', edit_coordinator_group_event_path(@event.coordinator_group, @event), class: "btn btn-info"

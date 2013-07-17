@@ -1,0 +1,17 @@
+%p
+  %b Name:
+  = @coordinator.name
+%p
+  %b About:
+  = @coordinator.about
+%p
+  %b Location:
+  = @coordinator.location
+%p
+  %b Contact:
+  = @coordinator.contact
+
+.btn-group
+  = link_to icon_tag("hand-left") + 'Back', coordinator_groups_path, class: "btn btn-primary"
+  = link_to icon_tag("wrench") + 'Edit', edit_coordinator_group_path(@coordinator), class: "btn btn-info"
+  
