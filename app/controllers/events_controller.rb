@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_filter :get_coordinator
 
   def get_coordinator
-    @coordinator = Coordinator.find(params[:coordinator_id])
+    @coordinator = CoordinatorGroup.find(params[:coordinator_id])
   end
 
   # GET /events

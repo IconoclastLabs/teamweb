@@ -2,18 +2,18 @@
 #
 # Table name: events
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  about          :string(255)
-#  coordinator_id :integer
-#  location       :string(255)
-#  start          :date
-#  end            :date
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  latitude       :float
-#  longitude      :float
-#  gmaps          :boolean
+#  id                   :integer          not null, primary key
+#  name                 :string(255)
+#  about                :string(255)
+#  coordinator_group_id :integer
+#  location             :string(255)
+#  start                :date
+#  end                  :date
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  latitude             :float
+#  longitude            :float
+#  gmaps                :boolean
 #
 
 require 'test_helper'
@@ -21,8 +21,8 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
 	before { 
 		@event_one = events(:event_one) 
-		@coord_one = coordinators(:coord_one)
-		@coord_two = coordinators(:coord_two)
+		@coord_one = coordinator_groups(:coord_one)
+		@coord_two = coordinator_groups(:coord_two)
 	}
   let(:simple_event) {Event.new(name: 'TestName', about: 'TestAbout', location: 'MyString', start: '2013-05-31', end: '2013-05-31', latitude: nil, longitude: nil, gmaps: true)}
   it 'can create a new Event' do

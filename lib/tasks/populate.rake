@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'forgery'
 
-    Coordinator.populate 5 do |coord|
+    CoordinatorGroup.populate 5 do |coord|
     	coord.name = Forgery::Name.full_name
     	coord.about = Populator.sentences(1..2)
     	coord.location = Forgery::Address.state

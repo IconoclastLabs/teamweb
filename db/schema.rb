@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130710142511) do
+ActiveRecord::Schema.define(version: 20130717001611) do
 
-  create_table "coordinators", force: true do |t|
+  create_table "coordinator_groups", force: true do |t|
     t.string   "name"
     t.string   "about"
     t.string   "location"
@@ -25,18 +25,18 @@ ActiveRecord::Schema.define(version: 20130710142511) do
   create_table "events", force: true do |t|
     t.string   "name"
     t.string   "about"
-    t.integer  "coordinator_id"
+    t.integer  "coordinator_group_id"
     t.string   "location"
     t.date     "start"
     t.date     "end"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
   end
 
-  add_index "events", ["coordinator_id"], name: "index_events_on_coordinator_id"
+  add_index "events", ["coordinator_group_id"], name: "index_events_on_coordinator_group_id"
 
   create_table "teams", force: true do |t|
     t.string   "name"

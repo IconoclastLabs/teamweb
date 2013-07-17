@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class CoordinatorsControllerTest < ActionController::TestCase
+class CoordinatorGroupsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
 
   setup do
@@ -15,7 +15,7 @@ class CoordinatorsControllerTest < ActionController::TestCase
 
   test "certain index buttons require login" do
     get :index
-    assert_select "a", {count: 0, text: "New Coordinator"}, "Shouldn't have a new button"
+    assert_select "a", {count: 0, text: "New CoordinatorGroup"}, "Shouldn't have a new button"
     assert_select "a", {count: 0, text: "Edit"}, "Shouldn't have an edit button"
     assert_select "a", {count: 0, text: "Delete"}, "Shouldn't have a delete button"
   end
@@ -23,7 +23,7 @@ class CoordinatorsControllerTest < ActionController::TestCase
   test "certain index buttons show with login" do
     sign_in User.first
     get :index
-    assert_select "a", "New Coordinator", "Should have a new button"
+    assert_select "a", "New CoordinatorGroup", "Should have a new button"
     assert_select "a", "Edit", "Should have an edit button"
     assert_select "a", "Delete", "Should have a delete button"
   end
@@ -40,14 +40,14 @@ class CoordinatorsControllerTest < ActionController::TestCase
   end
 
   test "require login to create coordinator" do
-    assert_no_difference('Coordinator.count') do
+    assert_no_difference('CoordinatorGroup.count') do
       post :create, coordinator: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
     end
   end
 
   test "create coordinator when logged in" do
     sign_in User.first
-    assert_difference('Coordinator.count') do
+    assert_difference('CoordinatorGroup.count') do
       post :create, coordinator: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
     end
 
@@ -82,14 +82,14 @@ class CoordinatorsControllerTest < ActionController::TestCase
   end
 
   test "require login to destroy coordinator" do
-    assert_no_difference('Coordinator.count') do
+    assert_no_difference('CoordinatorGroup.count') do
       delete :destroy, id: @coordinator
     end
   end
 
   test "destroy coordinator" do
     sign_in User.first
-    assert_difference('Coordinator.count', -1) do
+    assert_difference('CoordinatorGroup.count', -1) do
       delete :destroy, id: @coordinator
     end
 

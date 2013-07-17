@@ -2,18 +2,18 @@
 #
 # Table name: events
 #
-#  id             :integer          not null, primary key
-#  name           :string(255)
-#  about          :string(255)
-#  coordinator_id :integer
-#  location       :string(255)
-#  start          :date
-#  end            :date
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
-#  latitude       :float
-#  longitude      :float
-#  gmaps          :boolean
+#  id                   :integer          not null, primary key
+#  name                 :string(255)
+#  about                :string(255)
+#  coordinator_group_id :integer
+#  location             :string(255)
+#  start                :date
+#  end                  :date
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  latitude             :float
+#  longitude            :float
+#  gmaps                :boolean
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
@@ -21,7 +21,7 @@
 event_one:
   name: Running of the Bulls
   about: Famous San Firmin Running of the bulls
-  coordinator: coord_one
+  coordinator_group: coord_one
   location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
@@ -29,7 +29,7 @@ event_one:
 event_two:
   name: BLT Ball
   about: Wild and crazy Mardi Gras party
-  coordinator: coord_two
+  coordinator_group: coord_two
   location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
