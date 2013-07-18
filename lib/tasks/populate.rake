@@ -4,15 +4,15 @@ namespace :db do
     require 'populator'
     require 'forgery'
 
-    Organization.populate 5 do |coord|
-    	coord.name = Forgery::Name.full_name
-    	coord.about = Populator.sentences(1..2)
-    	coord.location = Forgery::Address.state
-    	coord.contact = Forgery::Internet.email_address
+    Organization.populate 2 do |org|
+    	org.name = Forgery::Name.full_name
+    	org.about = Populator.sentences(1)
+    	org.location = Forgery::Address.state
+    	org.contact = Forgery::Internet.email_address
     	Event.populate 0..20 do |event|
     		event.name = Populator.words(1..3).titleize
     		event.about = Populator.sentences(1..2)
-    		event.coordinator_id = coord.id 
+    		event.organization_id = org.id 
     		event.location = Forgery::Address.state
     		random_date = Forgery::Date.date
     		event.start = random_date
@@ -22,6 +22,6 @@ namespace :db do
     			team.event_id = event.id 
     		end # /team
     	end # /event
-    end # /coord
+    end # /org
   end	
 end
