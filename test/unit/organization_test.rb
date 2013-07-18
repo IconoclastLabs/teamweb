@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: coordinator_groups
+# Table name: organizations
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -13,8 +13,8 @@
 
 require 'test_helper'
 
-class CoordinatorGroupTest < ActiveSupport::TestCase
-  let(:simple_coordinator) {CoordinatorGroup.new(name: 'TestName', about: 'TestAbout', location: 'Kansas', contact: 'TestContact')}
+class OrganizationTest < ActiveSupport::TestCase
+  let(:simple_coordinator) {Organization.new(name: 'TestName', about: 'TestAbout', location: 'Kansas', contact: 'TestContact')}
 
   it 'can create a new category' do
     simple_coordinator.valid?.must_equal true

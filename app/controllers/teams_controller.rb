@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   def get_objects
     @event = Event.find(params[:event_id])
-    @coordinator = @event.coordinator_group
+    @coordinator = @event.organization
   end
 
   # GET /teams
@@ -88,7 +88,7 @@ class TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to coordinator_group_event_teams_url(@team.event.coordinator_group, @team.event) }
+      format.html { redirect_to organization_event_teams_url(@team.event.organization, @team.event) }
       format.json { head :no_content }
     end
   end

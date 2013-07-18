@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: coordinator_groups
+# Table name: organizations
 #
 #  id         :integer          not null, primary key
 #  name       :string(255)
@@ -21,6 +21,6 @@ coord_one:
 
 coord_two:
   name: Bob
-  about: Tech CoordinatorGroup
+  about: Tech Organization
   location: 515 Poydras St. New Orleans
   contact: bobbert@techjob.com

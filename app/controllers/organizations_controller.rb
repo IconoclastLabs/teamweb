@@ -1,8 +1,8 @@
-class CoordinatorGroupsController < ApplicationController
+class OrganizationsController < ApplicationController
   # GET /coordinators
   # GET /coordinators.json
   def index
-    @coordinators = CoordinatorGroup.all
+    @coordinators = Organization.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class CoordinatorGroupsController < ApplicationController
   # GET /coordinators/1
   # GET /coordinators/1.json
   def show
-    @coordinator = CoordinatorGroup.find(params[:id])
+    @coordinator = Organization.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class CoordinatorGroupsController < ApplicationController
   # GET /coordinators/new
   # GET /coordinators/new.json
   def new
-    @coordinator = CoordinatorGroup.new
+    @coordinator = Organization.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class CoordinatorGroupsController < ApplicationController
 
   # GET /coordinators/1/edit
   def edit
-    @coordinator = CoordinatorGroup.find(params[:id])
+    @coordinator = Organization.find(params[:id])
   end
 
   # POST /coordinators
   # POST /coordinators.json
   def create
-    @coordinator = CoordinatorGroup.new(coordinator_params)
+    @coordinator = Organization.new(coordinator_params)
 
     respond_to do |format|
       if @coordinator.save
-        format.html { redirect_to @coordinator, notice: 'CoordinatorGroup was successfully created.' }
+        format.html { redirect_to @coordinator, notice: 'Organization was successfully created.' }
         format.json { render json: @coordinator, status: :created, location: @coordinator }
       else
         format.html { render action: "new" }
@@ -56,11 +56,11 @@ class CoordinatorGroupsController < ApplicationController
   # PUT /coordinators/1
   # PUT /coordinators/1.json
   def update
-    @coordinator = CoordinatorGroup.find(params[:id])
+    @coordinator = Organization.find(params[:id])
 
     respond_to do |format|
       if @coordinator.update_attributes(coordinator_params)
-        format.html { redirect_to @coordinator, notice: 'CoordinatorGroup was successfully updated.' }
+        format.html { redirect_to @coordinator, notice: 'Organization was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -72,16 +72,16 @@ class CoordinatorGroupsController < ApplicationController
   # DELETE /coordinators/1
   # DELETE /coordinators/1.json
   def destroy
-    @coordinator = CoordinatorGroup.find(params[:id])
+    @coordinator = Organization.find(params[:id])
     @coordinator.destroy
 
     respond_to do |format|
-      format.html { redirect_to coordinator_groups_url }
+      format.html { redirect_to organizations_url }
       format.json { head :no_content }
     end
   end
 
   def coordinator_params
-    params.require(:coordinator_group).permit(:about, :contact, :location, :name)
+    params.require(:organization).permit(:about, :contact, :location, :name)
   end
 end

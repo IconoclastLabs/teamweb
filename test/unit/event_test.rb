@@ -5,7 +5,7 @@
 #  id                   :integer          not null, primary key
 #  name                 :string(255)
 #  about                :string(255)
-#  coordinator_group_id :integer
+#  organization_id :integer
 #  location             :string(255)
 #  start                :date
 #  end                  :date
@@ -21,8 +21,8 @@ require 'test_helper'
 class EventTest < ActiveSupport::TestCase
 	before { 
 		@event_one = events(:event_one) 
-		@coord_one = coordinator_groups(:coord_one)
-		@coord_two = coordinator_groups(:coord_two)
+		@coord_one = organizations(:coord_one)
+		@coord_two = organizations(:coord_two)
 	}
   let(:simple_event) {Event.new(name: 'TestName', about: 'TestAbout', location: 'MyString', start: '2013-05-31', end: '2013-05-31', latitude: nil, longitude: nil, gmaps: true)}
   it 'can create a new Event' do
@@ -35,14 +35,14 @@ class EventTest < ActiveSupport::TestCase
   end
 
   it 'should be unique per coordinator id' do
-  	simple_event.coordinator_group = @coord_one
+  	simple_event.organization = @coord_one
   	simple_event.save.must_equal true
   	# try to save again with exact same info
   	new_event = simple_event.clone
   	new_event.id = nil
   	new_event.valid?.must_equal false
   	# change coordinator id and all is fixed!
-  	new_event.coordinator_group = @coord_two
+  	new_event.organization = @coord_two
   	new_event.valid?.must_equal true
   end
 end

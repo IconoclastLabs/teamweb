@@ -15,11 +15,11 @@
       %td= coordinator.contact
       %td.btn-group
         = link_to icon_tag("play") + 'Show', coordinator, class: "btn btn-info"
-        = link_to icon_tag("calendar") + 'Events', coordinator_group_events_path(coordinator), class: "btn btn-info"
+        = link_to icon_tag("calendar") + 'Events', organization_events_path(coordinator), class: "btn btn-info"
         - if user_signed_in?
-          = link_to icon_tag("wrench") + 'Edit', edit_coordinator_group_path(coordinator), class: "btn btn-info"
+          = link_to icon_tag("wrench") + 'Edit', edit_organization_path(coordinator), class: "btn btn-info"
           = link_to icon_tag("trash") + 'Delete', coordinator, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 
-= link_to icon_tag("star-empty") + 'New CoordinatorGroup', new_coordinator_group_path, class: "btn btn-success" if user_signed_in?
+= link_to icon_tag("star-empty") + 'New Organization', new_organization_path, class: "btn btn-success" if user_signed_in?
