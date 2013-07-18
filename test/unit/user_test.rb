@@ -29,4 +29,10 @@ class UserTest < ActiveSupport::TestCase
     simple_user.password = "x" * 7
     simple_user.valid?.must_equal false
   end
+
+  it 'warns you if you try to duplicate email' do
+    @existing_user = users(:one)
+    @existing_user.id = nil
+    @existing_user.valid?.must_equal false
+  end
 end
