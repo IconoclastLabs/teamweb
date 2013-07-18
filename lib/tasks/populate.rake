@@ -4,7 +4,7 @@ namespace :db do
     require 'populator'
     require 'forgery'
 
-    Organization.populate 2 do |org|
+    Organization.populate 5 do |org|
     	org.name = Forgery::Name.full_name
     	org.about = Populator.sentences(1)
     	org.location = Forgery::Address.state

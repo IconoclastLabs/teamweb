@@ -3,8 +3,7 @@
     .container
       %ul.nav
         = nav_link "Home", root_path
-        = nav_link "Coordinators", organizations_path
-        = nav_link "About", '#'
+        = nav_link "Organizations", organizations_path
         = nav_link "Contact", '#'
         - if user_signed_in?
           = nav_link "Profile", edit_user_registration_path

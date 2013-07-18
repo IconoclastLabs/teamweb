@@ -5,7 +5,6 @@ Teamweb::Application.routes.draw do
 
   #resources :teams
 
-
   resources :organizations do
     resources :events do
       resources :teams
