@@ -34,13 +34,13 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 
 `--> COMMIT PROJECT`
 
-$ rails g scaffold Coordinator name:string about:string location:string contact:string 
+  $ rails g scaffold Coordinator name:string about:string location:string contact:string 
 
-$ rails g scaffold Event name:string about:string coordinator:references location:string start:date end:date
+  $ rails g scaffold Event name:string about:string coordinator:references location:string start:date end:date
 
-$ rails g scaffold Team name:string event:references 
+  $ rails g scaffold Team name:string event:references 
 
-$ rake db:migrate 
+  $ rake db:migrate 
 
 * Modified Models to have has_many relationships (belongs_to was already
   done by references) 
@@ -49,9 +49,9 @@ $ rake db:migrate
 
 * Added gem 'compass-rails'
 
-$ bundle update
+  $ bundle update
 
-$ compass install bootstrap
+  $ compass install bootstrap
 
 * IMPLEMENTED TWITTER BOOTSTRAP TEMPLATE with Partials
 
@@ -72,7 +72,7 @@ $ compass install bootstrap
 
 `--> Project Point`
 
-$ rails generate simple_form:install --bootstrap
+  $ rails generate simple_form:install --bootstrap
 * Converted some forms and styles to twitter bootstrap and simple_form
 
 `--> Project Point`
@@ -84,11 +84,16 @@ $ rails generate simple_form:install --bootstrap
 `--> Project Point`
 
 * Added devise gem
-$ rails generate devise:install
-$ rails generate devise user
+
+  $ rails generate devise:install
+  
+  $ rails generate devise user
+  
 * Added devise links to navigation header
 * Added devise `authenticate_user!` to all controllers
-$ rails generate devise:views
+
+  $ rails generate devise:views
+  
 * Views styled by @daddymac
 
 `--> Project Point`
@@ -102,10 +107,15 @@ $ rails generate devise:views
 * Gemfile - updated rails version and removed assets group
 * changed application config to simply use bundler
 * did environment updates
-$ gem update
-$ rm Gemfile.lock
-$ bundle update
-$ bundle outdated
+
+  $ gem update
+  
+  $ rm Gemfile.lock
+  
+  $ bundle update
+  
+  $ bundle outdated
+
 * Added version tags to various gems to use rails 4
 * Removed attr_accessibles and moved to strong params approach
 * Renamed secret token
@@ -127,7 +137,9 @@ $ bundle outdated
 `--> Project Point`
 
 * Added Member Model
+
   $ rails g model Member user:references organization:references event:references team:references admin:boolean
-* modified migration to enforce user association
+  
+* modified migration to enforce user association via `:null => false`
 
 `--> Project Point`  
