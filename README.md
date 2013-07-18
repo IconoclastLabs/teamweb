@@ -121,3 +121,13 @@ $ bundle outdated
 * Added a nice rake task to populate table with junk data via `rake db:populate`
 
 `--> Project Point`
+
+* Coordinator refactored to be called Organization
+
+`--> Project Point`
+
+* Added Member Model
+  $ rails g model Member user:references organization:references event:references team:references admin:boolean
+* modified migration to enforce user association
+
+`--> Project Point`  
