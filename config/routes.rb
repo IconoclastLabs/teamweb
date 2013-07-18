@@ -11,6 +11,7 @@ Teamweb::Application.routes.draw do
     end
   end
 
+  match "events", to: "events#list", via: :all
 
   get "home/index"
 

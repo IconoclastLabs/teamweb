@@ -1,8 +1,21 @@
 class EventsController < ApplicationController
-  before_filter :get_coordinator
+  before_filter :get_organization
 
-  def get_coordinator
-    @coordinator = Organization.find(params[:organization_id])
+  def get_organization
+    if params[:organization_id]
+      @coordinator = Organization.find(params[:organization_id])
+    end
+  end
+
+  # GET /events
+  # GET /events.json
+  def list
+    @events = Event.all
+
+    respond_to do |format|
+      format.html #{ render "events/index" }
+      format.json { render json: @events }
+    end
   end
 
   # GET /events

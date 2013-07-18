@@ -1,0 +1,26 @@
+%h1 All Events 
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Organization
+      %th Location
+      %th Start
+      %th
+
+  - @events.each do |event|
+    %tr
+      %td= event.name
+      %td= event.organization.name
+      %td= event.location
+      %td= event.start.try(:format_like, "Jan 1st")
+      %td.btn-group
+        = link_to icon_tag("play") + 'Show', organization_event_path(event.organization, event), class: "btn btn-info"
+        = link_to icon_tag("flag") + 'Teams', organization_event_teams_path(event.organization, event), class: "btn btn-info"
+        - if user_signed_in?
+          = link_to icon_tag("wrench") + 'Edit', edit_organization_event_path(event.organization, event), class: "btn btn-info"
+          = link_to icon_tag("trash") + 'Delete', organization_event_path(event.organization, event), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+
+%br
+
