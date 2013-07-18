@@ -143,3 +143,7 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 * modified migration to enforce user association via `:null => false`
 
 `--> Project Point`  
+
+* New ALL EVENTS route/control/action added to top navigation. [In this commit](https://github.com/GantMan/teamweb/commit/92649d44a738083645aae6b8fec3fcd24a596328)
+
+`--> COMMIT PROJECT`
