@@ -29,6 +29,7 @@ gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
 
 gem "stamp"
 gem "gmaps4rails"
+gem "figaro"
 
 # sample data stuff
 gem 'populator'
