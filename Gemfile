@@ -9,7 +9,7 @@ gem 'bourbon'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 gem 'uglifier', '>= 1.3.0'
-gem 'compass-rails'
+gem 'compass'
 
 gem 'execjs'
 gem 'jquery-rails'
@@ -24,8 +24,8 @@ gem 'jbuilder'
 gem "devise", '~> 3.0.0.rc'
 gem 'puma'
 
-# point at github for rails 4
-gem "simple_form", :git => "https://github.com/plataformatec/simple_form.git"
+# rails 4
+gem "simple_form", "~> 3.0.0.rc"
 
 gem "stamp"
 gem "gmaps4rails"
