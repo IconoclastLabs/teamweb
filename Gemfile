@@ -69,7 +69,8 @@ group :development, :test do
   gem 'annotate'
   #gem "literate_randomizer"
   # Filesystem notifiers
-  gem 'ruby_gntp' # Growl notification protocol
+  #gem 'ruby_gntp' # Growl notification protocol
+  #gem "growl", :git => "https://github.com/visionmedia/growl.git"
   #gem 'libnotify'
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false

@@ -1,4 +1,5 @@
-#notification :ruby_gntp
+# for Ubuntu
+notification :libnotify
 
 group :ruby do
 
