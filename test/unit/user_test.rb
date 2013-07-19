@@ -20,7 +20,19 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  let(:simple_user) {User.new(email: 'testemail@gmail.com', password: '12345678')}
+  it 'can create a new User' do
+    simple_user.valid?.must_equal true
+  end
+
+  it 'requires a password of at least 8 characters' do
+    simple_user.password = "x" * 7
+    simple_user.valid?.must_equal false
+  end
+
+  it 'warns you if you try to duplicate email' do
+    @existing_user = users(:one)
+    @existing_user.id = nil
+    @existing_user.valid?.must_equal false
+  end
 end

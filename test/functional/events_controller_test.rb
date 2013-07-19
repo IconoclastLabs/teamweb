@@ -12,6 +12,12 @@ class EventsControllerTest < ActionController::TestCase
     @new_event.name = "Different"
   end
 
+  test "get list" do
+    get :list
+    assert_response :success
+    assert_not_nil assigns(:events)
+  end
+
   test "get index" do
     get :index, organization_id: @event.organization_id
     assert_response :success
