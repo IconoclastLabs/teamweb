@@ -47,4 +47,12 @@ class OrganizationTest < ActiveSupport::TestCase
     simple_coordinator.contact = "j" * 40 # too long
     simple_coordinator.valid?.must_equal false
   end
+
+  it 'can have events' do
+    assert_respond_to(simple_coordinator, :events)
+  end
+
+  it 'can have users' do
+    assert_respond_to(simple_coordinator, :users)
+  end
 end

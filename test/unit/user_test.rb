@@ -35,4 +35,17 @@ class UserTest < ActiveSupport::TestCase
     @existing_user.id = nil
     @existing_user.valid?.must_equal false
   end
+
+  it 'can have organizations' do
+    assert_respond_to(simple_user, :organizations)
+  end
+
+  it 'can have events' do
+    assert_respond_to(simple_user, :events)
+  end
+
+  it 'can have teams' do
+    assert_respond_to(simple_user, :teams)
+  end
+
 end

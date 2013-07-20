@@ -45,4 +45,19 @@ class EventTest < ActiveSupport::TestCase
   	new_event.organization = @coord_two
   	new_event.valid?.must_equal true
   end
+
+  it 'has an organization' do
+    # verify the property exists
+    assert_respond_to(@event_one, :organization)
+    # verify it is set
+    assert_not_nil @event_one.organization
+  end
+
+  it 'can have teams' do
+    assert_respond_to(@event_one, :teams)
+  end
+
+  it 'can have users' do
+    assert_respond_to(@event_one, :users)
+  end
 end

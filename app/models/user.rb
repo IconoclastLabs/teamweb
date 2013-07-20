@@ -18,6 +18,10 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :members, dependent: :destroy
+  has_many :organizations, through: :members
+  has_many :events, through: :members
+  has_many :teams, through: :members
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable

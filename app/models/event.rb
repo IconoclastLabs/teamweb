@@ -19,6 +19,8 @@
 class Event < ActiveRecord::Base
   belongs_to :organization
   has_many :teams, dependent: :destroy
+  has_many :members, dependent: :destroy
+  has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}
   acts_as_gmappable
 

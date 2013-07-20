@@ -39,4 +39,15 @@ class TeamTest < ActiveSupport::TestCase
     new_team.event = @event_two
     new_team.valid?.must_equal true
   end
+
+  it 'has an event' do
+    # verify the property exists
+    assert_respond_to(@team_one, :event)
+    # verify it is set
+    assert_not_nil @team_one.event
+  end
+
+  it 'can have users' do
+    assert_respond_to(@team_one, :users)
+  end
 end
