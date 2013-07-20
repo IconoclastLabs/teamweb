@@ -23,5 +23,10 @@ namespace :db do
     		end # /team
     	end # /event
     end # /org
+
+    # Create some users for login
+    gant = User.all.where(email: "gant@iconoclastlabs.com").first_or_create(password: "fdsafdsa")
+    moke = User.all.where(email: "themoke@gmail.com").first_or_create(password: "fdsafdsa")
+    cbrou = User.all.where(email: "daddymac@gmail.com").first_or_create(password: "fdsafdsa")
   end	
 end
