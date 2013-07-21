@@ -19,4 +19,8 @@ class Member < ActiveRecord::Base
   belongs_to :team
 
   scope :admins, -> { where(admin: true) }
+
+  def self.add_admin user
+    self.create(user_id: user.id, admin: true)
+  end
 end

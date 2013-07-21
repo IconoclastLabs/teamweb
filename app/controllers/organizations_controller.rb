@@ -45,7 +45,7 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.save
         # Automatically add creator as admin
-        @organization.members.create(user_id: current_user.id, admin: true)
+        @organization.members.add_admin(current_user)
 
         format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
         format.json { render json: @organization, status: :created, location: @organization }

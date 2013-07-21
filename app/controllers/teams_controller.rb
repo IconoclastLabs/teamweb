@@ -54,7 +54,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         # Automatically add creator as admin
-        @team.members.create(user_id: current_user.id, admin: true) 
+        @team.members.add_admin(current_user)
         #format.html { redirect_to @team, notice: 'Team was successfully created.' }
         #format.json { render json: @team, status: :created, location: @team }
         format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully created.' }
