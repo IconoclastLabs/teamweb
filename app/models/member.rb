@@ -17,4 +17,6 @@ class Member < ActiveRecord::Base
   belongs_to :organization
   belongs_to :event
   belongs_to :team
+
+  scope :admins, -> { where(admin: true) }
 end

@@ -45,13 +45,17 @@ class OrganizationsControllerTest < ActionController::TestCase
     end
   end
 
-  test "create coordinator when logged in" do
+  test "create organization when logged in" do
     sign_in User.first
     assert_difference('Organization.count') do
       post :create, organization: { about: @coordinator.about, contact: @coordinator.contact, location: @coordinator.location, name: @coordinator.name }
     end
 
-    assert_redirected_to organization_path(assigns(:coordinator))
+    new_org = assigns(:coordinator)
+    # should have the user that created it
+    new_org.members.admins.size.wont_equal 0
+    assert_redirected_to organization_path(new_org)
+    
   end
 
   test "show coordinator" do
