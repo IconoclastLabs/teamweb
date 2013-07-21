@@ -1,8 +1,8 @@
-= simple_form_for @coordinator, :html => {:class => 'form-horizontal' } do |f|
-  - if @coordinator.errors.any?
-    %h2= "#{pluralize(@coordinator.errors.count, "error")} prohibited this coordinator from being saved:"
+= simple_form_for @organization, :html => {:class => 'form-horizontal' } do |f|
+  - if @organization.errors.any?
+    %h2= "#{pluralize(@organization.errors.count, "error")} prohibited this organization from being saved:"
     %ul
-      - @coordinator.errors.full_messages.each do |msg|
+      - @organization.errors.full_messages.each do |msg|
         %li= msg
 
   = f.input :name

@@ -3,7 +3,7 @@ class TeamsController < ApplicationController
 
   def get_objects
     @event = Event.find(params[:event_id])
-    @coordinator = @event.organization
+    @organization = @event.organization
   end
 
   # GET /teams
@@ -55,8 +55,8 @@ class TeamsController < ApplicationController
       if @team.save
         #format.html { redirect_to @team, notice: 'Team was successfully created.' }
         #format.json { render json: @team, status: :created, location: @team }
-        format.html { redirect_to [@coordinator, @event, @team], notice: 'Team was successfully created.' }
-        format.json { render json: [@coordinator, @event, @team], status: :created, location: @team }
+        format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully created.' }
+        format.json { render json: [@organization, @event, @team], status: :created, location: @team }
       else
         format.html { render action: "new" }
         format.json { render json: @team.errors, status: :unprocessable_entity }
@@ -72,7 +72,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.update_attributes(team_params)
-        format.html { redirect_to [@coordinator, @event, @team], notice: 'Team was successfully updated.' }
+        format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

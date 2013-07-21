@@ -1,5 +1,5 @@
 - # = form_for @team do |f|
-= simple_form_for [@coordinator, @event, @team], :html => {:class => 'form-horizontal' } do |f|
+= simple_form_for [@organization, @event, @team], :html => {:class => 'form-horizontal' } do |f|
   - if @team.errors.any?
     %h2= "#{pluralize(@team.errors.count, "error")} prohibited this team from being saved:"
     %ul

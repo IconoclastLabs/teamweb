@@ -1,8 +1,8 @@
-%h1 Editing team
+%h1 Editing Team
 
 = render 'form'
 
 .btn-group
   = link_to icon_tag("hand-left") + 'Back', organization_event_teams_path, class: "btn btn-primary"
-  = link_to icon_tag("play") + 'Show', organization_event_team_path(@coordinator, @event, @team), class: "btn btn-info"
+  = link_to icon_tag("play") + 'Show', organization_event_team_path(@organization, @event, @team), class: "btn btn-info"
   

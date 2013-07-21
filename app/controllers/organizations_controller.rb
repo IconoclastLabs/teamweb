@@ -1,82 +1,82 @@
 class OrganizationsController < ApplicationController
-  # GET /coordinators
-  # GET /coordinators.json
+  # GET /organizations
+  # GET /organizations.json
   def index
-    @coordinators = Organization.all
+    @organizations = Organization.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @coordinators }
+      format.json { render json: @organizations }
     end
   end
 
-  # GET /coordinators/1
-  # GET /coordinators/1.json
+  # GET /organizations/1
+  # GET /organizations/1.json
   def show
-    @coordinator = Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @coordinator }
+      format.json { render json: @organization }
     end
   end
 
-  # GET /coordinators/new
-  # GET /coordinators/new.json
+  # GET /organizations/new
+  # GET /organizations/new.json
   def new
-    @coordinator = Organization.new
+    @organization = Organization.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @coordinator }
+      format.json { render json: @organization }
     end
   end
 
-  # GET /coordinators/1/edit
+  # GET /organizations/1/edit
   def edit
-    @coordinator = Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
   end
 
-  # POST /coordinators
-  # POST /coordinators.json
+  # POST /organizations
+  # POST /organizations.json
   def create
-    @coordinator = Organization.new(coordinator_params)
+    @organization = Organization.new(organization_params)
 
     respond_to do |format|
-      if @coordinator.save
+      if @organization.save
         # Automatically add creator as admin
-        @coordinator.members.create(user_id: current_user.id, admin: true)
+        @organization.members.create(user_id: current_user.id, admin: true)
 
-        format.html { redirect_to @coordinator, notice: 'Organization was successfully created.' }
-        format.json { render json: @coordinator, status: :created, location: @coordinator }
+        format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
+        format.json { render json: @organization, status: :created, location: @organization }
       else
         format.html { render action: "new" }
-        format.json { render json: @coordinator.errors, status: :unprocessable_entity }
+        format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /coordinators/1
-  # PUT /coordinators/1.json
+  # PUT /organizations/1
+  # PUT /organizations/1.json
   def update
-    @coordinator = Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
 
     respond_to do |format|
-      if @coordinator.update_attributes(coordinator_params)
-        format.html { redirect_to @coordinator, notice: 'Organization was successfully updated.' }
+      if @organization.update_attributes(organization_params)
+        format.html { redirect_to @organization, notice: 'Organization was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @coordinator.errors, status: :unprocessable_entity }
+        format.json { render json: @organization.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /coordinators/1
-  # DELETE /coordinators/1.json
+  # DELETE /organizations/1
+  # DELETE /organizations/1.json
   def destroy
-    @coordinator = Organization.find(params[:id])
-    @coordinator.destroy
+    @organization = Organization.find(params[:id])
+    @organization.destroy
 
     respond_to do |format|
       format.html { redirect_to organizations_url }
@@ -84,7 +84,7 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def coordinator_params
+  def organization_params
     params.require(:organization).permit(:about, :contact, :location, :name)
   end
 end

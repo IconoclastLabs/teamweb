@@ -30,11 +30,11 @@
   %h4 Organization info
   %p
     %strong
-      = @coordinator.name
+      = @organization.name
   %p
-    = @coordinator.about
+    = @organization.about
   %p
-    = @coordinator.contact
+    = @organization.contact
 .span12
   .btn-group
     = link_to icon_tag("hand-left") + 'Back', organization_events_path, class: "btn btn-primary"

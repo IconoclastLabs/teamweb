@@ -69,7 +69,7 @@ class EventsControllerTest < ActionController::TestCase
     get :show, id: @event, organization_id: @event.organization_id
     assert_response :success
     assert_not_nil assigns(:event)
-    assert_not_nil assigns(:coordinator)
+    assert_not_nil assigns(:organization)
   end
 
   test "require login to get edit" do

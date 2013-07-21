@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def get_organization
     if params[:organization_id]
-      @coordinator = Organization.find(params[:organization_id])
+      @organization = Organization.find(params[:organization_id])
     end
   end
 
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = @coordinator.events
+    @events = @organization.events
 
     respond_to do |format|
       format.html # index.html.erb
@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = @coordinator.events.find(params[:id])
+    @event = @organization.events.find(params[:id])
     @maps_json = @event.to_gmaps4rails do |event, marker|
       marker.title event.name 
     end
@@ -46,7 +46,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @event = @coordinator.events.build(params[:event])
+    @event = @organization.events.build(params[:event])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -56,18 +56,18 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = @coordinator.events.find(params[:id])
+    @event = @organization.events.find(params[:id])
   end
 
   # POST /events
   # POST /events.json
   def create
-    @event = @coordinator.events.new(event_params)
+    @event = @organization.events.new(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to [@coordinator, @event], notice: 'Event was successfully created.' }
-        format.json { render json: [@coordinator, @event], status: :created, location: @event }
+        format.html { redirect_to [@organization, @event], notice: 'Event was successfully created.' }
+        format.json { render json: [@organization, @event], status: :created, location: @event }
       else
         format.html { render action: "new" }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -78,11 +78,11 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
-    @event = @coordinator.events.find(params[:id])
+    @event = @organization.events.find(params[:id])
 
     respond_to do |format|
       if @event.update_attributes(event_params)
-        format.html { redirect_to [@coordinator, @event], notice: 'Event was successfully updated.' }
+        format.html { redirect_to [@organization, @event], notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
