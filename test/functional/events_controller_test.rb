@@ -62,7 +62,10 @@ class EventsControllerTest < ActionController::TestCase
       post :create, organization_id: @event.organization_id, event: { about: @new_event.about, end: @new_event.end, location: @new_event.location, name: @new_event.name, start: @new_event.start}
     end
 
-    assert_redirected_to organization_event_path(@event.organization, assigns(:event))
+    new_event = assigns(:event)
+    # should have the user that created it
+    new_event.members.admins.size.wont_equal 0
+    assert_redirected_to organization_event_path(new_event.organization, new_event)
   end
 
   test "show event" do

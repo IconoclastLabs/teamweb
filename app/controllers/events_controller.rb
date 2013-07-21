@@ -66,6 +66,8 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        # Automatically add creator as admin
+        @event.members.create(user_id: current_user.id, admin: true)        
         format.html { redirect_to [@organization, @event], notice: 'Event was successfully created.' }
         format.json { render json: [@organization, @event], status: :created, location: @event }
       else

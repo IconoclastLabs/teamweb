@@ -56,7 +56,10 @@ class TeamsControllerTest < ActionController::TestCase
       post :create, organization_id: @team.event.organization_id, event_id: @team.event_id, team: { name: @new_team.name }
     end
 
-    assert_redirected_to organization_event_team_path(@team.event.organization, @team.event, assigns(:team))
+    new_team = assigns(:team)
+    # should have the user that created it
+    new_team.members.admins.size.wont_equal 0
+    assert_redirected_to organization_event_team_path(new_team.event.organization, new_team.event, new_team)
   end
 
   test "show team" do
