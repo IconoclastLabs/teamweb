@@ -30,6 +30,11 @@ namespace :db do
     	end # /event
     end # /org
 
+    # Force Organizations friendly_ids to get generated from the above records
+    Organization.find_each(&:save)
+    # Force event maps to save, thus grab actual lat/long from google
+    Event.find_each(&:save)
+
   end	
 
   def ensure_users

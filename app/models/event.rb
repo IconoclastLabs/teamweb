@@ -22,10 +22,14 @@ class Event < ActiveRecord::Base
   has_many :members, dependent: :destroy
   has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}
-  acts_as_gmappable 
+  acts_as_gmappable process_geocoding: :geocode?, address: "location", normalized_address: "location", msg: "Google doesn't know where that is."
 
-  def gmaps4rails_address
-    "#{self.location}"
+  # def gmaps4rails_address
+  #   "#{self.location}"
+  # end
+
+  def geocode?
+    (!location.blank? && (latitude.blank? || longitude.blank?)) || location_changed?
   end
 
 end
