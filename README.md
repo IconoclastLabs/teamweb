@@ -147,3 +147,7 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 * New ALL EVENTS route/control/action added to top navigation. [In this commit](https://github.com/GantMan/teamweb/commit/92649d44a738083645aae6b8fec3fcd24a596328)
 
 `--> COMMIT PROJECT`
+
+* Added in Member Model to tie in to Organization, Event, and Team models for users.  Populator and Tests TOO! for issue #5
+
+`--> Project Point`  
