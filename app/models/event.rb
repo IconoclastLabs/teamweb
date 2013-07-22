@@ -22,6 +22,7 @@ class Event < ActiveRecord::Base
   has_many :members, dependent: :destroy
   has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}
+  acts_as_gmappable 
 
   def gmaps4rails_address
     "#{self.location}"
