@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/FriendlyId/friendly_id.git
+  revision: cc5ce00077b168523a95b195d9911e5576e6489f
+  branch: master
+  specs:
+    friendly_id (5.0.0.alpha1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -328,6 +335,7 @@ DEPENDENCIES
   execjs
   figaro
   forgery
+  friendly_id!
   gmaps4rails
   guard
   guard-annotate

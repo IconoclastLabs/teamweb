@@ -30,6 +30,7 @@ gem "simple_form", "~> 3.0.0.rc"
 gem "stamp"
 gem "gmaps4rails"
 gem "figaro"
+gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'master' # Note: You MUST use 5.0.0 or greater for Rails 4.0+
 
 # sample data stuff
 gem 'populator'

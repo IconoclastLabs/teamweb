@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def get_organization
     if params[:organization_id]
-      @organization = Organization.find(params[:organization_id])
+      @organization = Organization.friendly.find(params[:organization_id])
     end
   end
 
