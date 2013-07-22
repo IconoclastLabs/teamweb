@@ -5,7 +5,6 @@
   %thead
     %tr
       %th Name
-      %th Organization
       %th Location
       %th Start
       %th
@@ -13,7 +12,6 @@
   - @events.each do |event|
     %tr
       %td= event.name
-      %td= event.organization.name
       %td= event.location
       %td= event.start.try(:format_like, "Jan 1st")
       %td.btn-group

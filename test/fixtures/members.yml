@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  user_id: 
+member_one:
+  user: one 
   organization_id: 
   event_id: 
-  team_id: 
+  team: team_one
   admin: false
 
-two:
-  user_id: 
+member_two:
+  user: two
   organization_id: 
-  event_id: 
+  event: event_one
   team_id: 
-  admin: false
+  admin: true
