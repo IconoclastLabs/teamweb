@@ -12,6 +12,7 @@ namespace :db do
     	org.about = Populator.sentences(1)
     	org.location = Forgery::Address.state
     	org.contact = Forgery::Internet.email_address
+      add_admin("organization_id", org)
     	Event.populate 0..10 do |event|
     		event.name = Populator.words(1..3).titleize
     		event.about = Populator.sentences(1..2)
@@ -20,16 +21,11 @@ namespace :db do
     		random_date = Forgery::Date.date
     		event.start = random_date
     		event.end = random_date + rand(3)
+        add_admin("event_id", event)
     		Team.populate 0..10 do |team|
     		  team.name = Populator.words(1..3).titleize
     		  team.event_id = event.id 
-          Member.populate 1 do |member|
-            # Add user as admin to each of the created items
-            member.team_id = team.id
-            member.admin = true
-            random_user = @users.sample
-            member.user_id = random_user.id
-          end # /member
+          add_admin("team_id", team)
     		end # /team
     	end # /event
     end # /org
@@ -43,7 +39,14 @@ namespace :db do
     @users << User.all.where(email: "daddymac@gmail.com").first_or_create(password: "fdsafdsa")
   end
 
-  def add_admin (col, id)
-    
+  def add_admin (col, item, quantity = 1)
+    raise "Can't add more admins than users exist" if quantity > @users.size
+    Member.populate quantity do |member|
+      # Using eval because populator record doesn't support array lookup of attributes
+      eval("member.#{col} = item.id")
+      member.admin = true
+      random_user = @users.sample
+      member.user_id = random_user.id
+    end # /member   
   end
 end
