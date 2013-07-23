@@ -39,9 +39,9 @@ namespace :db do
 
   def ensure_users
     @users = []
-    @users << User.all.where(email: "gant@iconoclastlabs.com").first_or_create(password: "fdsafdsa")
-    @users << User.all.where(email: "themoke@gmail.com").first_or_create(password: "fdsafdsa")
-    @users << User.all.where(email: "daddymac@gmail.com").first_or_create(password: "fdsafdsa")
+    @users << User.all.where(email: "gant@iconoclastlabs.com").first_or_create(password: "fdsafdsa", name: "Gant Man", phone: "888-888-8888", address: "New Orleans")
+    @users << User.all.where(email: "themoke@gmail.com").first_or_create(password: "fdsafdsa", name: "Mokus", phone: "888-888-8888", address: "New Orleans")
+    @users << User.all.where(email: "daddymac@gmail.com").first_or_create(password: "fdsafdsa", name: "Cbrou", phone: "888-888-8888", address: "New Orleans")
   end
 
   def add_admin (col, item, quantity = 1)
