@@ -25,6 +25,12 @@
 #
 one: 
   email: test1@test.com
+  name: test1
+  phone: 888-888-8888
+  address: New Orleans
 #
 two: 
   email: test2@test.com
+  name: test2
+  phone: 888-888-8888
+  address: New Orleans

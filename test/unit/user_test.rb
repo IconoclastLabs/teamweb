@@ -31,9 +31,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   it 'warns you if you try to duplicate email' do
-    @existing_user = users(:one)
-    @existing_user.id = nil
-    @existing_user.valid?.must_equal false
+    simple_user.email = users(:one).email
+    simple_user.valid?.must_equal false
   end
 
   it 'can have organizations' do
