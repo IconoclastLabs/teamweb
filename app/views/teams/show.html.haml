@@ -1,9 +1,22 @@
-%p
-  %b Name:
-  = @team.name
-%p
-  %b Event:
-  = @team.event.name
+.page-header
+  %h1 
+    Team 
+    = @team.name
+    %small
+      for
+      = @team.event.name
+
+  %h3 
+    Team Size
+    = @team.members.size
+  .well
+    %ol
+      - @team.members.each do |member|
+        %li 
+          = "#{member.user.name} - #{member.user.email}"
+          - if member.admin
+            %span.badge.badge-success
+              Admin
 
 .btn-group
   = link_to icon_tag("hand-left") + 'Back', organization_event_teams_path, class: "btn btn-primary"
