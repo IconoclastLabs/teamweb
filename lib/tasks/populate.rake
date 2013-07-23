@@ -1,5 +1,5 @@
 namespace :db do
-	desc "Populate database with nice smaple data"
+	desc "Populate database with nice sample data"
 	task :populate => :environment do
     require 'populator'
     require 'forgery'

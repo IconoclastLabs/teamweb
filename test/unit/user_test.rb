@@ -20,7 +20,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  let(:simple_user) {User.new(email: 'testemail@gmail.com', password: '12345678')}
+  let(:simple_user) {User.new(email: 'testemail@gmail.com', password: '12345678', name: 'Bob')}
   it 'can create a new User' do
     simple_user.valid?.must_equal true
   end
@@ -32,6 +32,11 @@ class UserTest < ActiveSupport::TestCase
 
   it 'warns you if you try to duplicate email' do
     simple_user.email = users(:one).email
+    simple_user.valid?.must_equal false
+  end
+
+  it 'requires a name' do
+    simple_user.name = nil
     simple_user.valid?.must_equal false
   end
 

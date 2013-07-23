@@ -13,8 +13,8 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  created_at             :datetime         not null
-#  updated_at             :datetime         not null
+#  created_at             :datetime
+#  updated_at             :datetime
 #  phone                  :string(255)
 #  address                :string(255)
 #  name                   :string(255)
@@ -31,5 +31,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, uniqueness: {case_sensitive: false}
+  validates :name, presence: true
 
 end
