@@ -31,5 +31,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, uniqueness: {case_sensitive: false}
-
+  validates :name, presence: true, length: {in: 2..40}
 end
