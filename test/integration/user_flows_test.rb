@@ -6,7 +6,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   include Capybara::DSL
 
   setup do
-    @user = User.all.where(email: "gant@iconoclastlabs.com").first_or_create(password: "fdsafdsa", name: "Gant Man", phone: "888-888-8888", address: "New Orleans")
+    @user = User.where(email: "gant@iconoclastlabs.com").first_or_create(password: "fdsafdsa", name: "Gant Man", phone: "888-888-8888", address: "New Orleans")
   end
 
   test "front page has a login button" do
@@ -14,7 +14,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     visit root_path
     click_link_or_button('Login')
     assert_equal page.current_path, user_session_path
-    #assert page.has_content?('Email')
   end
 
   test "sign_up page loads" do
