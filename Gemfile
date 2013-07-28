@@ -36,6 +36,7 @@ gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'master' # Note: Yo
 gem 'populator'
 gem 'forgery'
 gem "literate_randomizer"
+gem 'kaminari' #allows for pagination
 
 # Production for Heroku
 group :production do
@@ -48,7 +49,6 @@ group :development, :test do
   gem 'rake'
   gem 'sqlite3'
 	gem 'awesome_print' # OF COURSE!
-	gem 'sqlite3'
   gem 'minitest-spec-rails'
   gem 'pry'
   gem 'pry-rails'

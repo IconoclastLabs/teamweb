@@ -1,17 +1,17 @@
 class OrganizationsController < ApplicationController
-  # GET /organizations
-  # GET /organizations.json
-  def index
-    @organizations = Organization.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @organizations }
-    end
+  #def index
+  #  @organizations = Organization.all
+
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @organizations }
+  #  end
+  #end
+  def index
+    @organizations = Organization.order(:name).page params[:page]
   end
 
-  # GET /organizations/1
-  # GET /organizations/1.json
   def show
     @organization = Organization.friendly.find(params[:id])
 
@@ -21,8 +21,7 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  # GET /organizations/new
-  # GET /organizations/new.json
+
   def new
     @organization = Organization.new
 

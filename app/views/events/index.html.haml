@@ -24,3 +24,4 @@
 %br
 
 = link_to icon_tag("star-empty") + 'New Event', new_organization_event_path, class: "btn btn-success" if user_signed_in?
+= paginate @events

@@ -6,15 +6,16 @@ class TeamsController < ApplicationController
     @organization = @event.organization
   end
 
-  # GET /teams
-  # GET /teams.json
-  def index
-    @teams = @event.teams
+  #def index
+  #  @teams = @event.teams
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @teams }
-    end
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @teams }
+  #  end
+  #end
+  def index
+    @teams = @event.teams.order(:name).page params[:page]
   end
 
   # GET /teams/1

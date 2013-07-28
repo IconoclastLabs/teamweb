@@ -7,26 +7,28 @@ class EventsController < ApplicationController
     end
   end
 
-  # GET /events
-  # GET /events.json
-  def list
-    @events = Event.all
+  #def list
+  #  @events = Event.all
 
-    respond_to do |format|
-      format.html #{ render "events/index" }
-      format.json { render json: @events }
-    end
+  #  respond_to do |format|
+  #    format.html #{ render "events/index" }
+  #    format.json { render json: @events }
+  #  end
+  #end
+  def list
+    @events = Event.order(:name).page params[:page]
   end
 
-  # GET /events
-  # GET /events.json
-  def index
-    @events = @organization.events
+  #def index
+  #  @events = @organization.events
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @events }
-    end
+  #  respond_to do |format|
+  #    format.html # index.html.erb
+  #    format.json { render json: @events }
+  #  end
+  #end
+  def index
+    @events = @organization.events.order(:name).page params[:page]
   end
 
   # GET /events/1

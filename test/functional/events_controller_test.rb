@@ -15,7 +15,10 @@ class EventsControllerTest < ActionController::TestCase
   test "get list" do
     get :list
     assert_response :success
-    assert_not_nil assigns(:events)
+    events = assigns(:events)
+    assert_not_nil events
+    # list should be paginated
+    assert_equal events, Event.order(:name).page(1)
   end
 
   test "get index" do
@@ -37,6 +40,12 @@ class EventsControllerTest < ActionController::TestCase
     assert_select "a", "New Event", "Should have a new button"
     assert_select "a", "Edit", "Should have an edit button"
     assert_select "a", "Delete", "Should have a delete button"
+  end
+
+  test "pagination happens" do
+    get :index, organization_id: @event.organization_id
+    events = assigns(:events)
+    #binding.pry
   end
 
   test "require login to get new" do

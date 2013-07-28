@@ -23,4 +23,4 @@
           = link_to icon_tag("trash") + 'Delete', organization_event_path(event.organization, event), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
-
+= paginate @events
