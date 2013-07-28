@@ -11,7 +11,7 @@
         Currently waiting confirmation for: 
         = resource.unconfirmed_email
 
-    = f.input :name, :label => "Friendly name", :hint => "leave it blank if you don't want to change it", :required => false
+    = f.input :name, :label => "Friendly name", :required => true
 
     = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
     = f.input :password_confirmation, :required => false
