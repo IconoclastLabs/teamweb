@@ -4,13 +4,15 @@
   %p.lead Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.
   = link_to "Get started today", new_user_registration_path, class: "btn btn-large btn-success"
 %hr/
-/ Example row of columns
+/ columns
 .row-fluid
   .span4
-    %h2 Heading
-    %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-    %p
-      %a.btn{:href => "#"} View details &raquo;
+    %h2 Upcoming Events
+    %ul.events-list
+      - @events.each do |event|
+        %li.clearfix 
+          = event.name
+          = link_to icon_tag("play") + "More", organization_event_path(event.organization, event), class: "btn btn-info btn-small pull-right"
   .span4
     %h2 Heading
     %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.

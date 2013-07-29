@@ -5,9 +5,8 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  event_id   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  rank       :decimal(, )
+#  created_at :datetime
+#  updated_at :datetime
 #
 
 class Team < ActiveRecord::Base

@@ -9,8 +9,8 @@
 #  location        :string(255)
 #  start           :date
 #  end             :date
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  created_at      :datetime
+#  updated_at      :datetime
 #  latitude        :float
 #  longitude       :float
 #  gmaps           :boolean
@@ -24,9 +24,7 @@ class Event < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}
   acts_as_gmappable process_geocoding: :geocode?, address: "location", normalized_address: "location", msg: "Google doesn't know where that is."
 
-  # def gmaps4rails_address
-  #   "#{self.location}"
-  # end
+  scope :future, -> { where("start > ?", Time.zone.now)}
 
   def geocode?
     (!location.blank? && (latitude.blank? || longitude.blank?)) || location_changed?
