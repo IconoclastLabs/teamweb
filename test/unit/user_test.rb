@@ -20,7 +20,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  let(:simple_user) {User.new(email: 'testemail@gmail.com', password: '12345678', name: 'Bob')}
+  let(:simple_user) {User.new(email: 'testemail@gmail.com', password: '12345678', name: 'Bob', phone: '888-888-8888', address: 'Houston')}
   it 'can create a new User' do
     simple_user.valid?.must_equal true
   end
@@ -38,6 +38,19 @@ class UserTest < ActiveSupport::TestCase
   it 'requires a name' do
     simple_user.name = nil
     simple_user.valid?.must_equal false
+  end
+
+  it 'can have phone' do
+    assert_respond_to(simple_user, :phone)
+  end
+
+  it 'phone number must be properly formatted' do
+    simple_user.phone = "11111"
+    simple_user.valid?.must_equal false
+  end
+
+  it 'can have address' do
+    assert_respond_to(simple_user, :address)
   end
 
   it 'can have organizations' do

@@ -32,4 +32,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, uniqueness: {case_sensitive: false}
   validates :name, presence: true, length: {in: 2..40}
+  validates_format_of :phone,
+    :unless => Proc.new { |user| user.phone.blank? },
+    :with => /[0-9]{3}-[0-9]{3}-[0-9]{4}/,
+    :message => "- Phone numbers must be in xxx-xxx-xxxx format."
+
 end
