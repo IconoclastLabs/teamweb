@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: {in: 2..40}
   validates_format_of :phone,
     :unless => Proc.new { |user| user.phone.blank? },
-    :with => /[0-9]{3}-[0-9]{3}-[0-9]{4}/,
+    :with => /\A\d{3}-\d{3}-\d{4}\z/,
     :message => "- Phone numbers must be in xxx-xxx-xxxx format."
 
 end
