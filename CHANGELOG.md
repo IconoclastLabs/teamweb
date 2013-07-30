@@ -1,5 +1,3 @@
-
-
 ## Project History Path
   
   $ rails new teamweb
@@ -152,3 +150,9 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 * Trying out friendly_id for Organizations [In this commit](https://github.com/GantMan/teamweb/commit/0af3db8f7bc6c13ddaab58fa943e6b6530196c7e) Has small deletion mistake on Evnts Model (woops)
 
 `--> COMMIT PROJECT`
+
+* Pagination done by @daddymac [Completing Issue 12](https://github.com/GantMan/teamweb/issues/12)
+* Added Next 10 Events to front page.
+* Made Organization page better with maps! [Competing Issue 8](https://github.com/GantMan/teamweb/issues/8)
+
+`--> Project Point`  
