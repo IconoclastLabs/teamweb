@@ -1,17 +1,35 @@
-%p
-  %b Name:
-  = @organization.name
-%p
-  %b About:
-  = @organization.about
-%p
-  %b Location:
-  = @organization.location
-%p
-  %b Contact:
-  = @organization.contact
+.page-header
+  %h1 
+    Organization
+    = @organization.name
+.span5
+  %p
+    %strong About:
+    = @organization.about
+  %p
+    %strong Location:
+    = @organization.location
+  %p
+    %strong Main Contact:
+    = @organization.contact
+.span6
+  %p
+    %strong Members
+    %ol
+      - @organization.members.each do |member|
+        %li 
+          = "#{member.user.name} - #{member.user.email}"
+          - if member.admin
+            %span.badge.badge-success
+              Admin
+.well.span11
+  %strong
+    = link_to "#{@organization.name} Events", organization_events_path(@organization)
+  %span.badge 
+    = @organization.events.count
+  = gmaps4rails(@maps_json)
 
-.btn-group
+.btn-group.pull-left
   = link_to icon_tag("hand-left") + 'Back', organizations_path, class: "btn btn-primary"
   = link_to icon_tag("wrench") + 'Edit', edit_organization_path(@organization), class: "btn btn-info"
   
