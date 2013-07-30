@@ -40,7 +40,7 @@ group :ruby do
 
 end
 
-guard 'brakeman', :run_on_start => true do
+guard 'brakeman', :run_on_start => true, :quiet => true do
   watch(%r{^app/.+\.(erb|haml|rhtml|rb)$})
   watch(%r{^config/.+\.rb$})
   watch(%r{^lib/.+\.rb$})
