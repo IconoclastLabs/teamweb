@@ -10,7 +10,7 @@
   .span4
     %h2 Upcoming Events
     %ul.events-list
-      - @events.each do |event|
+      - @upcoming_events.each do |event|
         %li.clearfix 
           %abbr{title: event.start.format_like("Jan 1st 2001")}
             = event.name
