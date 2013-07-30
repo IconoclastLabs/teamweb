@@ -1,4 +1,3 @@
-
 ## Project History Path
   
   $ rails new teamweb
@@ -152,6 +151,7 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 
 `--> COMMIT PROJECT`
 
+* Pagination done by @daddymac [Completing Issue 12](https://github.com/GantMan/teamweb/issues/12)
 * Added Next 10 Events to front page.
 * Made Organization page better with maps! [Competing Issue 8](https://github.com/GantMan/teamweb/issues/8)
 
