@@ -6,6 +6,10 @@ class TeamsController < ApplicationController
     @organization = @event.organization
   end
 
+  def add_user
+    @team = Team.find(params[:id])
+  end
+
   #def index
   #  @teams = @event.teams
 

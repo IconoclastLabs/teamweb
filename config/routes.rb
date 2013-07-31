@@ -7,7 +7,9 @@ Teamweb::Application.routes.draw do
 
   resources :organizations do
     resources :events do
-      resources :teams
+      resources :teams do
+        get 'add_user', on: :member
+      end
     end
   end
 
