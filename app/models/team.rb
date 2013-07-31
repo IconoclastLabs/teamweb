@@ -2,11 +2,12 @@
 #
 # Table name: teams
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  event_id   :integer
-#  created_at :datetime
-#  updated_at :datetime
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  event_id    :integer
+#  created_at  :datetime
+#  updated_at  :datetime
+#  max_members :integer
 #
 
 class Team < ActiveRecord::Base

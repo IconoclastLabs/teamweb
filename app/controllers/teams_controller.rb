@@ -55,7 +55,7 @@ class TeamsController < ApplicationController
     respond_to do |format|
       if @team.save
         # Automatically add creator as admin
-        @team.members.add_admin(current_user)
+        @team.members.add_member(current_user, admin_flag: true)
         #format.html { redirect_to @team, notice: 'Team was successfully created.' }
         #format.json { render json: @team, status: :created, location: @team }
         format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully created.' }
@@ -84,6 +84,22 @@ class TeamsController < ApplicationController
     end
   end
 
+  def add_member
+    #@team = Team.find(params[:id])
+    @team = Team.find(params[:id])
+
+    respond_to do |format|
+      if @team.update_attributes(team_params)
+        @team.members.add_member(current_user, admin_flag: false)
+        format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @team.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
@@ -97,6 +113,6 @@ class TeamsController < ApplicationController
   end
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :max_members)
   end
 end

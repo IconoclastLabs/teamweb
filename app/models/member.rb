@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
   #   e.g. Member.event_team_members(Event.first)
   scope :event_team_members, ->(event) { where(team_id: event.teams)}
 
-  def self.add_admin user
-    self.create(user_id: user.id, admin: true)
+  def self.add_member (user, admin_flag: false)
+    self.create(user_id: user.id, admin: admin_flag)
   end
 end

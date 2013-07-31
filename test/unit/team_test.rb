@@ -18,7 +18,7 @@ class TeamTest < ActiveSupport::TestCase
     @event_one = events(:event_one)
     @event_two = events(:event_two)
   }
-  let(:simple_team) {Team.new(name: 'TestName')}
+  let(:simple_team) {Team.new(name: 'TestName', max_members: '5')}
   it 'can create a new Team' do
     simple_team.valid?.must_equal true
   end
