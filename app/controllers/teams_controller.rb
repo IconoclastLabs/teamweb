@@ -8,6 +8,8 @@ class TeamsController < ApplicationController
 
   def add_user
     @team = Team.find(params[:id])
+    @team.members.add_member(current_user, admin_flag: false)
+    redirect_to [@organization, @event, @team], notice: 'You have been added to the team!'
   end
 
   #def index

@@ -9,8 +9,7 @@
   %h3 
     Team Size
     = @team.members.size
-    of
-    = @team.max_members
+    = "of #{@team.max_members}" unless @team.max_members.blank?
   .well
     %ol
       - @team.members.each do |member|
@@ -23,4 +22,4 @@
 .btn-group
   = link_to icon_tag("hand-left") + 'Back', organization_event_teams_path, class: "btn btn-primary"
   = link_to icon_tag("wrench") + 'Edit', edit_organization_event_team_path(@organization, @event, @team), class: "btn btn-info"
-  
+  = link_to 'Add me to team', add_user_organization_event_team_path(@organization, @event, @team), class: "btn btn-info"
