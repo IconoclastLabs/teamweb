@@ -7,7 +7,7 @@
 #  event_id    :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  rank        :decimal(, )
+#  rank        :integer
 #  max_members :integer
 #
 
