@@ -2,12 +2,13 @@
 #
 # Table name: teams
 #
-#  id         :integer          not null, primary key
-#  name       :string(255)
-#  event_id   :integer
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  rank       :decimal(, )
+#  id          :integer          not null, primary key
+#  name        :string(255)
+#  event_id    :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  rank        :decimal(, )
+#  max_members :integer
 #
 
 require 'test_helper'
