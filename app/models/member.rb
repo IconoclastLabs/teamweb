@@ -25,6 +25,8 @@ class Member < ActiveRecord::Base
   scope :event_team_members, ->(event) { where(groupable_id: event.teams, groupable_type: "Team")}
 
   def self.add_member (user, admin_flag: false)
+    # Make sure a user is sent in, and you're not dealing with some other model id
+    raise "add_member must be given a User for first parameter" unless user.kind_of? User
     self.where(user_id: user.id).first_or_create(admin: admin_flag)
   end
 end

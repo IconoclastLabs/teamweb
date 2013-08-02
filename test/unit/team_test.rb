@@ -19,7 +19,7 @@ class TeamTest < ActiveSupport::TestCase
     @event_one = events(:event_one)
     @event_two = events(:event_two)
   }
-  let(:simple_team) {Team.new(name: 'TestName', max_members: '5')}
+  let(:simple_team) {Team.new(name: 'TestName', max_members: 5)}
   it 'can create a new Team' do
     simple_team.valid?.must_equal true
   end
@@ -51,4 +51,12 @@ class TeamTest < ActiveSupport::TestCase
   it 'can have users' do
     assert_respond_to(@team_one, :users)
   end
+
+  it 'is idempotent with saving the same team member' do
+    assert_no_difference('@team_one.members.size') do
+      first_user = @team_one.users.first
+      @team_one.members.add_member(first_user, admin_flag: false).wont_be_nil
+    end
+  end
+
 end

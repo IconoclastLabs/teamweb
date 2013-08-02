@@ -13,4 +13,8 @@ class MemberTest < ActiveSupport::TestCase
     member_of_team = members(:member_one)
     Member.event_team_members(event_with_team_members).must_include member_of_team
   end
+
+  test "add_member method demands a User parameter" do
+    assert_raises(RuntimeError) { Member.add_member(Member.first) }
+  end
 end
