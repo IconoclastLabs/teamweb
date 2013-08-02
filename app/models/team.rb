@@ -13,7 +13,7 @@
 
 class Team < ActiveRecord::Base
   belongs_to :event
-  has_many :members, dependent: :destroy
+  has_many :members, dependent: :destroy, as: :groupable
   has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :event_id}
 end

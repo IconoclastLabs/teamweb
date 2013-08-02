@@ -19,7 +19,7 @@
 class Event < ActiveRecord::Base
   belongs_to :organization
   has_many :teams, dependent: :destroy
-  has_many :members, dependent: :destroy
+  has_many :members, dependent: :destroy, as: :groupable
   has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}
   acts_as_gmappable process_geocoding: :geocode?, address: "location", normalized_address: "location", msg: "Google doesn't know where that is."

@@ -16,7 +16,7 @@ class Organization < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: :slugged
   has_many :events, dependent: :destroy
-  has_many :members, dependent: :destroy
+  has_many :members, dependent: :destroy, as: :groupable
   has_many :users, through: :members
   validates :name, :contact, presence: true, length: {in: 2..38}
 end

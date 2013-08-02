@@ -2,28 +2,25 @@
 #
 # Table name: members
 #
-#  id              :integer          not null, primary key
-#  user_id         :integer
-#  organization_id :integer
-#  event_id        :integer
-#  team_id         :integer
-#  admin           :boolean
-#  created_at      :datetime
-#  updated_at      :datetime
+#  id             :integer          not null, primary key
+#  user_id        :integer
+#  admin          :boolean
+#  created_at     :datetime
+#  updated_at     :datetime
+#  groupable_id   :integer
+#  groupable_type :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 member_one:
   user: one 
-  organization_id: 
-  event_id: 
-  team: team_one
+  groupable: team_one
+  groupable_type: Team
   admin: false
 
 member_two:
   user: two
-  organization_id: 
-  event: event_one
-  team_id: 
+  groupable: event_one 
+  groupable_type: Event
   admin: true
