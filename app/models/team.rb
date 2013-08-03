@@ -16,4 +16,15 @@ class Team < ActiveRecord::Base
   has_many :members, dependent: :destroy, as: :groupable
   has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :event_id}
+  # if max_members then greater than 0
+  validates_numericality_of :max_members, allow_nil: true, greater_than: 0
+
+  def add_team_member(user, admin_flag: false)
+    Member.transaction do
+      self.members.add_member(user, admin_flag: admin_flag)
+      should_raise = self.max_members && self.members.size > self.max_members
+      raise ActiveRecord::Rollback, "Max team members met" if should_raise
+      true
+    end # end Transaction
+  end  
 end

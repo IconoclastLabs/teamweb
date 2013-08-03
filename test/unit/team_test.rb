@@ -16,6 +16,7 @@ require 'test_helper'
 class TeamTest < ActiveSupport::TestCase
   before { 
     @team_one = teams(:team_one) 
+    @first_user = @team_one.users.first
     @event_one = events(:event_one)
     @event_two = events(:event_two)
   }
@@ -52,11 +53,32 @@ class TeamTest < ActiveSupport::TestCase
     assert_respond_to(@team_one, :users)
   end
 
+  it 'must at least have room for one team member' do
+    simple_team.max_members = 0
+    simple_team.valid?.must_equal false
+  end
+
+  it 'can add a team member' do
+    team_two = teams(:team_two)
+    team_two.users.reload
+    team_two.users.include?(@first_user).must_equal false
+    team_two.add_team_member(users(:one)).must_equal true
+    team_two.users.reload
+    team_two.users.include?(@first_user).must_equal true
+  end
+
   it 'is idempotent with saving the same team member' do
     assert_no_difference('@team_one.members.size') do
-      first_user = @team_one.users.first
-      @team_one.members.add_member(first_user, admin_flag: false).wont_be_nil
+      success = @team_one.add_team_member(@first_user, admin_flag: false)
+      success.must_equal true
     end
   end
 
+  it 'cannot exceed max_members' do
+    simple_team.max_members = 1
+    simple_team.save.must_equal true
+    simple_team.add_team_member(users(:one)).must_equal true
+    simple_team.add_team_member(users(:two)).wont_equal true
+    simple_team.members.size.must_equal 1
+  end
 end
