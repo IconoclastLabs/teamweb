@@ -9,13 +9,12 @@ class TeamsController < ApplicationController
   def add_user
     @team = Team.find(params[:id])
     # Only add user if they won't blow out team size.
-    # TODO, push this logic down to the model
-    if @team.max_members.nil? || @team.members.size < @team.max_members
-      @team.members.add_member(current_user, admin_flag: false)
-      redirect_to [@organization, @event, @team], notice: 'You have been added to the team!'
+    if @team.add_team_member(current_user, admin_flag: false) 
+      message = {notice: 'You have been added to the team!'}
     else
-      redirect_to [@organization, @event, @team], alert: 'This team is full and cannot accept any new members.'
+      message = {alert: 'This team is full and cannot accept any new members.'}
     end
+    redirect_to [@organization, @event, @team], message 
   end
 
   #def index
