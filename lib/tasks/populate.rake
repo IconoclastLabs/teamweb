@@ -47,47 +47,44 @@ namespace :db do
       org.about = Populator.sentences(1)
       org.location = Forgery::Address.state
       org.contact = Forgery::Internet.email_address
-      add_admin(admins, "organization_id", org)
-      add_members(non_admins, "organization_id", org)
+      add_members(admins, "Organization", org, true)
+      add_members(non_admins, "Organization", org, false, 2)
       Event.populate 0..5 do |event|
         event.name = Populator.words(1..3).titleize
         event.about = Populator.sentences(1..2)
         event.organization_id = org.id 
         event.location = Forgery::Address.state
-        random_date = Forgery::Date.date
-        event.start = random_date
-        event.end = random_date + rand(3)
-        add_admin(admins, "event_id", event)
-        add_members(non_admins, "event_id", event)
+        event.start = Forgery::Date.date
+        event.end = event.start + rand(3)
+        add_members(admins, "Event", event, true)
+        add_members(non_admins, "Event", event, false, 2)
         Team.populate 0..5 do |team|
           team.name = Populator.words(1..3).titleize
           team.event_id = event.id 
-          add_admin(admins, "team_id", team)
-          add_members(non_admins, "team_id", team)
+          team.max_members = sometimes(rand(20))
+          add_members(admins, "Team", team, true)
+          add_members(non_admins, "Team", team, false, 2)
         end # /team
       end # /event
     end # /org
   end
 
-  def add_admin (user_set, col, item, quantity = 1)
-    raise "Can't add more admins than user_set exists" if quantity > user_set.size
-    Member.populate quantity do |member|
-      # Using eval because populator record doesn't support array lookup of attributes
-      eval("member.#{col} = item.id")
-      member.admin = true
-      random_user = user_set.sample
-      member.user_id = random_user.id
-    end # /member   
+  # return a value half the time
+  def sometimes (value)
+    value if rand(2) % 2 == 0
   end
 
-  def add_members(user_set, col, item, quantity = 2)
+  # Kinda dirty way to add members, could use a refactor to happen after full_org_stack
+  def add_members(user_set, col, item, admin, quantity = 1)
     raise "Can't add more members than user_set exists" if quantity > user_set.size
     # size the user_set down to a random subset of size quantity
     user_set = user_set.sample(quantity)
     # Create those members!
     Member.populate quantity do |member|
       # Using eval because populator record doesn't support array lookup of attributes
-      eval("member.#{col} = item.id")
+      member.groupable_type = col 
+      member.groupable_id = item.id
+      member.admin = admin
       random_user = user_set.pop
       member.user_id = random_user.id
     end # /member  

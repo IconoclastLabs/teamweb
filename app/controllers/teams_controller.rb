@@ -9,7 +9,7 @@ class TeamsController < ApplicationController
   def add_user
     @team = Team.find(params[:id])
     # Only add user if they won't blow out team size.
-    if @team.add_team_member(current_user, admin_flag: false) 
+    if @team.add_team_member(current_user) 
       message = {notice: 'You have been added to the team!'}
     else
       message = {alert: 'This team is full and cannot accept any new members.'}
