@@ -28,5 +28,6 @@ class Member < ActiveRecord::Base
     # Make sure a user is sent in, and you're not dealing with some other model id
     raise "add_member must be given a User for first parameter" unless user.kind_of? User
     self.where(user_id: user.id).first_or_create(admin: admin_flag)
+    true
   end
 end

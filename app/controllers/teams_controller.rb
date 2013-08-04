@@ -63,19 +63,21 @@ class TeamsController < ApplicationController
   def create
     @team = @event.teams.new(team_params)
 
-    respond_to do |format|
-      if @team.save
-        # Automatically add creator as admin
-        @team.members.add_member(current_user, admin_flag: true)
-        #format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        #format.json { render json: @team, status: :created, location: @team }
-        format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully created.' }
-        format.json { render json: [@organization, @event, @team], status: :created, location: @team }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+    Team.transaction do
+      respond_to do |format|
+        if @team.save
+          # Automatically add creator as admin
+          @team.members.add_member(current_user, admin_flag: true)
+          #format.html { redirect_to @team, notice: 'Team was successfully created.' }
+          #format.json { render json: @team, status: :created, location: @team }
+          format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully created.' }
+          format.json { render json: [@organization, @event, @team], status: :created, location: @team }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @team.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    end # end transaction
   end
 
   # PUT /teams/1

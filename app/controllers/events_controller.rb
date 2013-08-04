@@ -66,17 +66,19 @@ class EventsController < ApplicationController
   def create
     @event = @organization.events.new(event_params)
 
-    respond_to do |format|
-      if @event.save
-        # Automatically add creator as admin
-        @event.members.add_member(current_user, admin_flag: true)
-        format.html { redirect_to [@organization, @event], notice: 'Event was successfully created.' }
-        format.json { render json: [@organization, @event], status: :created, location: @event }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+    Event.transaction do
+      respond_to do |format|
+        if @event.save
+          # Automatically add creator as admin
+          @event.members.add_member(current_user, admin_flag: true)
+          format.html { redirect_to [@organization, @event], notice: 'Event was successfully created.' }
+          format.json { render json: [@organization, @event], status: :created, location: @event }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        end
+      end 
+    end # end transaction
   end
 
   # PUT /events/1

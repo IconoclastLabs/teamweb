@@ -44,18 +44,20 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
 
-    respond_to do |format|
-      if @organization.save
-        # Automatically add creator as admin
-        @organization.members.add_member(current_user, admin_flag: true)
+    Organization.transaction do
+      respond_to do |format|
+        if @organization.save
+          # Automatically add creator as admin
+          @organization.members.add_member(current_user, admin_flag: true)
 
-        format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
-        format.json { render json: @organization, status: :created, location: @organization }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @organization.errors, status: :unprocessable_entity }
+          format.html { redirect_to @organization, notice: 'Organization was successfully created.' }
+          format.json { render json: @organization, status: :created, location: @organization }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @organization.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    end # end transaction
   end
 
   # PUT /organizations/1
