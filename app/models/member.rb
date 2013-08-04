@@ -17,7 +17,7 @@ class Member < ActiveRecord::Base
   # parent accessible via self.groupable
   belongs_to :groupable, polymorphic: true
 
-  # filters for admins that are true 
+  # filters for admins that are true
   #   e.g. Team.first.members.admins
   scope :admins, -> { where(admin: true) }
   # filters for all members of the given event in teams

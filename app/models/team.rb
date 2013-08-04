@@ -26,5 +26,5 @@ class Team < ActiveRecord::Base
       raise ActiveRecord::Rollback, "Max team members met" if should_raise
       true
     end # end Transaction
-  end  
+  end
 end
