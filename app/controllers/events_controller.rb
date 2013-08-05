@@ -7,6 +7,17 @@ class EventsController < ApplicationController
     end
   end
 
+  def add_user
+    @event = Event.find(params[:id])
+    # Only add user if they won't blow out team size.
+    if @event.add_event_member(current_user) 
+      message = {notice: 'You have been added to the team!'}
+    else
+      message = {alert: 'This team is full and cannot accept any new members.'}
+    end
+    redirect_to [@organization, @event], message 
+  end
+
   #def list
   #  @events = Event.all
 
@@ -88,6 +99,21 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(event_params)
+        format.html { redirect_to [@organization, @event], notice: 'Event was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def add_member
+    @event = @organization.events.find(params[:id])
+
+    respond_to do |format|
+      if @event.update_attributes(event_params)
+        @event.members.add_member(current_user, admin_flag: false)
         format.html { redirect_to [@organization, @event], notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else

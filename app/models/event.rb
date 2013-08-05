@@ -30,4 +30,13 @@ class Event < ActiveRecord::Base
     (!location.blank? && (latitude.blank? || longitude.blank?)) || location_changed?
   end
 
+  def add_event_member(user, admin_flag: false)
+    Member.transaction do
+      self.members.add_member(user, admin_flag: admin_flag)
+      should_raise = self.max_members && self.members.size > self.max_members
+      raise ActiveRecord::Rollback, "Max members met" if should_raise
+      true
+    end # end Transaction
+  end
+
 end
