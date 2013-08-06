@@ -15,24 +15,7 @@
   %h4{style: "clear: left;"}
     %strong Event Details
 
-  / Details with tabs
-  %ul.nav.nav-tabs#eventTab
-    %li.active
-      = link_to "Info", "#info", :'data-toggle' => 'tab'
-    %li
-      = link_to badge("Teams", @event.teams.size), "#teams", :'data-toggle' => 'tab'
-    %li
-      = link_to badge("Members", @event.members.size), "#members", :'data-toggle' => 'tab'
-  .tab-content#eventTabContent
-    .tab-pane.fade.in.active#info
-      = LiterateRandomizer.paragraphs(paragraphs: 4)
-    .tab-pane.fade#teams 
-      %strong Total Teams:
-      = @event.teams.count
-      %br/
-      = link_to icon_tag("flag") + 'View Teams', organization_event_teams_path(@event.organization, @event), class: "btn btn-info" if @event.teams.count > 0    
-    .tab-pane.fade#members 
-      Member info Goes here
+  = render 'tab_details'
 
 / Map    
 .span4

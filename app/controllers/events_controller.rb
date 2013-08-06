@@ -11,9 +11,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
     # Only add user if they won't blow out team size.
     if @event.add_event_member(current_user) 
-      message = {notice: 'You have been added to the team!'}
+      message = {notice: 'You have been added to the event!'}
     else
-      message = {alert: 'This team is full and cannot accept any new members.'}
+      message = {alert: 'This event is full and cannot accept any new members.'}
     end
     redirect_to [@organization, @event], message 
   end

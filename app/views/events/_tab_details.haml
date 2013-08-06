@@ -1,0 +1,25 @@
+/ Details with tabs
+%ul.nav.nav-tabs#eventTab
+  %li.active
+    = link_to "Info", "#info", :'data-toggle' => 'tab'
+  %li
+    = link_to badge("Teams", @event.teams.size), "#teams", :'data-toggle' => 'tab'
+  %li
+    = link_to badge("Members", @event.members.size), "#members", :'data-toggle' => 'tab'
+.tab-content#eventTabContent
+  .tab-pane.fade.in.active#info
+    = LiterateRandomizer.paragraphs(paragraphs: 4)
+  .tab-pane.fade#teams 
+    %ol
+      - @event.teams.each do |team|
+        %li
+          = link_to team.name, organization_event_team_path(@organization, @event, team)
+
+  .tab-pane.fade#members 
+    %ol
+      - @event.members.each do |member|
+        %li 
+          = "#{member.user.name} - #{member.user.email}"
+          - if member.admin
+            %span.badge.badge-success
+              Admin
