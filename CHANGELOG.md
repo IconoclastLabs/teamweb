@@ -160,3 +160,8 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 * Refactored Member to be Polymorphic [Completing Issue 18](https://github.com/GantMan/teamweb/issues/18)
 
 `--> COMMIT PROJECT`
+
+* Added cool tabs for Team/Member info on Events
+
+`--> Project Point`  
+
