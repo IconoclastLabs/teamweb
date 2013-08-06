@@ -97,22 +97,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  def add_member
-    #@team = Team.find(params[:id])
-    @team = Team.find(params[:id])
-
-    respond_to do |format|
-      if @team.update_attributes(team_params)
-        @team.members.add_member(current_user, admin_flag: false)
-        format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
