@@ -33,3 +33,4 @@ event_two:
   location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
+  max_members: 10

@@ -62,7 +62,7 @@ class TeamTest < ActiveSupport::TestCase
     team_two = teams(:team_two)
     team_two.users.reload
     team_two.users.include?(@first_user).must_equal false
-    team_two.add_team_member(users(:one)).must_equal true
+    team_two.add_team_member(@first_user).must_equal true
     team_two.users.reload
     team_two.users.include?(@first_user).must_equal true
   end

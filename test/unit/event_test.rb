@@ -20,10 +20,12 @@ require 'test_helper'
 
 class EventTest < ActiveSupport::TestCase
 	before { 
-		@event_one = events(:event_one) 
+		@event_one = events(:event_one)
+    @first_user = @event_one.users.first
 		@coord_one = organizations(:coord_one)
 		@coord_two = organizations(:coord_two)
 	}
+
   let(:simple_event) {Event.new(name: 'TestName', about: 'TestAbout', location: 'New Orleans', start: '2013-05-31', end: '2013-05-31', latitude: nil, longitude: nil, gmaps: true)}
   it 'can create a new Event' do
     simple_event.valid?.must_equal true
@@ -59,5 +61,14 @@ class EventTest < ActiveSupport::TestCase
 
   it 'can have users' do
     assert_respond_to(@event_one, :users)
+  end
+
+  it 'can add an event member' do
+    event_two = events(:event_two)
+    event_two.users.reload
+    event_two.users.include?(@first_user).must_equal false
+    event_two.add_event_member(@first_user).must_equal true
+    event_two.users.reload
+    event_two.users.include?(@first_user).must_equal true
   end
 end
