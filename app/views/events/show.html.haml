@@ -5,27 +5,43 @@
     %p
       %strong About:
       = @event.about
-    %p
-      %strong Start:
-      = @event.start.try(:format_like, "Jan 1st 2000")
-    %p
-      %strong End:
-      = @event.end.try(:format_like, "Jan 1st 2000")
   .span2.well
     %p
+      %strong Start Date:
+      = @event.start.try(:format_like, "Jan 1st 2000")
+    %p
+      %strong End Date:
+      = @event.end.try(:format_like, "Jan 1st 2000")
+  %h4{style: "clear: left;"}
+    %strong Event Details
+
+  / Details with tabs
+  %ul.nav.nav-tabs#eventTab
+    %li.active
+      = link_to "Info", "#info", :'data-toggle' => 'tab'
+    %li
+      = link_to "Teams", "#teams", :'data-toggle' => 'tab'
+    %li
+      = link_to "Members", "#members", :'data-toggle' => 'tab'
+  .tab-content#eventTabContent
+    .tab-pane.fade.in.active#info
+      = LiterateRandomizer.paragraphs(paragraphs: 4)
+    .tab-pane.fade#teams 
       %strong Total Teams:
       = @event.teams.count
       %br/
-      = link_to icon_tag("flag") + 'View Teams', organization_event_teams_path(@event.organization, @event), class: "btn btn-info" if @event.teams.count > 0
-  %h4{style: "clear: left;"}
-    %strong Event Details
-  %p
-    = LiterateRandomizer.paragraphs(paragraphs: 4)
+      = link_to icon_tag("flag") + 'View Teams', organization_event_teams_path(@event.organization, @event), class: "btn btn-info" if @event.teams.count > 0    
+    .tab-pane.fade#members 
+      Member info Goes here
+
+/ Map    
 .span4
   = gmaps4rails(@maps_json)
   %p
     %strong Location
     = @event.location
+
+/ Organization Info
 .well.span4
   %h4 Organization info
   %p
@@ -35,6 +51,8 @@
     = @organization.about
   %p
     = @organization.contact
+
+/ Button bar
 .span12
   .btn-group
     = link_to icon_tag("hand-left") + 'Back', organization_events_path, class: "btn btn-primary"
