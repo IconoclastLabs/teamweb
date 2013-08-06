@@ -108,21 +108,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def add_member
-    @event = @organization.events.find(params[:id])
-
-    respond_to do |format|
-      if @event.update_attributes(event_params)
-        @event.members.add_member(current_user, admin_flag: false)
-        format.html { redirect_to [@organization, @event], notice: 'Event was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
