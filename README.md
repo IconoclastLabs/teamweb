@@ -27,4 +27,5 @@ $ rake db:populate
 ## 3: Hows it going?
 * Human History in the [CHANGELOG.md](https://github.com/GantMan/teamweb/blob/master/CHANGELOG.md) 
 * Testing History via [Travis-CI](https://travis-ci.org/GantMan/teamweb/builds)
-
+* Sometimes changes visible here: [http://teamweb.heroku.com/](http://teamweb.heroku.com/)
+* Test?
