@@ -14,6 +14,7 @@
 #  latitude        :float
 #  longitude       :float
 #  gmaps           :boolean
+#  max_members     :integer
 #
 
 class Event < ActiveRecord::Base

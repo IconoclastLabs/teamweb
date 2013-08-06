@@ -8,6 +8,7 @@
 #  created_at  :datetime
 #  updated_at  :datetime
 #  max_members :integer
+#  rank        :integer
 #
 
 class Team < ActiveRecord::Base
