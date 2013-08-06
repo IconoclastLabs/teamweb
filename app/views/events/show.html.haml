@@ -20,9 +20,9 @@
     %li.active
       = link_to "Info", "#info", :'data-toggle' => 'tab'
     %li
-      = link_to "Teams", "#teams", :'data-toggle' => 'tab'
+      = link_to badge("Teams", @event.teams.size), "#teams", :'data-toggle' => 'tab'
     %li
-      = link_to "Members", "#members", :'data-toggle' => 'tab'
+      = link_to badge("Members", @event.members.size), "#members", :'data-toggle' => 'tab'
   .tab-content#eventTabContent
     .tab-pane.fade.in.active#info
       = LiterateRandomizer.paragraphs(paragraphs: 4)
