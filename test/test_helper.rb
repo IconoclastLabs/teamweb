@@ -26,3 +26,33 @@ Turn.config do |c|
 #  # use humanized test names (works only with :outline format)
   c.natural = true
 end
+
+def capybara_sign_in(user)
+  visit user_session_path
+  fill_in 'Email', with: user.email
+  fill_in 'Password', with: user.password
+  click_link_or_button 'Sign in'
+  user
+end
+
+def capybara_facebook_sign_in
+  OmniAuth.config.test_mode = true
+  # Doesn't really work yet
+  OmniAuth.config.mock_auth[:facebook] = {
+    'uid'       => "999999",
+    'provider'  => "facebook",
+    'extra'     => {
+      'user_hash' => {
+        'email'   => 'test1@test.com',
+        'first_name'  => 'First',
+        'last_name'   => 'Last',
+        'gender'  => 'Male'
+      }
+    },
+    'credentials' => {
+      'token' => "token1234qwert"
+    }
+  }
+  visit user_session_path
+  click_link_or_button 'Use Facebook'
+end

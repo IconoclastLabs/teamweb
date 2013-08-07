@@ -9,8 +9,8 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     @user = User.where(email: "gant@iconoclastlabs.com").first_or_create(password: "fdsafdsa", name: "Gant Man", phone: "888-888-8888", address: "New Orleans")
   end
 
+  # using capybara
   test "front page has a login button" do
-    # uses capybara
     visit root_path
     click_link_or_button('Login')
     assert_equal page.current_path, user_session_path
@@ -27,20 +27,18 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert_equal 'Signed in successfully.', flash[:notice]
   end
 
+  # using capybara
   test "edit user page" do
-    # using capybara
     capybara_sign_in(@user)
     click_link_or_button('Profile')
     assert_equal page.current_path, edit_user_registration_path
     assert page.has_content?('DANGER ZONE!!!')
   end
 
-  def capybara_sign_in(user)
-    visit user_session_path
-    fill_in 'Email', with: user.email
-    fill_in 'Password', with: user.password
-    click_link_or_button 'Sign in'
-    user
-  end
+  # using capybara
+  test "Facebook Login" do
+    capybara_facebook_sign_in
+    assert_equal page.current_path, "/users/auth/facebook/callback"
+  end 
 
 end

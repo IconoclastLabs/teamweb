@@ -183,3 +183,6 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 * Added `app/controllers/users/omniauth_callbacks_controller.rb` file to capture callbacks
 * Added find or create for OAuth users in User model
 * Added override to `new_with_session` for copying data when initialized before sign up in User model
+* Added Warning for Developers not to try the Facebook login
+* Moved Keys to Figaro and set new Secret on Prod
+* Commits and more found at [completed issue # 21](https://github.com/GantMan/teamweb/issues/21)
