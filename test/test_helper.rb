@@ -54,5 +54,5 @@ def capybara_facebook_sign_in
     }
   }
   visit user_session_path
-  click_link_or_button 'Use Facebook'
+  click_link_or_button 'Facebook'
 end

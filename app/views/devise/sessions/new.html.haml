@@ -17,9 +17,7 @@
       %button.btn.btn-primary{type: "submit"}
         = icon_tag('hand-right') + 'Sign in'
   = render "devise/shared/links"
-.span3.well
-  %h4 Sign In via Facebook
-  %p You can sign in OR create your account using your Facebook account.
-  = render "facebook_login"
-  = #link_to icon_tag('user') + "Use Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary"
+.span3.well.facebook
+  %p You can sign in any of the following services
+  = link_to image_tag("facebook.png") + "Facebook Login", user_omniauth_authorize_path(:facebook), class: "btn"
 
