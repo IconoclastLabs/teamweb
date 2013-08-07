@@ -165,3 +165,21 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 
 `--> Project Point`  
 
+#### [Facebook Login](https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview)
+* Added `omniauth` and `omniauth-facebook` gems
+
+  $ rails g migration AddOauthColumnsToUsers provider uid 
+
+  $ rake db:migrate
+
+* *Signed up with Facebook, and got an AppID*
+  * App Name: "TeamWeb"
+  * App Namespace: "facebookteamweb"
+  * App Category: "Communication"
+* Modified devise.rb to add facebook provider
+* Added omniauthable module to devise user
+* Ran `rake routes` to see new omniauth paths work
+* Modified `config/routes.rb` devise path for callbacks `devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"}`
+* Added `app/controllers/users/omniauth_callbacks_controller.rb` file to capture callbacks
+* Added find or create for OAuth users in User model
+* Added override to `new_with_session` for copying data when initialized before sign up in User model

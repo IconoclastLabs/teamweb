@@ -38,6 +38,10 @@ gem 'forgery'
 gem "literate_randomizer"
 gem 'kaminari' #allows for pagination
 
+# OmniAuth stuff
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # Production for Heroku
 group :production do
   gem 'pg'

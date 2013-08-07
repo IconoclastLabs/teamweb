@@ -1,7 +1,7 @@
 Teamweb::Application.routes.draw do
 
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"}
 
   #resources :teams
 
@@ -17,7 +17,6 @@ Teamweb::Application.routes.draw do
   match "events", to: "events#list", via: :all
 
   get "home/index"
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

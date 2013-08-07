@@ -18,6 +18,8 @@
 #  phone                  :string(255)
 #  address                :string(255)
 #  name                   :string(255)
+#  provider               :string(255)
+#  uid                    :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -27,9 +29,10 @@ class User < ActiveRecord::Base
   has_many :teams, through: :members
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, :omniauth_providers => [:facebook]
   validates :email, uniqueness: {case_sensitive: false}
   validates :name, presence: true, length: {in: 2..40}
   validates_format_of :phone,
@@ -37,4 +40,28 @@ class User < ActiveRecord::Base
     :with => /\A\d{3}-\d{3}-\d{4}\z/,
     :message => "- Phone numbers must be in xxx-xxx-xxxx format."
 
+
+  # tries to find user with those oauth creds, otherwise it creates a new one (with random password)
+  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
+    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    unless user
+      user = User.create(
+        name:auth.extra.raw_info.name,
+        provider:auth.provider,
+        uid:auth.uid,
+        email:auth.info.email,
+        password:Devise.friendly_token[0,20]
+      )
+    end
+    user
+  end
+
+  # Copies data from session if available for OAuth
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 end
