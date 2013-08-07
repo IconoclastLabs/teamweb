@@ -71,4 +71,19 @@ class EventTest < ActiveSupport::TestCase
     event_two.users.reload
     event_two.users.include?(@first_user).must_equal true
   end
+
+  it 'cannot exceed max_members' do
+    simple_event.max_members = 1
+    simple_event.save.must_equal true
+    simple_event.add_event_member(users(:one)).must_equal true
+    simple_event.add_event_member(users(:two)).wont_equal true
+    simple_event.members.size.must_equal 1
+  end
+
+  it 'is idempotent with saving the same event member' do
+    assert_no_difference('@event_one.members.size') do
+      success = @event_one.add_event_member(@first_user, admin_flag: false)
+      success.must_equal true
+    end
+  end
 end
