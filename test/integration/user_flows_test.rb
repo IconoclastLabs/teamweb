@@ -35,10 +35,10 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_content?('DANGER ZONE!!!')
   end
 
-  # using capybara
-  test "Facebook Login" do
-    capybara_facebook_sign_in
-    assert_equal page.current_path, "/users/auth/facebook/callback"
-  end 
+  # # using capybara
+  # test "Facebook Login" do
+  #   capybara_facebook_sign_in
+  #   assert_equal page.current_path, "/users/auth/facebook/callback"
+  # end 
 
 end

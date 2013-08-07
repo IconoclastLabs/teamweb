@@ -1,20 +1,25 @@
+.clearfix
+- if Rails.env.development?
+  .alert.clearfix
+    %h4 Developer Note
+    If you can see this message, Facebook Login will not work.  Only the root URL 
+    %strong teamweb.herokuapp.com 
+    and Prod's Secret key will function.
 %h2 Sign in
+.span7
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f|
 
-= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f|
+    = f.input :email, :required => false, :autofocus => true
+    = f.input :password, :required => false
+    = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
 
-  = f.input :email, :required => false, :autofocus => true
-  = f.input :password, :required => false
-  = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+    .actions
+      %button.btn.btn-primary{type: "submit"}
+        = icon_tag('hand-right') + 'Sign in'
+  = render "devise/shared/links"
+.span3.well
+  %h4 Sign In via Facebook
+  %p You can sign in OR create your account using your Facebook account.
+  = render "facebook_login"
+  = #link_to icon_tag('user') + "Use Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary"
 
-  .actions
-    %button.btn.btn-primary{type: "submit"}
-      = icon_tag('hand-right') + 'Sign in'
-    = link_to icon_tag('user') + "Use Facebook", user_omniauth_authorize_path(:facebook), class: "btn btn-primary"
-    - if Rails.env.development?
-      .alert 
-        %h4 Developer Note
-        If you can see this message, Facebook Login will not work.  Only the root URL 
-        %strong teamweb.herokuapp.com 
-        and Prod's Secret key will function.
-
-= render "devise/shared/links"
