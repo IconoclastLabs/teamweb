@@ -10,6 +10,7 @@
   = f.input :about, label: "Describe the event"
   = f.input :start, as: :string, input_html: { type: "date"}
   = f.input :end, as: :string, input_html: { type: "date" }
+  = f.input :max_members, label: "Max team members"
   .actions
     %button.btn.btn-info{type: "submit"}
       = icon_tag('thumbs-up') + 'Save'
