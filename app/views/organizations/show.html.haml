@@ -22,14 +22,14 @@
           - if member.admin
             %span.badge.badge-success
               Admin
-.well.span11
+.span11
   %strong
     = link_to "#{@organization.name} Events", organization_events_path(@organization)
   %span.badge 
     = @organization.events.count
   = gmaps4rails(@maps_json)
 
-.btn-group.pull-left
+  .btn-group.pull-left
   = link_to icon_tag("hand-left") + 'Back', organizations_path, class: "btn btn-primary"
   = link_to icon_tag("wrench") + 'Edit', edit_organization_path(@organization), class: "btn btn-info"
   
