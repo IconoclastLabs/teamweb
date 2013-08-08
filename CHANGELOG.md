@@ -186,3 +186,10 @@ $ rails g boilerplate:install #For HTML5 Base awesomeness
 * Added Warning for Developers not to try the Facebook login
 * Moved Keys to Figaro and set new Secret on Prod
 * Commits and more found at [completed issue # 21](https://github.com/GantMan/teamweb/issues/21)
+
+`--> Project Point`
+
+* Added really cool background
+* Added migration of Memebrs and Teams allow
+
+  $ rails g migration AddMemberAndTeamsBooleansToEvents members_allowed:boolean teams_allowed:boolean 

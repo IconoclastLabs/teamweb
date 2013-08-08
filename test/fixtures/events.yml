@@ -9,11 +9,14 @@
 #  location        :string(255)
 #  start           :date
 #  end             :date
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  created_at      :datetime
+#  updated_at      :datetime
 #  latitude        :float
 #  longitude       :float
 #  gmaps           :boolean
+#  max_members     :integer
+#  members_allowed :boolean          default(TRUE)
+#  teams_allowed   :boolean          default(TRUE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
@@ -34,3 +37,13 @@ event_two:
   start: 2013-05-31
   end: 2013-05-31
   max_members: 10
+
+event_three:
+  name: Crazy Ball
+  about: It is crazy
+  organization: coord_two
+  location: Memphis
+  start: 2013-05-02
+  end: 2013-05-04
+  members_allowed: false
+  

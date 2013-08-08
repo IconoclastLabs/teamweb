@@ -15,6 +15,8 @@
 #  longitude       :float
 #  gmaps           :boolean
 #  max_members     :integer
+#  members_allowed :boolean          default(TRUE)
+#  teams_allowed   :boolean          default(TRUE)
 #
 
 class Event < ActiveRecord::Base
