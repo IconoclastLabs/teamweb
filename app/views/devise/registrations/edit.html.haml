@@ -1,7 +1,7 @@
 %h2 
   Edit user
   = resource.email
-.span8
+.span7
 
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f|
 
