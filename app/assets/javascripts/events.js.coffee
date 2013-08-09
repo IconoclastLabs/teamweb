@@ -6,11 +6,11 @@
 (($) ->
   # show if it is checked
   $("input[data-hide]").each (box) ->
-    shown = (if $(@).prop('checked') then 'block' else 'none')
-    $($(@).data('hide'))[0].style.display = shown
+    shown = $(@).prop('checked')
+    $($(@).data('hide')).toggle(shown)
 
-  # On click, toggle visibility
-  $("input[data-hide]").click ->
+  # On change, toggle visibility
+  $("input[data-hide]").change ->
     to_hide = $(@).data('hide')
     $(to_hide).fadeToggle()  
 ) jQuery

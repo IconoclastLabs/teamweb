@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20130808185722) do
     t.string   "location"
     t.date     "start"
     t.date     "end"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20130808185722) do
     t.string   "about"
     t.string   "location"
     t.string   "contact"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "slug"
   end
 
@@ -58,10 +58,10 @@ ActiveRecord::Schema.define(version: 20130808185722) do
   create_table "teams", force: true do |t|
     t.string   "name"
     t.integer  "event_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "max_members"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "rank"
+    t.integer  "max_members"
   end
 
   add_index "teams", ["event_id"], name: "index_teams_on_event_id"
@@ -77,8 +77,8 @@ ActiveRecord::Schema.define(version: 20130808185722) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "phone"
     t.string   "address"
     t.string   "name"
