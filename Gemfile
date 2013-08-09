@@ -82,6 +82,7 @@ group :development, :test do
   gem 'rb-fchange', :require => false
   # BDD
   gem 'capybara'
+  #gem 'selenium-webdriver' # for javascript testing power
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
   
