@@ -25,7 +25,7 @@ $ rake db:populate
 ```
 
 ## 3: Hows it going?
-* Human History in the [WIKI](https://github.com/GantMan/teamweb/wiki/History)
+* Human readable History in the [WIKI](https://github.com/GantMan/teamweb/wiki/History) or a more detailed version [in our commits](https://github.com/GantMan/teamweb/commits/master)
 * Testing History via [Travis-CI](https://travis-ci.org/GantMan/teamweb/builds)
 * Got ideas?  Add them to the [issues!](https://github.com/GantMan/teamweb/issues?state=open) 
 * Sometimes updated live site: [http://teamweb.heroku.com/](http://teamweb.heroku.com/)
