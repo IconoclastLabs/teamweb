@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130808185722) do
+ActiveRecord::Schema.define(version: 20130810233036) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20130808185722) do
     t.integer  "max_members"
     t.boolean  "members_allowed", default: true
     t.boolean  "teams_allowed",   default: true
+    t.integer  "max_teams"
+    t.integer  "max_team_size"
   end
 
   add_index "events", ["organization_id"], name: "index_events_on_organization_id"
