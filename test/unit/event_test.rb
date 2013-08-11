@@ -9,14 +9,16 @@
 #  location        :string(255)
 #  start           :date
 #  end             :date
-#  created_at      :datetime
-#  updated_at      :datetime
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #  latitude        :float
 #  longitude       :float
 #  gmaps           :boolean
 #  max_members     :integer
 #  members_allowed :boolean          default(TRUE)
 #  teams_allowed   :boolean          default(TRUE)
+#  max_teams       :integer
+#  max_team_size   :integer
 #
 
 require 'test_helper'
