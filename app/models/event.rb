@@ -29,6 +29,7 @@ class Event < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}
   validates :location, presence: true
   acts_as_gmappable process_geocoding: :geocode?, address: "location", normalized_address: "location", msg: "Google doesn't know where that is."
+  validates_numericality_of :max_team_size, allow_nil: true, greater_than: 0
 
   scope :future, -> { where("start > ?", Time.zone.now)}
 

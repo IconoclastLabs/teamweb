@@ -91,4 +91,9 @@ class EventTest < ActiveSupport::TestCase
       success.must_equal true
     end
   end
+
+  it 'must at least have room for one team member if it is set' do
+    simple_event.max_team_size = 0
+    simple_event.valid?.must_equal false
+  end
 end
