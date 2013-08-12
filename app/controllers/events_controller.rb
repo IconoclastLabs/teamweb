@@ -120,8 +120,7 @@ class EventsController < ApplicationController
     end
   end
 
-
   def event_params
-    params.require(:event).permit(:about, :end, :location, :name, :start, :max_members, :members_allowed, :teams_allowed)
+    params.require(:event).permit(:about, :end, :location, :name, :start, :max_members, :members_allowed, :teams_allowed, :max_teams, :max_team_size)
   end
 end

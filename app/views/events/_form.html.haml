@@ -13,6 +13,9 @@
   = f.input :members_allowed, label: "Members Allowed", hint: "Can users join the event without a team?", input_html: { :'data-hide' => '.event_max_members'}
   = f.input :max_members, label: "Maximum members", input_html: { :'data-maxable' => 'no-max'}
   = f.input :teams_allowed, label: "Teams Allowed", hint: "Can users create teams?"
+  = f.input :max_teams
+  = f.input :max_team_size
+
   .actions
     %button.btn.btn-info{type: "submit"}
       = icon_tag('thumbs-up') + 'Save'
