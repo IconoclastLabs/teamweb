@@ -57,21 +57,33 @@ namespace :db do
         event.start = Forgery::Date.date
         event.end = event.start + rand(3)
         add_members(admins, "Event", event, true)
-        add_members(non_admins, "Event", event, false, 2)
-        Team.populate 0..5 do |team|
-          team.name = Populator.words(1..3).titleize
-          team.event_id = event.id 
-          team.max_members = sometimes(rand(20))
-          add_members(admins, "Team", team, true)
-          add_members(non_admins, "Team", team, false, 2)
-        end # /team
+        
+        #sometimes add non-admin members
+        event.members_allowed = Forgery::Basic.boolean
+        if event.members_allowed
+          add_members(non_admins, "Event", event, false, 2)
+        end
+
+        #sometimes add teams
+        event.teams_allowed = Forgery::Basic.boolean
+        if event.teams_allowed
+          event.max_teams = rand(6..12)
+          Team.populate 0..5 do |team|
+            team.name = Populator.words(1..3).titleize
+            team.event_id = event.id 
+            team.max_members = sometimes(rand(3..20))
+            add_members(admins, "Team", team, true)
+            add_members(non_admins, "Team", team, false, 2)
+          end # /team
+        end
+
       end # /event
     end # /org
   end
 
   # return a value half the time
   def sometimes (value)
-    value if rand(2) % 2 == 0
+    value if Forgery::Basic.boolean
   end
 
   # Kinda dirty way to add members, could use a refactor to happen after full_org_stack
