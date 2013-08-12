@@ -31,7 +31,7 @@ class Team < ActiveRecord::Base
 
   def owner_allows_teams
     if self.event.try(:teams_allowed?) == false
-      errors.add(:event, "Event disallows teams")
+      errors.add(:event, "Teams are not allowed")
     end
   end
 end
