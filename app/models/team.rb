@@ -18,6 +18,7 @@ class Team < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :event_id}
   # if max_members then greater than 0
   validates_numericality_of :max_members, allow_nil: true, greater_than: 0
+  validate :owner_allows_teams
 
   def add_team_member(user, admin_flag: false)
     Member.transaction do
@@ -26,5 +27,9 @@ class Team < ActiveRecord::Base
       raise ActiveRecord::Rollback, "Max team members met" if should_raise
       true
     end # end Transaction
+  end
+
+  def owner_allows_teams
+    errors.add(:event, "Event disallows teams") if self.event.teams_allowed? == false
   end
 end
