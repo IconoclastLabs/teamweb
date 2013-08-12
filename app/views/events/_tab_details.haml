@@ -2,10 +2,12 @@
 %ul.nav.nav-tabs#eventTab
   %li.active
     = link_to "Info", "#info", :'data-toggle' => 'tab'
-  %li
-    = link_to badge("Teams", @event.teams.size), "#teams", :'data-toggle' => 'tab'
-  %li
-    = link_to badge("Members", @event.members.size), "#members", :'data-toggle' => 'tab'
+  - if @event.teams_allowed?
+    %li
+      = link_to badge("Teams", @event.teams.size), "#teams", :'data-toggle' => 'tab'
+  - if @event.members_allowed?
+    %li
+      = link_to badge("Members", @event.members.size), "#members", :'data-toggle' => 'tab'
 .tab-content#eventTabContent
   .tab-pane.fade.in.active#info
     = LiterateRandomizer.paragraphs(paragraphs: 4)
