@@ -46,10 +46,9 @@ Turn.config do |c|
 end
 
 def capybara_sign_in(user)
-  password = user.password || "fdsafdsa"
   visit user_session_path
   fill_in 'Email', with: user.email
-  fill_in 'Password', with: password
+  fill_in 'Password', with: user.password
   click_link_or_button 'Sign in'
   user
 end
