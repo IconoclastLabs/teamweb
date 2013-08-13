@@ -67,20 +67,11 @@ class TeamTest < ActiveSupport::TestCase
     team_two.users.include?(@first_user).must_equal true
   end
 
-  it 'cannot exceed max_members' do
-    simple_team.max_members = 1
-    simple_team.save.must_equal true
-    simple_team.add_team_member(users(:one)).must_equal true
-    simple_team.add_team_member(users(:two)).wont_equal true
-    simple_team.members.size.must_equal 1
-  end
-
   it 'is idempotent with saving the same team member' do
     assert_no_difference('@team_one.members.size') do
       success = @team_one.add_team_member(@first_user, admin_flag: false)
       success.must_equal true
     end
   end
-
 
 end
