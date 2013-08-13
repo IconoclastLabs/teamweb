@@ -12,6 +12,24 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
 end
 
+# So that :webkit can login via capybara
+class ActionDispatch::IntegrationTest
+  self.use_transactional_fixtures = false
+end
+# Clean DB because of the above capybara config code
+DatabaseCleaner.strategy = :transaction
+
+class MiniTest::Spec
+  before :each do
+    DatabaseCleaner.start
+  end
+
+  after :each do
+    DatabaseCleaner.clean
+  end
+end
+
+
 Turn.config do |c|
 #  # use one of output formats:
 #  # :outline  - turn's original case/test outline mode [default]
@@ -28,9 +46,10 @@ Turn.config do |c|
 end
 
 def capybara_sign_in(user)
+  password = user.password || "fdsafdsa"
   visit user_session_path
   fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
+  fill_in 'Password', with: password
   click_link_or_button 'Sign in'
   user
 end

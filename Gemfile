@@ -82,7 +82,8 @@ group :development, :test do
   gem 'rb-fchange', :require => false
   # BDD
   gem 'capybara'
-  #gem 'selenium-webdriver' # for javascript testing power
+  gem 'capybara_minitest_spec' # for capybara integration and spec matchers
+  gem 'capybara-webkit' # for headless javascript tests require Qt
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
   

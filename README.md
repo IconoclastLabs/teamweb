@@ -24,6 +24,10 @@ Add your user to `lib/tasks/populate.rake` to customize, then run the following:
 $ rake db:populate
 ```
 
+#### Tests
+Some tests are driven by Qt/capybara webkit.  If you don't have Qt please see installation instructions here:
+[https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit)
+
 ## 3: Hows it going?
 * Human readable History in the [WIKI](https://github.com/GantMan/teamweb/wiki/History) or a more detailed version [in our commits](https://github.com/GantMan/teamweb/commits/master)
 * Testing History via [Travis-CI](https://travis-ci.org/GantMan/teamweb/builds)
