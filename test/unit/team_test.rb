@@ -74,11 +74,5 @@ class TeamTest < ActiveSupport::TestCase
     end
   end
 
-  it 'cannot exceed max_members' do
-    simple_team.max_members = 1
-    simple_team.save.must_equal true
-    simple_team.add_team_member(users(:one)).must_equal true
-    simple_team.add_team_member(users(:two)).wont_equal true
-    simple_team.members.size.must_equal 1
-  end
+
 end
