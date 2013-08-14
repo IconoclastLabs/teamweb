@@ -53,7 +53,7 @@ class EventFlowTest < ActionDispatch::IntegrationTest
 ########################################################################## 
   test "Max Members section hides and shows correctly" do
     # we need to see jQuery, so switch to more robust driver
-    Capybara.current_driver = :webkit 
+    Capybara.current_driver = :poltergeist 
  
     capybara_sign_in(@user)
     visit new_organization_event_path(@some_org)
@@ -75,8 +75,7 @@ class EventFlowTest < ActionDispatch::IntegrationTest
 
   test "Max Teams section hides and shows correctly" do
     # we need to see jQuery, so switch to more robust driver
-    Capybara.current_driver = :webkit 
-  
+    Capybara.current_driver = :poltergeist 
     capybara_sign_in(@user)
     visit new_organization_event_path(@some_org)
     # default visible and checked
@@ -99,7 +98,8 @@ class EventFlowTest < ActionDispatch::IntegrationTest
 
   test "All No Max checkboxes work as desired" do
     # we need to see jQuery, so switch to more robust driver
-    Capybara.current_driver = :webkit 
+    Capybara.current_driver = :poltergeist
+
   
     capybara_sign_in(@user)
     visit new_organization_event_path(@some_org)

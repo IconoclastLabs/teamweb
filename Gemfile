@@ -94,7 +94,7 @@ group :development, :test do
   # BDD
   gem 'capybara'
   gem 'capybara_minitest_spec' # for capybara integration and spec matchers
-  gem 'capybara-webkit' # for headless javascript tests require Qt
+  gem 'poltergeist' # for headless javascript tests require Qt
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
   
