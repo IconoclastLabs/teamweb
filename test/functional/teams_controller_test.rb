@@ -32,6 +32,22 @@ class TeamsControllerTest < ActionController::TestCase
     assert_select "a", "Delete", "Should have a delete button"
   end
 
+  test "create team button won't show if parent disallows teams" do
+    sign_in User.first
+    no_teams_event = events(:event_four)
+    assert no_teams_event.teams_allowed == false #no teams
+    get :index, organization_id: no_teams_event.organization_id, event_id: no_teams_event.id
+    assert_select "a", {count: 0, text: "New Team"}, "Shouldn't have a new button"
+  end
+
+  test "create team button shows if parent allows teams" do
+    sign_in User.first
+    teams_event = events(:event_two)
+    assert teams_event.teams_allowed # check fixture
+    get :index, organization_id: teams_event.organization_id, event_id: teams_event.id
+    assert_select "a", "New Team", "Should have a new button"
+  end
+
   test "require login to get new" do
     get :new, organization_id: @team.event.organization_id, event_id: @team.event_id
     assert_response :redirect #302
