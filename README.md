@@ -35,15 +35,12 @@ for Capybara.  Installing PhantomJS is a manual step you must perform.
 #### Linux (manually):
 
     cd /usr/local/share
-    wget http://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2
-    tar xjf phantomjs-1.9.1-linux-x86_64.tar.bz2
-    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-x86_64/bin/phantomjs /usr/local/share/phantomjs
-    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs
-    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
-
-#### Ubuntu >12.10:
-
-Still install it manually. `sudo apt-get install phantomjs` as of 13.04 will still install 1.6.x which is quite old.
+    sudo wget https://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-i686.tar.bz2
+    (USE 64 bit? - $sudo wget http://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2)
+    sudo tar xjf phantomjs-1.9.1-linux-x86_64.tar.bz2
+    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-i686/bin/phantomjs /usr/local/share/phantomjs
+    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-i686/bin/phantomjs /usr/local/bin/phantomjs
+    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-i686/bin/phantomjs /usr/bin/phantomjs
 
 #### Windows:
 
