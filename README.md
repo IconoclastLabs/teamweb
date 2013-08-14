@@ -24,7 +24,7 @@ Add your user to `lib/tasks/populate.rake` to customize, then run the following:
 $ rake db:populate
 ```
 
-#### Tests
+### Tests
 Integration testing is done using PhantomJS using the Poltergeist driver
 for Capybara.  Installing PhantomJS is a manual step you must perform.
 
