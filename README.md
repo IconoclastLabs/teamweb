@@ -25,10 +25,33 @@ $ rake db:populate
 ```
 
 #### Tests
-Some tests are driven by Qt/capybara webkit.  If you don't have Qt please see installation instructions here:
-[https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit)
+Integration testing is done using PhantomJS using the Poltergeist driver
+for Capybara.  Installing PhantomJS is a manual step you must perform.
+
+#### OSX: 
+
+    brew update && brew install phantomjs
+
+#### Linux (manually):
+
+    cd /usr/local/share
+    wget
+    http://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2
+    tar xjf phantomjs-1.9.1-linux-x86_64.tar.bz2
+    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-x86_64/bin/phantomjs /usr/local/share/phantomjs
+    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-x86_64/bin/phantomjs /usr/local/bin/phantomjs
+    sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-x86_64/bin/phantomjs /usr/bin/phantomjs
+
+#### Ubuntu >12.10:
+
+Still install it manually. `sudo apt-get install phantomjs` as of 13.04 will still install 1.6.x which is quite old.
+
+#### Windows:
+
+Why do you hate yourself?
 
 ## 3: Hows it going?
+
 * Human readable History in the [WIKI](https://github.com/GantMan/teamweb/wiki/History) or a more detailed version [in our commits](https://github.com/GantMan/teamweb/commits/master)
 * Testing History via [Travis-CI](https://travis-ci.org/GantMan/teamweb/builds)
 * Got ideas?  Add them to the [issues!](https://github.com/GantMan/teamweb/issues?state=open) 
