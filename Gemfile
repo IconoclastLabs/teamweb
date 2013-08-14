@@ -37,7 +37,7 @@ gem 'populator'
 gem 'forgery'
 gem "literate_randomizer"
 
-#Production Debug Info
+#Performance Inspection Gems
 gem 'rails_javascript_log' # allows browser independent logging for js with styles `log('what *is* this?')`
 gem 'peek' # awesome magic- https://github.com/peek/peek
 gem 'peek-git'
