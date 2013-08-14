@@ -13,4 +13,5 @@
 //= require plugins
 //= require jquery
 //= require jquery_ujs
+//= require rails_javascript_log
 //= require_tree .

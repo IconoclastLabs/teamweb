@@ -36,6 +36,8 @@ gem 'friendly_id', github: 'FriendlyId/friendly_id', branch: 'master' # Note: Yo
 gem 'populator'
 gem 'forgery'
 gem "literate_randomizer"
+
+gem 'rails_javascript_log' # allows browser independent logging for js with styles `log('what *is* this?')`
 gem 'kaminari' #allows for pagination
 
 # OmniAuth stuff
