@@ -43,7 +43,7 @@ for Capybara.  Installing PhantomJS is a manual step you must perform.
     sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-i686/bin/phantomjs /usr/bin/phantomjs
 
     USE 64 bit
-	sudo wget http://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2)
+	sudo wget http://phantomjs.googlecode.com/files/phantomjs-1.9.1-linux-x86_64.tar.bz2
 	sudo tar xjf phantomjs-1.9.1-linux-x86_64.tar.bz2
 	sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-i686/bin/phantomjs /usr/local/share/phantomjs
 	sudo ln -s /usr/local/share/phantomjs-1.9.1-linux-i686/bin/phantomjs /usr/local/bin/phantomjs
