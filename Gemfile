@@ -37,7 +37,16 @@ gem 'populator'
 gem 'forgery'
 gem "literate_randomizer"
 
+#Production Debug Info
 gem 'rails_javascript_log' # allows browser independent logging for js with styles `log('what *is* this?')`
+gem 'peek' # awesome magic- https://github.com/peek/peek
+gem 'peek-git'
+gem 'peek-performance_bar'
+gem 'peek-gc'
+gem 'peek-rblineprof'
+gem 'pygments.rb', :require => false
+
+
 gem 'kaminari' #allows for pagination
 
 # OmniAuth stuff

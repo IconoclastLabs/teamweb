@@ -9,5 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require peek
+ *= require peek/views/performance_bar
+ *= require peek/views/rblineprof
+ *= require peek/views/rblineprof/pygments
  *= require_tree .
  */

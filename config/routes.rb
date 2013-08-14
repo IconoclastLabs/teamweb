@@ -1,9 +1,8 @@
 Teamweb::Application.routes.draw do
-
+  
+  mount Peek::Railtie => '/peek'
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks"}
-
-  #resources :teams
 
   resources :organizations do
     resources :events do
