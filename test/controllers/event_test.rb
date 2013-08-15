@@ -77,6 +77,14 @@ class EventTest < ActiveSupport::TestCase
     event_two.users.include?(@first_user).must_equal true
   end
 
+  it 'must at least have room for one member if members are allowed' do
+    simple_event.max_members = 1
+    simple_event.members_allowed = true
+    simple_event.valid?.must_equal true
+    simple_event.max_members = 0
+    simple_event.valid?.must_equal false
+  end
+
   it 'cannot exceed max_members' do
     simple_event.max_members = 1
     simple_event.save.must_equal true
@@ -98,9 +106,10 @@ class EventTest < ActiveSupport::TestCase
   end
 
   it 'must at least have room for one team if teams are allowed' do
-    simple_event.max_teams = 0
+    simple_event.max_teams = 1
     simple_event.teams_allowed = true
-    binding.pry
+    simple_event.valid?.must_equal true
+    simple_event.max_teams = 0
     simple_event.valid?.must_equal false
   end
 end
