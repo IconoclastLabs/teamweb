@@ -2,13 +2,13 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
 
-  def test_icon_tag
+  it "renders an icon_tag html" do
     icon_html = icon_tag("play")
-    assert_match "<i class='icon-play icon-white'></i> ", icon_html
+    icon_html.must_equal "<i class='icon-play icon-white'></i> "
   end
 
-  def test_black_icon
+  it "renders black_icon html" do
     icon_html = black_icon("play")
-    assert_match "<i class='icon-play'></i> ", icon_html
+    icon_html.must_equal "<i class='icon-play'></i> "
   end
 end
