@@ -49,7 +49,7 @@ class EventFlowTest < ActionDispatch::IntegrationTest
   end
 
 ########################################################################## 
-#########################    webkit tests    #############################
+#########################    Phantomjs tests    ##########################
 ########################################################################## 
   test "Max Members section hides and shows correctly" do
     # we need to see jQuery, so switch to more robust driver

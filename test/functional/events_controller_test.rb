@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'minitest/pride'
 
 class EventsControllerTest < ActionController::TestCase
   include Devise::TestHelpers
