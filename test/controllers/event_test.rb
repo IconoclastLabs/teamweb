@@ -32,6 +32,7 @@ class EventTest < ActiveSupport::TestCase
 	}
 
   let(:simple_event) {Event.new(name: 'TestName', about: 'TestAbout', location: 'New Orleans', start: '2013-05-31', end: '2013-05-31', latitude: nil, longitude: nil, gmaps: true)}
+  
   it 'can create a new Event' do
     simple_event.valid?.must_equal true
   end
