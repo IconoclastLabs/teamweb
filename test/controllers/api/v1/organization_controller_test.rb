@@ -18,5 +18,9 @@ class Api::V1::OrganizationsControllerTest < ActionController::TestCase
       json_response = JSON.parse response.body
       json_response.wont_be_nil
     end
+
+    it "should require authentication to view any organizations" do
+
+    end
   end
 end
