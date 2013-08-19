@@ -1,15 +1,21 @@
-= simple_form_for([@organization, @season]) do |f|
-  = f.error_notification
+= simple_form_for([@organization, @season]), :html => {:class => 'form-horizontal' } do |f|
+  -#= f.error_notification
+  - if @event.errors.any?
+    %h2= "#{pluralize(@event.errors.count, "error")} prohibited this team from being saved:"
+    %ul
+      - @event.errors.full_messages.each do |msg|
+        %li= msg
 
   .form-inputs
-    = f.input :name
-    = f.input :start
-    = f.input :end
-    = f.input :members_allowed
-    = f.input :max_members
-    = f.input :teams_allowed
-    = f.input :max_teams
-    = f.input :max_team_size
+    = f.input :name, label: "Name for this season"
+    = f.input :start, as: :string, input_html: { type: "date"}
+    = f.input :end, as: :string, input_html: { type: "date" }
+    = f.input :members_allowed, label: "Members allowed?", hint: "Can users join the season without a team?", input_html: { :'data-hide' => '.event_max_members'}
+    = f.input :max_members, input_html: { :'data-maxable' => 'no-max'}
+    = f.input :teams_allowed, label: "Teams allowed?", hint: "Can users create teams?", input_html: { :'data-hide' => '.event_max_teams, .event_max_team_size'}
+    = f.input :max_teams, input_html: { :'data-maxable' => 'no-max'}
+    = f.input :max_team_size, input_html: { :'data-maxable' => 'no-max'}
 
   .form-actions
-    = f.button :submit
+    %button.btn.btn-info{type: "submit"}
+      = icon_tag('thumbs-up') + 'Save'

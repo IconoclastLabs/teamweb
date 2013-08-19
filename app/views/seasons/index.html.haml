@@ -1,18 +1,18 @@
 %h1 Listing seasons
 
-%table
-  %tr
-    %th Name
-    %th Start
-    %th End
-    %th Members allowed
-    %th Max members
-    %th Teams allowed
-    %th Max teams
-    %th Max team size
-    %th
-    %th
-    %th
+%table.table.table-striped
+  %thead
+    %tr
+      %th Name
+      %th Location
+      %th Start
+      %th End
+      %th Members allowed
+      %th Max members
+      %th Teams allowed
+      %th Max teams
+      %th Max team size
+      %th
 
   - @seasons.each do |season|
     %tr
@@ -24,10 +24,13 @@
       %td= season.teams_allowed
       %td= season.max_teams
       %td= season.max_team_size
-      %td= link_to 'Show', organization_season_path(season.organization, season)
-      %td= link_to 'Edit', edit_organization_season_path(season.organization, season)
-      %td= link_to 'Destroy', organization_season_path(season.organization, season), :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %td.btn-group
+        = link_to icon_tag("play") + 'Show', organization_season_path(season.organization, season), class: "btn btn-info"
+        - if user_signed_in?
+          = link_to icon_tag("wrench") + 'Edit', edit_organization_season_path(season.organization, season), class: "btn btn-info"
+          = link_to icon_tag("trash") + 'Delete', organization_season_path(season.organization, season), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+      
 %br
 
-= link_to 'New Season', new_organization_season_path
+= link_to icon_tag("star-empty") + 'New Season', new_organization_season_path, class: "btn btn-success" if user_signed_in?
+-#= paginate @
