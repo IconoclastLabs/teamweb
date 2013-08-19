@@ -26,6 +26,30 @@ Minitest Cheatsheet
 * [Test Setup](#test-setup)
 * [Test Teardown](#test-teardown)
 
+### Helpers
+
+* [Let](#let)
+* [Subject](#subject)
+* [Specify](#specify)
+* [Skip](#skip)
+
+### Mocks
+
+* [Mocks](#mocks)
+
+#### Notes:
+
+Official Docs for [Minitest](http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/spec/rdoc/), [Minitest Spec](http://www.ruby-doc.org/stdlib-2.0/libdoc/minitest/rdoc/MiniTest.html) and [Minitest Mocks](http://www.ruby-doc.org/stdlib-1.9.3/libdoc/minitest/mock/rdoc/MiniTest/Mock.html)
+
+[Minitest Github Repo](https://github.com/seattlerb/minitest)
+
+[Minimalicious Testing](http://blog.arvidandersson.se/2012/03/28/minimalicous-testing-in-ruby-1-9)
+
+[Minitest Quick Reference](http://mattsears.com/articles/2011/12/10/minitest-quick-reference)
+
+[Minitest Cheat Sheet, Unit and Spec reference](http://danwin.com/2013/03/ruby-minitest-cheat-sheet/)
+
+
 ## Empty
 
 
@@ -285,3 +309,90 @@ Test Teardown
 Unit: `teardown()`
 
 Spec: `after(type = nil, &block)`
+
+Helpers
+-------
+
+
+## Let
+
+`let` is like simplified version of the before hook that you use to setup predefined accessors and the values they return:
+
+		describe Person do
+
+		  let(:person) { Person.new("Yukihiro", "Matsumoto") }
+
+		  it "has a full name" do
+		    person.full_name.must_equal "Yukihiro Matsumoto"
+		  end
+
+		end
+
+## Subject
+
+`subject` works similar to let but you can only use it to set a accessor called subject. This is used to specify the object who's behavior is being described:
+
+		describe Person do
+
+		  subject { Person.new("Yukihiro", "Matsumoto") }
+
+		  it "has a full name" do
+		    subject.full_name.must_equal "Yukihiro Matsumoto"
+		  end
+
+		end
+
+## Specify
+
+`specify` is a alias for `it`, it is usually used where it doesn't make sense to describe the example with a string:
+
+		describe Person do
+
+		  subject { Person.new }
+
+		  specify { subject.posts.must_be_empty }
+
+		end
+
+## Skip
+
+`skip` provides a way to skip examples from being run, the method takes a string as optional argument that can be used to provide a explanation to why that example is skipped:
+
+		describe Ticket do
+
+		  it "expires after one year" do
+		    skip "Vending machine clock is broken"
+		    t = Ticket.new(:created_at => 1.year_ago)
+		    t.expired?.must_be true
+		  end
+
+		end
+
+The code after skip is not run in the example and is reported as “Skipped” (a S instead of a .) in the output when running the tests:
+
+		$ ruby spec/ticket_spec.rb
+		Run options: --seed 48730
+
+		# Running tests:
+
+		S
+
+		Finished tests in 0.000633s, 1579.7788 tests/s, 0.0000 assertions/s.
+
+		1 tests, 0 assertions, 0 failures, 0 errors, 1 skips
+
+This can be handy if you want to hide error messages while doing refactorings or to describe a bug that you are not going to fix this very minute.
+
+Another way of doing skips is using the it method without a block. This can be used to keep a list of tests that you plan to write. As skipped tests gets marked in the output you will get reminded that there are examples left to write.
+
+		describe Ticket do
+
+		  it "expires after one year"
+		  it "has a description"
+		  it "belongs to a venue"
+
+		end
+
+## Mocks
+
+Todo.

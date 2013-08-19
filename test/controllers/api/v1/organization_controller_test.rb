@@ -8,12 +8,12 @@ class Api::V1::OrganizationsControllerTest < ActionController::TestCase
   # http://www.emilsoman.com/blog/2013/05/18/building-a-tested/
   describe  "/api/v1/organizations" do
     
-    describe "not_really_an_action.json" do
-      it "should return a 404 error code" do
-        get :not_really_an_action, format: :json
-        assert_response :missing
-      end
-    end
+    # describe "not_really_an_action.json" do
+    #   it "should return a 404 error code" do
+    #     get :not_really_an_action, format: :json
+    #     assert_response :missing
+    #   end
+    # end
 
     describe "index.json" do
       before do
@@ -32,7 +32,7 @@ class Api::V1::OrganizationsControllerTest < ActionController::TestCase
       end
 
       it "should contain at least one organization object" do
-        binding.pry 
+        #binding.pry 
         #json_response['']
       end
     end
