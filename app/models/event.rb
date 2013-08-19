@@ -18,8 +18,7 @@
 #
 
 class Event < ActiveRecord::Base
-  belongs_to :organization
-  has_many :teams, dependent: :destroy
+  belongs_to :season
   has_many :members, dependent: :destroy, as: :groupable
   has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}

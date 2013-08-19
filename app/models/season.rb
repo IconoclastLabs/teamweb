@@ -17,4 +17,8 @@
 #
 
 class Season < ActiveRecord::Base
+  belongs_to :organization
+  has_many :events, dependent: :destroy
+  has_many :teams, dependent: :destroy
+  validates :name, :contact, presence: true, length: {in: 2..38}
 end
