@@ -7,6 +7,10 @@ module Api
       def index
         @organizations = Organization.order(:name)
       end
+
+      def show
+        @organization = Organization.friendly.find(params[:id])
+      end
     end
   end
 end
