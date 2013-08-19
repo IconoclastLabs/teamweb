@@ -21,6 +21,8 @@ class Event < ActiveRecord::Base
   belongs_to :season
   has_many :members, dependent: :destroy, as: :groupable
   has_many :users, through: :members
+  has_many :matchups, dependent: :destroy
+  has_many :teams, through: :matchups
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}
   validates :location, presence: true
   acts_as_gmappable process_geocoding: :geocode?, address: "location", normalized_address: "location", msg: "Google doesn't know where that is."
