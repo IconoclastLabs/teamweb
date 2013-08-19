@@ -4,6 +4,7 @@ require 'rails/test_help'
 require 'capybara/poltergeist'
 require 'rack/test'
 
+
 class ActiveSupport::TestCase
   include Rack::Test::Methods
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.

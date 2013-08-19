@@ -65,7 +65,6 @@ group :development, :test do
   gem 'sqlite3'
 	gem 'awesome_print' # OF COURSE!
   gem 'minitest-spec-rails'
-  #gem 'minitest-emoji'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-doc'

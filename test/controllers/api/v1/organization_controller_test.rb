@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class Api::V1::OrganizationsControllerTest < ActionController::TestCase
-  include Devise::TestHelpers
+# trying to take cues from these articles:
+# http://matthewlehner.net/rails-api-testing-guidelines/
+# http://www.emilsoman.com/blog/2013/05/18/building-a-tested/
 
-  # trying to take cues from these articles: 
-  # http://matthewlehner.net/rails-api-testing-guidelines/
-  # http://www.emilsoman.com/blog/2013/05/18/building-a-tested/
+describe Api::V1::OrganizationsController do
+  #include Devise::TestHelpers
   describe  "/api/v1/organizations" do
-    
+
     # describe "not_really_an_action.json" do
     #   it "should return a 404 error code" do
     #     get :not_really_an_action, format: :json
@@ -15,7 +15,7 @@ class Api::V1::OrganizationsControllerTest < ActionController::TestCase
     #   end
     # end
 
-    describe "index.json" do
+    describe "index" do
       before do
         get :index, format: :json
         @json_response = JSON.parse response.body
@@ -32,8 +32,20 @@ class Api::V1::OrganizationsControllerTest < ActionController::TestCase
       end
 
       it "should contain at least one organization object" do
-        #binding.pry 
-        #json_response['']
+        #binding.pry
+        @json_response['organizations'].size.must_be(:>, 0)
+      end
+    end
+
+    describe "/api/v1/organizations/:id" do
+      before do
+        @organization = organizations(:coord_one)
+        get :show, format: :json, id: @organization.id
+        @json_response = JSON.parse response.body
+      end
+
+      it "displays a single organization" do
+        @json_response['organization']['id'].must_equal @organization.id
       end
     end
   end
