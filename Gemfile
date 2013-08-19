@@ -21,7 +21,7 @@ gem "rails-boilerplate"
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 
-gem "devise", '~> 3.0.0.rc'
+gem "devise", '~> 3.1.0.rc2'
 gem 'puma'
 
 # rails 4
@@ -79,7 +79,6 @@ group :development, :test do
   gem 'brakeman' # checks for security vulns
   gem 'guard-brakeman'
   #gem 'guard-test'
-  gem "sextant" # adds route display info to /rails/routes
   gem "better_errors"
   gem "binding_of_caller"
   gem 'annotate'

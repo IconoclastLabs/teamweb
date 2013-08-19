@@ -56,7 +56,8 @@ Devise.setup do |config|
   # :token         = Support basic authentication with token authentication key
   # :token_options = Support token authentication with options as defined in
   #                  http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Token.html
-  # config.http_authenticatable = false
+  
+  config.http_authenticatable = [:token]
 
   # If http headers should be returned for AJAX requests. True by default.
   # config.http_authenticatable_on_xhr = true
@@ -74,7 +75,7 @@ Devise.setup do |config|
   # Notice that if you are skipping storage for all authentication paths, you
   # may want to disable generating routes to Devise's sessions controller by
   # passing :skip => :sessions to `devise_for` in your config/routes.rb
-  config.skip_session_storage = [:http_auth]
+  config.skip_session_storage = [:http_auth, :token]
 
   # ==> Configuration for :database_authenticatable
   # For bcrypt, this is the cost for hashing the password and defaults to 10. If
@@ -87,6 +88,10 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "6c02bd84d640c586c0b92dc8ff9cb7182de1d25d3b6f37a1f912c90d7dbf42ea410eed780a8b5d75168a497ee8a4432e980857df6decfa225e13560644ca1dcd"
+  # TODO: set this up in Figaro
+
+  config.secret_key = '271ca795a7fa357d83352aef565e5869e9be641d644b4521e9b5aff502858f30787b97fa77af81e7b67da908599d459c609dda88d3ded258da1abb6fd5be11e1'
+
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -136,10 +141,10 @@ Devise.setup do |config|
   # ==> Configuration for :timeoutable
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
-  # config.timeout_in = 30.minutes
+  config.timeout_in = 30.minutes
 
   # If true, expires auth token on session timeout.
-  # config.expire_auth_token_on_timeout = false
+  config.expire_auth_token_on_timeout = true
 
   # ==> Configuration for :lockable
   # Defines which strategy will be used to lock an account.
@@ -186,7 +191,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :token_authenticatable
   # Defines name of the authentication token params key
-  # config.token_authentication_key = :auth_token
+  config.token_authentication_key = :auth_token
 
   # ==> Scopes configuration
   # Turn scoped views on. Before rendering "sessions/new", it will first check for

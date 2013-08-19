@@ -20,6 +20,7 @@
 #  name                   :string(255)
 #  provider               :string(255)
 #  uid                    :string(255)
+#  authentication_token   :string(255)
 #
 
 class User < ActiveRecord::Base
@@ -28,9 +29,9 @@ class User < ActiveRecord::Base
   has_many :events, through: :members
   has_many :teams, through: :members
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
+  #  :confirmable,
   # :lockable, :timeoutable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :token_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
   validates :email, uniqueness: {case_sensitive: false}
@@ -39,6 +40,8 @@ class User < ActiveRecord::Base
     :unless => Proc.new { |user| user.phone.blank? },
     :with => /\A\d{3}-\d{3}-\d{4}\z/,
     :message => "- Phone numbers must be in xxx-xxx-xxxx format."
+
+  before_save :ensure_authentication_token
 
 
   # tries to find user with those oauth creds, otherwise it creates a new one (with random password)
@@ -62,6 +65,22 @@ class User < ActiveRecord::Base
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
+    end
+  end
+
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
+  private
+
+  def generate_authentication_token
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
     end
   end
 end
