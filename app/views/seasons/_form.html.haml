@@ -1,0 +1,15 @@
+= simple_form_for(@season) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :start
+    = f.input :end
+    = f.input :members_allowed
+    = f.input :max_members
+    = f.input :teams_allowed
+    = f.input :max_teams
+    = f.input :max_team_size
+
+  .form-actions
+    = f.button :submit

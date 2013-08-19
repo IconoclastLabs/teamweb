@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  start: 2013-08-19
+  end: 2013-08-19
+  members_allowed: false
+  max_members: 1
+  teams_allowed: false
+  max_teams: 1
+  max_team_size: 1
+
+two:
+  name: MyString
+  start: 2013-08-19
+  end: 2013-08-19
+  members_allowed: false
+  max_members: 1
+  teams_allowed: false
+  max_teams: 1
+  max_team_size: 1

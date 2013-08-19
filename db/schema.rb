@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130810233036) do
+ActiveRecord::Schema.define(version: 20130819150900) do
 
   create_table "events", force: true do |t|
     t.string   "name"
     t.string   "about"
-    t.integer  "organization_id"
     t.string   "location"
     t.date     "start"
     t.date     "end"
@@ -25,14 +24,11 @@ ActiveRecord::Schema.define(version: 20130810233036) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.integer  "max_members"
     t.boolean  "members_allowed", default: true
-    t.boolean  "teams_allowed",   default: true
-    t.integer  "max_teams"
-    t.integer  "max_team_size"
+    t.integer  "season_id"
   end
 
-  add_index "events", ["organization_id"], name: "index_events_on_organization_id"
+  add_index "events", ["season_id"], name: "index_events_on_season_id"
 
   create_table "members", force: true do |t|
     t.integer  "user_id"
@@ -56,6 +52,22 @@ ActiveRecord::Schema.define(version: 20130810233036) do
   end
 
   add_index "organizations", ["slug"], name: "index_organizations_on_slug", unique: true
+
+  create_table "seasons", force: true do |t|
+    t.integer  "organization_id"
+    t.string   "name",                           null: false
+    t.date     "start"
+    t.date     "end"
+    t.boolean  "members_allowed", default: true, null: false
+    t.integer  "max_members"
+    t.boolean  "teams_allowed",   default: true, null: false
+    t.integer  "max_teams"
+    t.integer  "max_team_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "seasons", ["organization_id"], name: "index_seasons_on_organization_id"
 
   create_table "teams", force: true do |t|
     t.string   "name"

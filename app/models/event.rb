@@ -5,7 +5,6 @@
 #  id              :integer          not null, primary key
 #  name            :string(255)
 #  about           :string(255)
-#  organization_id :integer
 #  location        :string(255)
 #  start           :date
 #  end             :date
@@ -14,11 +13,8 @@
 #  latitude        :float
 #  longitude       :float
 #  gmaps           :boolean
-#  max_members     :integer
 #  members_allowed :boolean          default(TRUE)
-#  teams_allowed   :boolean          default(TRUE)
-#  max_teams       :integer
-#  max_team_size   :integer
+#  season_id       :integer
 #
 
 class Event < ActiveRecord::Base
