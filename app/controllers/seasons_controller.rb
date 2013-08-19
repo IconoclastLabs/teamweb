@@ -1,5 +1,5 @@
 class SeasonsController < ApplicationController
-  before_action :set_season, only: [:show, :edit, :update, :destroy]
+  before_action :set_parents, only: [:show, :edit, :update, :destroy]
 
   # GET /seasons
   # GET /seasons.json
@@ -14,7 +14,8 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/new
   def new
-    @season = Season.new
+    @organization = Organization.friendly.find(params[:organization_id])
+    @season = @organization.seasons.build(params[:event])
   end
 
   # GET /seasons/1/edit
@@ -24,11 +25,12 @@ class SeasonsController < ApplicationController
   # POST /seasons
   # POST /seasons.json
   def create
+    @organization = Organization.friendly.find(params[:organization_id])
     @season = Season.new(season_params)
 
     respond_to do |format|
       if @season.save
-        format.html { redirect_to @season, notice: 'Season was successfully created.' }
+        format.html { redirect_to [@organization, @season], notice: 'Season was successfully created.' }
         format.json { render action: 'show', status: :created, location: @season }
       else
         format.html { render action: 'new' }
@@ -42,7 +44,7 @@ class SeasonsController < ApplicationController
   def update
     respond_to do |format|
       if @season.update(season_params)
-        format.html { redirect_to @season, notice: 'Season was successfully updated.' }
+        format.html { redirect_to [@organization, @season], notice: 'Season was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -63,7 +65,8 @@ class SeasonsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_season
+    def set_parents
+      @organization = Organization.friendly.find(params[:organization_id])
       @season = Season.find(params[:id])
     end
 

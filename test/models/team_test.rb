@@ -44,9 +44,9 @@ class TeamTest < ActiveSupport::TestCase
 
   it 'has an event' do
     # verify the property exists
-    assert_respond_to(@team_one, :event)
+    assert_respond_to(@team_one, :events)
     # verify it is set
-    assert_not_nil @team_one.event
+    assert_not_nil @team_one.events
   end
 
   it 'can have users' do

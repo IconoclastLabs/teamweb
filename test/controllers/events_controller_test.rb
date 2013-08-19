@@ -5,7 +5,6 @@ class EventsControllerTest < ActionController::TestCase
 
   setup do
     @event = events(:event_one)
-    
     @new_event = events(:event_two) 
     @new_event.id = nil
     @new_event.name = "Different"

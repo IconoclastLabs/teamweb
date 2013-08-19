@@ -20,8 +20,7 @@ class Team < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :event_id}
   # if max_members then greater than 0
   validates_numericality_of :max_members, allow_nil: true, greater_than: 0
-  validate :owner_allows_teams
-  validate :event_limits
+  validate :owner_allows_teams, :owner_limits
 
   def add_team_member(user, admin_flag: false)
     Member.transaction do
@@ -33,15 +32,15 @@ class Team < ActiveRecord::Base
   end
 
   def owner_allows_teams
-    if self.event.try(:teams_allowed?) == false # nil not false
-      errors.add(:event, "Teams are not allowed")
+    if self.season.try(:teams_allowed?) == false # nil not false
+      errors.add(:season, "Teams are not allowed")
     end
   end
 
-  def event_limits
+  def owner_limits
     
-    if self.event.try(:max_team_size) && self.max_members
-      errors.add(:team, "members may not exceed event limits") if self.max_members > self.event.max_team_size
+    if self.season.try(:max_team_size) && self.max_members
+      errors.add(:team, "members may not exceed season limits") if self.max_members > self.season.max_team_size
     end
 
   end

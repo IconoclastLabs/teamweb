@@ -1,11 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :get_organization
-
-  def get_organization
-    if params[:organization_id]
-      @organization = Organization.friendly.find(params[:organization_id])
-    end
-  end
+  before_action :set_parents, only: [:show, :edit, :update, :destroy, :add_user]
 
   def add_user
     @event = Event.find(params[:id])
@@ -99,7 +93,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(event_params)
-        format.html { redirect_to [@organization, @event], notice: 'Event was successfully updated.' }
+        format.html { redirect_to [@organization, @season, @event], notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -120,7 +114,12 @@ class EventsController < ApplicationController
     end
   end
 
-  def event_params
-    params.require(:event).permit(:about, :end, :location, :name, :start, :max_members, :members_allowed, :teams_allowed, :max_teams, :max_team_size)
-  end
+  private
+    def set_parents
+      @organization = Organization.friendly.find(params[:organization_id])
+    end
+
+    def event_params
+      params.require(:event).permit(:about, :end, :location, :name, :start, :max_members, :members_allowed, :teams_allowed, :max_teams, :max_team_size)
+    end
 end

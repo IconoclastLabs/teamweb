@@ -11,10 +11,10 @@
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  event_id: 
-  team_id: 
+matchup_one:
+  event: event_one
+  team: team_one
 
-two:
-  event_id: 
-  team_id: 
+matchup_two:
+  event: event_one
+  team: team_two

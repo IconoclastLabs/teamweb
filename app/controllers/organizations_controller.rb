@@ -14,9 +14,10 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = Organization.friendly.find(params[:id])
-    @maps_json = @organization.events.to_gmaps4rails do |event, marker|
-      marker.title event.name 
-    end
+    # TODO rethink this
+    # @maps_json = @organization.seasons.first.events.to_gmaps4rails do |event, marker|
+    #   marker.title event.name 
+    # end
     
     respond_to do |format|
       format.html # show.html.erb

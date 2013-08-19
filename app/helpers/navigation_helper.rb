@@ -11,10 +11,12 @@ module NavigationHelper
         # Build breadcrumbs along association when applicable
         navigation_add "Organizations", organizations_path if @organizations || @organization
         navigation_add @organization.name, organization_path(@organization) if defined?(@organization) && @organization.id
-        navigation_add "Events", organization_events_path(@organization)  if @events || @event
-        navigation_add @event.name, organization_event_path(@event.organization, @event) if defined?(@event) && @event.id
-        navigation_add "Teams", organization_event_teams_path(@organization, @event) if @teams || @team
-        navigation_add @team.name, organization_event_team_path(@organization, @event, @team) if defined?(@team) && @team.id
+        navigation_add "Seasons", organization_seasons_path(@organization) if @seasons || @season
+        navigation_add @season.name, organization_season_path(@organization, @season) if defined?(@season) && @season.id
+        navigation_add "Events", organization_season_events_path(@organization, @season)  if @events || @event
+        navigation_add @event.name, organization_season_event_path(@event.organization, @event) if defined?(@event) && @event.id
+        navigation_add "Teams", organization_season_teams_path(@organization, @season) if @teams || @team
+        navigation_add @team.name, organization_season_team_path(@organization, @season, @team) if defined?(@team) && @team.id
 
         render :partial => 'shared/navigation', :locals => { :nav => ensure_navigation }
     end

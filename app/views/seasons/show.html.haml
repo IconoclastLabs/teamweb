@@ -25,6 +25,6 @@
   %b Max team size:
   = @season.max_team_size
 
-= link_to 'Edit', edit_season_path(@season)
+= link_to 'Edit', edit_organization_season_path(@organization, @season)
 \|
-= link_to 'Back', seasons_path
+= link_to 'Back', organization_seasons_path
