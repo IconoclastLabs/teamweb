@@ -2,23 +2,18 @@
 #
 # Table name: events
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  about           :string(255)
-#  organization_id :integer
-#  location        :string(255)
-#  start           :date
-#  end             :date
-#  created_at      :datetime
-#  updated_at      :datetime
-#  latitude        :float
-#  longitude       :float
-#  gmaps           :boolean
-#  max_members     :integer
-#  members_allowed :boolean          default(TRUE)
-#  teams_allowed   :boolean          default(TRUE)
-#  max_teams       :integer
-#  max_team_size   :integer
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  about      :string(255)
+#  location   :string(255)
+#  start      :date
+#  end        :date
+#  created_at :datetime
+#  updated_at :datetime
+#  latitude   :float
+#  longitude  :float
+#  gmaps      :boolean
+#  season_id  :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

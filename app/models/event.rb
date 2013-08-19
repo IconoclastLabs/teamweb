@@ -2,19 +2,18 @@
 #
 # Table name: events
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  about           :string(255)
-#  location        :string(255)
-#  start           :date
-#  end             :date
-#  created_at      :datetime
-#  updated_at      :datetime
-#  latitude        :float
-#  longitude       :float
-#  gmaps           :boolean
-#  members_allowed :boolean          default(TRUE)
-#  season_id       :integer
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  about      :string(255)
+#  location   :string(255)
+#  start      :date
+#  end        :date
+#  created_at :datetime
+#  updated_at :datetime
+#  latitude   :float
+#  longitude  :float
+#  gmaps      :boolean
+#  season_id  :integer
 #
 
 class Event < ActiveRecord::Base

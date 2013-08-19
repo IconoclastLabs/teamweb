@@ -2,7 +2,7 @@ class RemoveAllowedAndMaxFromEvent < ActiveRecord::Migration
   def change
     # remove the old
     remove_column :events, :teams_allowed
-    remove_column :events, :events_allowed
+    remove_column :events, :members_allowed
     remove_column :events, :max_members
     remove_column :events, :max_teams
     remove_column :events, :max_team_size

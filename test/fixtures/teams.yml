@@ -4,11 +4,11 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
-#  event_id    :integer
 #  created_at  :datetime
 #  updated_at  :datetime
 #  max_members :integer
 #  rank        :integer
+#  season_id   :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

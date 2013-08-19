@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20130819154746) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.boolean  "members_allowed", default: true
     t.integer  "season_id"
   end
 
