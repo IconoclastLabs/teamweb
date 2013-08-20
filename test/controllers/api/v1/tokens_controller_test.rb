@@ -48,7 +48,7 @@ describe Api::V1::TokensController do
 				response.status.must_equal 401 # 401 Unauthorized
 			end
 
-			it "complains if the user's password is wrong" do
+			it "responds with the token if the email/password is correct" do
 				post :create, format: :json, email:  @user.email, password: '123456789'
 				json_response = JSON.parse response.body
 				json_response['token'].wont_be_nil
@@ -56,9 +56,29 @@ describe Api::V1::TokensController do
 				response.status.must_equal 200 # 200 Ok
 			end
 		end
+	end	
 
-		describe "resets the user's API token if the currently authenticated users requests it" do
+	describe "/api/v1/tokens/:id" do
 
+		setup do
+			@user = users(:one)
+			# ensure a token exists
+			post :create, format: :json, email:  @user.email, password: '123456789'
+			@token_response = JSON.parse response.body
+		end
+
+		describe "delete" do
+			it "should complain if the token is not found" do
+				delete :destroy, api_v1_token_path(123), format: :json
+				delete_response = JSON.parse response.body
+				delete_response['message'].must_match "Invalid token."
+				response.status.must_equal 404
+			end
+			it "respond with the token that is successfully delete" do
+				binding.pry
+				delete :destroy, api_v1_token_path(@token_response['token']), format: :json
+				response.status.must_equal 200
+			end
 		end
 	end
 
