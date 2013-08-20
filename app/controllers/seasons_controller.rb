@@ -26,7 +26,7 @@ class SeasonsController < ApplicationController
   # POST /seasons.json
   def create
     @organization = Organization.friendly.find(params[:organization_id])
-    @season = Season.new(season_params)
+    @season = @organization.seasons.build(season_params)
 
     respond_to do |format|
       if @season.save
@@ -58,7 +58,7 @@ class SeasonsController < ApplicationController
   def destroy
     @season.destroy
     respond_to do |format|
-      format.html { redirect_to seasons_url }
+      format.html { redirect_to organization_seasons_url }
       format.json { head :no_content }
     end
   end

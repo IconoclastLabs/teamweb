@@ -1,9 +1,9 @@
-= simple_form_for([@organization, @season]), :html => {:class => 'form-horizontal' } do |f|
+= simple_form_for [@organization, @season], :html => {:class => 'form-horizontal' } do |f|
   -#= f.error_notification
-  - if @event.errors.any?
-    %h2= "#{pluralize(@event.errors.count, "error")} prohibited this team from being saved:"
+  - if @season.errors.any?
+    %h2= "#{pluralize(@season.errors.count, "error")} prohibited this team from being saved:"
     %ul
-      - @event.errors.full_messages.each do |msg|
+      - @season.errors.full_messages.each do |msg|
         %li= msg
 
   .form-inputs
