@@ -20,7 +20,8 @@ class TeamsController < ApplicationController
   #  end
   #end
   def index
-    @teams = @event.teams.order(:name).page params[:page]
+    @season = Season.find(params[:season_id])
+    @teams = @season.teams.order(:name).page params[:page]
   end
 
   # GET /teams/1
@@ -35,7 +36,9 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
-    @team = @event.teams.build(params[:team])
+    @season = Season.find(params[:season_id])
+    @organization = @season.organization
+    @team = @season.teams.build(params[:team])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -50,7 +53,9 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @team = @event.teams.new(team_params)
+    @season = Season.find(params[:season_id])
+    @organization = @season.organization
+    @team = @season.teams.new(team_params)
 
     Team.transaction do
       respond_to do |format|
@@ -59,8 +64,8 @@ class TeamsController < ApplicationController
           @team.members.add_member(current_user, admin_flag: true)
           #format.html { redirect_to @team, notice: 'Team was successfully created.' }
           #format.json { render json: @team, status: :created, location: @team }
-          format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully created.' }
-          format.json { render json: [@organization, @event, @team], status: :created, location: @team }
+          format.html { redirect_to [@organization, @season, @team], notice: 'Team was successfully created.' }
+          format.json { render json: [@organization, @season, @team], status: :created, location: @team }
         else
           format.html { render action: "new" }
           format.json { render json: @team.errors, status: :unprocessable_entity }
@@ -72,9 +77,10 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
+    @season = Season.find(params[:season_id])
     respond_to do |format|
       if @team.update_attributes(team_params)
-        format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully updated.' }
+        format.html { redirect_to [@organization, @season, @team], notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -89,7 +95,7 @@ class TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to organization_event_teams_url(@team.event.organization, @team.event) }
+      format.html { redirect_to organization_event_teams_url(@team.season.organization, @team.season) }
       format.json { head :no_content }
     end
   end
@@ -97,8 +103,8 @@ class TeamsController < ApplicationController
   private
     def set_parents
       @team = Team.find(params[:id])
-      @event = Event.find(params[:event_id])
-      @organization = @event.organization
+      @season = Season.find(params[:season_id])
+      @organization = @season.organization
     end
 
     def team_params

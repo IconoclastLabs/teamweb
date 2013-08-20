@@ -17,7 +17,7 @@ class Team < ActiveRecord::Base
   has_many :users, through: :members
   has_many :matchups, dependent: :destroy
   has_many :events, through: :matchups
-  validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :event_id}
+  validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :season_id}
   # if max_members then greater than 0
   validates_numericality_of :max_members, allow_nil: true, greater_than: 0
   validate :owner_allows_teams, :owner_limits
