@@ -21,6 +21,7 @@ class TeamsController < ApplicationController
   #end
   def index
     @season = Season.find(params[:season_id])
+    @organization = @season.organization
     @teams = @season.teams.order(:name).page params[:page]
   end
 
@@ -95,7 +96,7 @@ class TeamsController < ApplicationController
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to organization_event_teams_url(@team.season.organization, @team.season) }
+      format.html { redirect_to organization_season_teams_url(@team.season.organization, @team.season) }
       format.json { head :no_content }
     end
   end

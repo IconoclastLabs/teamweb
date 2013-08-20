@@ -11,10 +11,10 @@
     %tr
       %td= team.name
       %td.btn-group
-        = link_to icon_tag("play") + 'Show', organization_event_team_path(@organization, @event, team), class: "btn btn-info"
+        = link_to icon_tag("play") + 'Show', organization_season_team_path(@organization, @season, team), class: "btn btn-info"
         - if user_signed_in?
-          = link_to icon_tag("wrench") + 'Edit', edit_organization_event_team_path(@organization, @event, team), class: "btn btn-info"
-          = link_to icon_tag("trash") + 'Delete', organization_event_team_path(@organization, @event, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+          = link_to icon_tag("wrench") + 'Edit', edit_organization_season_team_path(@organization, @season, team), class: "btn btn-info"
+          = link_to icon_tag("trash") + 'Delete', organization_season_team_path(@organization, @season, team), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
 
 %br
 
