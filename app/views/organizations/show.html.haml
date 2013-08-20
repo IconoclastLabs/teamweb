@@ -24,9 +24,9 @@
               Admin
 .span11
   %strong
-    = link_to "#{@organization.name} Events", organization_events_path(@organization)
+    = link_to "#{@organization.name} Seasons", organization_seasons_path(@organization)
   %span.badge 
-    = @organization.events.count
+    = @organization.seasons.count
   = gmaps4rails(@maps_json)
 
   .btn-group.pull-left

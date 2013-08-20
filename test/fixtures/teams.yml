@@ -4,20 +4,20 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
-#  event_id    :integer
 #  created_at  :datetime
 #  updated_at  :datetime
 #  max_members :integer
 #  rank        :integer
+#  season_id   :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 team_one:
   name: MyString
-  event: event_one
   max_members: 10
+  season: season_one
 
 team_two:
   name: Two 
-  event: event_two
+  season: season_three

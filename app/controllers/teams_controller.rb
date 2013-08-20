@@ -1,13 +1,7 @@
 class TeamsController < ApplicationController
-  before_filter :get_objects
-
-  def get_objects
-    @event = Event.find(params[:event_id])
-    @organization = @event.organization
-  end
+  before_action :set_parents, only: [:show, :edit, :update, :destroy, :add_user]
 
   def add_user
-    @team = Team.find(params[:id])
     # Only add user if they won't blow out team size.
     if @team.add_team_member(current_user) 
       message = {notice: 'You have been added to the team!'}
@@ -26,15 +20,14 @@ class TeamsController < ApplicationController
   #  end
   #end
   def index
-    @teams = @event.teams.order(:name).page params[:page]
+    @season = Season.find(params[:season_id])
+    @organization = @season.organization
+    @teams = @season.teams.order(:name).page params[:page]
   end
 
   # GET /teams/1
   # GET /teams/1.json
   def show
-  #  @team = Team.find(params[:id])
-    @team = Team.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }
@@ -44,7 +37,9 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
-    @team = @event.teams.build(params[:team])
+    @season = Season.find(params[:season_id])
+    @organization = @season.organization
+    @team = @season.teams.build(params[:team])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -54,14 +49,14 @@ class TeamsController < ApplicationController
 
   # GET /teams/1/edit
   def edit
-    #@team = Team.find(params[:id])
-    @team = Team.find(params[:id])
   end
 
   # POST /teams
   # POST /teams.json
   def create
-    @team = @event.teams.new(team_params)
+    @season = Season.find(params[:season_id])
+    @organization = @season.organization
+    @team = @season.teams.new(team_params)
 
     Team.transaction do
       respond_to do |format|
@@ -70,8 +65,8 @@ class TeamsController < ApplicationController
           @team.members.add_member(current_user, admin_flag: true)
           #format.html { redirect_to @team, notice: 'Team was successfully created.' }
           #format.json { render json: @team, status: :created, location: @team }
-          format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully created.' }
-          format.json { render json: [@organization, @event, @team], status: :created, location: @team }
+          format.html { redirect_to [@organization, @season, @team], notice: 'Team was successfully created.' }
+          format.json { render json: [@organization, @season, @team], status: :created, location: @team }
         else
           format.html { render action: "new" }
           format.json { render json: @team.errors, status: :unprocessable_entity }
@@ -80,15 +75,13 @@ class TeamsController < ApplicationController
     end # end transaction
   end
 
-  # PUT /teams/1
-  # PUT /teams/1.json
+  # PATCH/PUT /teams/1
+  # PATCH/PUT /teams/1.json
   def update
-    #@team = Team.find(params[:id])
-    @team = Team.find(params[:id])
-
+    @season = Season.find(params[:season_id])
     respond_to do |format|
       if @team.update_attributes(team_params)
-        format.html { redirect_to [@organization, @event, @team], notice: 'Team was successfully updated.' }
+        format.html { redirect_to [@organization, @season, @team], notice: 'Team was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -100,16 +93,22 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
-    @team = Team.find(params[:id])
     @team.destroy
 
     respond_to do |format|
-      format.html { redirect_to organization_event_teams_url(@team.event.organization, @team.event) }
+      format.html { redirect_to organization_season_teams_url(@team.season.organization, @team.season) }
       format.json { head :no_content }
     end
   end
 
-  def team_params
-    params.require(:team).permit(:name, :max_members)
-  end
+  private
+    def set_parents
+      @team = Team.find(params[:id])
+      @season = Season.find(params[:season_id])
+      @organization = @season.organization
+    end
+
+    def team_params
+      params.require(:team).permit(:name, :max_members)
+    end
 end

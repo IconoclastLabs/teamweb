@@ -2,23 +2,18 @@
 #
 # Table name: events
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  about           :string(255)
-#  organization_id :integer
-#  location        :string(255)
-#  start           :date
-#  end             :date
-#  created_at      :datetime
-#  updated_at      :datetime
-#  latitude        :float
-#  longitude       :float
-#  gmaps           :boolean
-#  max_members     :integer
-#  members_allowed :boolean          default(TRUE)
-#  teams_allowed   :boolean          default(TRUE)
-#  max_teams       :integer
-#  max_team_size   :integer
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  about      :string(255)
+#  location   :string(255)
+#  start      :date
+#  end        :date
+#  created_at :datetime
+#  updated_at :datetime
+#  latitude   :float
+#  longitude  :float
+#  gmaps      :boolean
+#  season_id  :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
@@ -26,41 +21,33 @@
 event_one:
   name: Running of the Bulls
   about: Famous San Firmin Running of the bulls
-  organization: coord_one
+  season: season_two
   location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
-  max_team_size: 20
 
 event_two:
   name: BLT Ball
   about: Wild and crazy Mardi Gras party
-  organization: coord_two
+  season: season_one
   location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
-  max_members: 10
-  teams_allowed: true
 
 event_three:
   name: Crazy Ball
   about: It is crazy
-  organization: coord_two
+  season: season_one
   location: Memphis
   start: 2013-05-02
   end: 2013-05-04
-  members_allowed: false
-  teams_allowed: true 
-  max_teams: 20
-  max_team_size: 8
 
 event_four:
   name: Crescent City Classic
   about: People all Running WILD!
-  organization: coord_one
+  season: season_three
   location: New Orleans
   start: 2013-05-31
   end: 2013-05-31
-  max_members: 10000
-  teams_allowed: false  
+
   

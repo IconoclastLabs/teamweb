@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: matchups
+#
+#  id         :integer          not null, primary key
+#  event_id   :integer
+#  team_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+matchup_one:
+  event: event_one
+  team: team_one
+
+matchup_two:
+  event: event_one
+  team: team_two
