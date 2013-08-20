@@ -12,7 +12,7 @@
   - @events.each do |event|
     %tr
       %td= event.name
-      %td= link_to event.organization.name, organization_events_path(event.organization)
+      %td= link_to event.season.name, organization_seasons_path(event.season.organization)
       %td= event.location
       %td= event.start.try(:format_like, "Jan 1st")
       = render partial: 'buttons', locals: {event: event}

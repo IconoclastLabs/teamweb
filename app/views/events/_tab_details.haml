@@ -15,7 +15,7 @@
     %ol
       - @event.teams.each do |team|
         %li
-          = link_to team.name, organization_event_team_path(@organization, @season, team)
+          = link_to team.name, organization_season_team_path(@organization, @season, team)
 
   .tab-pane.fade#members 
     %ol

@@ -39,7 +39,7 @@ class Event < ActiveRecord::Base
     Member.transaction do
       self.members.add_member(user, admin_flag: admin_flag)
       #should_raise = self.max_members && self.members.size > self.max_members
-      raise ActiveRecord::Rollback, "Max members met" if should_raise
+      #raise ActiveRecord::Rollback, "Max members met" if should_raise
       true
     end # end Transaction
   end
