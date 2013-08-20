@@ -3,11 +3,11 @@ require 'test_helper'
 class SeasonTest < ActiveSupport::TestCase
   let(:simple_season) {Season.new(name: 'TestName')}
 
-  before { 
-    @organization_one = seasons(:coord_one)
-    @organization_two = seasons(:coord_two)
+  before {
+    @organization_one = organizations(:coord_one)
+    @organization_two = organizations(:coord_two)
     @season_one = seasons(:season_one)
-    @first_user = Users.first
+    @first_user = User.first
   }
 
   it 'can create a new Season' do

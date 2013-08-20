@@ -1,6 +1,6 @@
 class SeasonsController < ApplicationController
   before_action :set_parents, only: [:show, :edit, :update, :destroy]
-
+  
   # GET /seasons
   # GET /seasons.json
   def index

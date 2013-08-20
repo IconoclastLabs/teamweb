@@ -67,6 +67,7 @@ group :development, :test do
   gem 'minitest-spec-rails'
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-nav'
   gem 'pry-doc'
   gem 'interactive_editor' # able to vi from irb
   gem "quiet_assets", ">= 1.0.1"
