@@ -19,8 +19,10 @@ Teamweb::Application.routes.draw do
   end
 
   resources :organizations do
-    resources :events do
-      get 'add_user', on: :member
+    resources :seasons do 
+      resources :events do
+        get 'add_user', on: :member
+      end
       resources :teams do
         get 'add_user', on: :member
       end

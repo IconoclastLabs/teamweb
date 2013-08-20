@@ -1,0 +1,48 @@
+# == Schema Information
+#
+# Table name: seasons
+#
+#  id              :integer          not null, primary key
+#  organization_id :integer
+#  name            :string(255)      not null
+#  start           :date
+#  end             :date
+#  members_allowed :boolean          default(TRUE), not null
+#  max_members     :integer
+#  teams_allowed   :boolean          default(TRUE), not null
+#  max_teams       :integer
+#  max_team_size   :integer
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+season_one:
+  organization: coord_one
+  name: Crazy Stuff
+  start: 2012-08-19
+  end: 2014-08-19
+  members_allowed: true
+  max_members: 100
+  teams_allowed: true
+  max_teams: 10
+  max_team_size: 30
+
+season_two:
+  organization: coord_two
+  name: Running of the Bulls
+  start: 2013-05-31
+  end: 2013-05-31
+  members_allowed: false
+  teams_allowed: true
+  max_teams: 20
+  max_team_size: 10
+
+season_three:
+  organization: coord_one
+  name: Crescent City Classic
+  start: 2013-05-31
+  end: 2013-05-31
+  max_members: 10000
+  teams_allowed: false  

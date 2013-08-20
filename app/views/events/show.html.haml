@@ -38,6 +38,6 @@
 / Button bar
 .span12
   .btn-group
-    = link_to icon_tag("hand-left") + 'Back', organization_events_path, class: "btn btn-primary"
-    = link_to icon_tag("wrench") + 'Edit', edit_organization_event_path(@event.organization, @event), class: "btn btn-info"
-    = link_to 'Add me to event', add_user_organization_event_path(@organization, @event), class: "btn btn-info"
+    = link_to icon_tag("hand-left") + 'Back', organization_season_events_path, class: "btn btn-primary"
+    = link_to icon_tag("wrench") + 'Edit', edit_organization_season_event_path(@season.organization, @season, @event), class: "btn btn-info"
+    = link_to 'Add me to event', add_user_organization_season_event_path(@organization, @season, @event), class: "btn btn-info"

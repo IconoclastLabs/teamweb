@@ -2,10 +2,10 @@
 %ul.nav.nav-tabs#eventTab
   %li.active
     = link_to "Info", "#info", :'data-toggle' => 'tab'
-  - if @event.teams_allowed?
+  - if @season.teams_allowed?
     %li
       = link_to badge("Teams", @event.teams.size), "#teams", :'data-toggle' => 'tab'
-  - if @event.members_allowed?
+  - if @season.members_allowed?
     %li
       = link_to badge("Members", @event.members.size), "#members", :'data-toggle' => 'tab'
 .tab-content#eventTabContent
@@ -15,7 +15,7 @@
     %ol
       - @event.teams.each do |team|
         %li
-          = link_to team.name, organization_event_team_path(@organization, @event, team)
+          = link_to team.name, organization_season_team_path(@organization, @season, team)
 
   .tab-pane.fade#members 
     %ol

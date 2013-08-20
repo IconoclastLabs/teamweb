@@ -4,11 +4,11 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
-#  event_id    :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  rank        :integer
+#  created_at  :datetime
+#  updated_at  :datetime
 #  max_members :integer
+#  rank        :integer
+#  season_id   :integer
 #
 
 require 'test_helper'
@@ -19,6 +19,8 @@ class TeamTest < ActiveSupport::TestCase
     @first_user = @team_one.users.first
     @event_one = events(:event_one)
     @event_two = events(:event_two)
+    @season_one = seasons(:season_one)
+    @season_two = seasons(:season_two)
   }
   let(:simple_team) {Team.new(name: 'TestName', max_members: 5)}
   it 'can create a new Team' do
@@ -30,23 +32,23 @@ class TeamTest < ActiveSupport::TestCase
     simple_team.valid?.must_equal false
   end
 
-  it 'should be unique per event id' do
-    simple_team.event = @event_one
+  it 'should be unique per season id' do
+    simple_team.season = @season_one
     simple_team.save.must_equal true
     # try to save again with exact same info
     new_team = simple_team.clone
     new_team.id = nil
     new_team.valid?.must_equal false
-    # change event id and all is fixed!
-    new_team.event = @event_two
+    # change season id and all is fixed!
+    new_team.season = @season_two
     new_team.valid?.must_equal true
   end
 
-  it 'has an event' do
+  it 'has events' do
     # verify the property exists
-    assert_respond_to(@team_one, :event)
+    assert_respond_to(@team_one, :events)
     # verify it is set
-    assert_not_nil @team_one.event
+    assert_not_nil @team_one.events
   end
 
   it 'can have users' do

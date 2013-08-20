@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @season.name
+%p
+  %b Start:
+  = @season.start
+%p
+  %b End:
+  = @season.end
+%p
+  %b Members allowed:
+  = @season.members_allowed
+%p
+  %b Max members:
+  = @season.max_members
+%p
+  %b Teams allowed:
+  = @season.teams_allowed
+%p
+  %b Max teams:
+  = @season.max_teams
+%p
+  %b Max team size:
+  = @season.max_team_size
+
+= link_to 'Edit', edit_organization_season_path(@organization, @season)
+\|
+= link_to 'Back', organization_seasons_path
