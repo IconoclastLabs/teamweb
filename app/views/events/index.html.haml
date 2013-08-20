@@ -1,5 +1,5 @@
 %h1 
-  = @organization.name + pluralize(@events.count, 'Event')
+  = @season.name + pluralize(@events.count, 'Event')
 
 %table.table.table-striped
   %thead
@@ -18,5 +18,5 @@
 
 %br
 
-= link_to icon_tag("star-empty") + 'New Event', new_organization_event_path, class: "btn btn-success" if user_signed_in?
+= link_to icon_tag("star-empty") + 'New Event', new_organization_season_event_path, class: "btn btn-success" if user_signed_in?
 = paginate @events

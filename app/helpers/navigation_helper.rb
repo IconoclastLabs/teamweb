@@ -14,7 +14,7 @@ module NavigationHelper
         navigation_add "Seasons", organization_seasons_path(@organization) if @seasons || @season
         navigation_add @season.name, organization_season_path(@organization, @season) if defined?(@season) && @season.id
         navigation_add "Events", organization_season_events_path(@organization, @season)  if @events || @event
-        navigation_add @event.name, organization_season_event_path(@event.organization, @event) if defined?(@event) && @event.id
+        navigation_add @event.name, organization_season_event_path(@season.organization, @season, @event) if defined?(@event) && @event.id
         navigation_add "Teams", organization_season_teams_path(@organization, @season) if @teams || @team
         navigation_add @team.name, organization_season_team_path(@organization, @season, @team) if defined?(@team) && @team.id
 

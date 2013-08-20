@@ -10,11 +10,6 @@
   = f.input :about, label: "Describe the event"
   = f.input :start, as: :string, input_html: { type: "date"}
   = f.input :end, as: :string, input_html: { type: "date" }
-  = f.input :members_allowed, label: "Members allowed?", hint: "Can users join the event without a team?", input_html: { :'data-hide' => '.event_max_members'}
-  = f.input :max_members, input_html: { :'data-maxable' => 'no-max'}
-  = f.input :teams_allowed, label: "Teams allowed?", hint: "Can users create teams?", input_html: { :'data-hide' => '.event_max_teams, .event_max_team_size'}
-  = f.input :max_teams, input_html: { :'data-maxable' => 'no-max'}
-  = f.input :max_team_size, input_html: { :'data-maxable' => 'no-max'}
 
   .actions
     %button.btn.btn-info{type: "submit"}

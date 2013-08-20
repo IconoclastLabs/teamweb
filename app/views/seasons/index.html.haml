@@ -26,6 +26,8 @@
       %td= season.max_team_size
       %td.btn-group
         = link_to icon_tag("play") + 'Show', organization_season_path(season.organization, season), class: "btn btn-info"
+        = link_to "Events", organization_season_events_path(season.organization, season), class: "btn btn-info"
+        = link_to "Teams", organization_season_teams_path(season.organization, season), class: "btn btn-info"
         - if user_signed_in?
           = link_to icon_tag("wrench") + 'Edit', edit_organization_season_path(season.organization, season), class: "btn btn-info"
           = link_to icon_tag("trash") + 'Delete', organization_season_path(season.organization, season), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"

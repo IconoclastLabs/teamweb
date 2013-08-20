@@ -1,9 +1,9 @@
 %td.btn-group
-  = link_to icon_tag("play") + 'Show', organization_season_event_path(event.organization, event), class: "btn btn-info"
-  - if event.teams_allowed?
-    = link_to icon_tag("flag") + 'Teams', organization_season_event_teams_path(event.organization, event), class: "btn btn-info"
+  = link_to icon_tag("play") + 'Show', organization_season_event_path(event.organization, event.season, event), class: "btn btn-info"
+  - if event.season.teams_allowed?
+    = link_to icon_tag("flag") + 'Teams', organization_season_teams_path(event.organization, event.season, event), class: "btn btn-info"
   - else
     = link_to icon_tag("flag") + 'Teams', "#", class: "btn btn-info", disabled: "disabled"    
   - if user_signed_in?
-    = link_to icon_tag("wrench") + 'Edit', edit_organization_season_event_path(event.organization, event), class: "btn btn-info"
-    = link_to icon_tag("trash") + 'Delete', organization_season_event_path(event.organization, event), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+    = link_to icon_tag("wrench") + 'Edit', edit_organization_season_event_path(event.organization, event.season, event), class: "btn btn-info"
+    = link_to icon_tag("trash") + 'Delete', organization_season_event_path(event.organization, event.season, event), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
