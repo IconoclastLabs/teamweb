@@ -14,21 +14,24 @@ module Api
         password = params[:password]
 
         if request.format != :json
+          # 406 Not Acceptable
           render :status=>406, :json=>{:message=>"The request must be json"}
           return
         end
 
         if email.nil? or password.nil?
+           # 400 Bad Request
            render :status=>400,
                   :json=>{:message=>"The request must contain the user email and password."}
            return
         end
 
         @user=User.find_by_email(email.downcase)
-        
+
         if @user.nil?
           logger.info("User #{email} failed signin, user cannot be found.")
-          render :status=>401, :json=>{:message=>"Invalid email or passoword."}
+          # 401 Unauthorized
+          render :status=>401, :json=>{:message=>"Invalid email or password."}
           return
         end
 
