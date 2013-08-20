@@ -61,14 +61,14 @@ class TeamsControllerTest < ActionController::TestCase
 
   test "require login to create team" do
     assert_no_difference('Team.count') do
-      post :create, organization_id: @new_team.season.organization_id, season_id: @new_team.season_id, team: { name: @new_team.name }
+      post :create, organization_id: @team.season.organization_id, season_id: @team.season_id, team: { name: @team.name }
     end
   end
 
   test "create team" do
     sign_in User.first
     assert_difference('Team.count') do
-      post :create, organization_id: @new_team.season.organization_id, season_id: @new_team.season_id, team: { name: @new_team.name }
+      post :create, organization_id: @team.season.organization_id, season_id: @team.season_id, team: { name: (@team.name + "diff") }
     end
 
     new_team = assigns(:team)

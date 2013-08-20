@@ -43,37 +43,37 @@ class SeasonTest < ActiveSupport::TestCase
     assert_respond_to(simple_season, :users)
   end
 
-  it 'adds a member' do
-    season_two = seasons(:season_two)
-    season_two.users.reload
-    season_two.users.include?(@first_user).must_equal false
-    season_two.add_event_member(@first_user).must_equal true
-    season_two.users.reload
-    season_two.users.include?(@first_user).must_equal true
-  end
+  # it 'adds a member' do
+  #   season_two = seasons(:season_two)
+  #   season_two.users.reload
+  #   season_two.users.include?(@first_user).must_equal false
+  #   season_two.add_event_member(@first_user).must_equal true
+  #   season_two.users.reload
+  #   season_two.users.include?(@first_user).must_equal true
+  # end
 
-  it 'must at least have room for one member if members are allowed' do
-    simple_season.max_members = 1
-    simple_season.members_allowed = true
-    simple_season.valid?.must_equal true
-    simple_season.max_members = 0
-    simple_season.valid?.must_equal false
-  end
+  # it 'must at least have room for one member if members are allowed' do
+  #   simple_season.max_members = 1
+  #   simple_season.members_allowed = true
+  #   simple_season.valid?.must_equal true
+  #   simple_season.max_members = 0
+  #   simple_season.valid?.must_equal false
+  # end
 
-  it 'cannot exceed max_members' do
-    simple_season.max_members = 1
-    simple_season.save.must_equal true
-    simple_season.add_event_member(users(:one)).must_equal true
-    simple_season.add_event_member(users(:two)).wont_equal true
-    simple_season.members.size.must_equal 1
-  end
+  # it 'cannot exceed max_members' do
+  #   simple_season.max_members = 1
+  #   simple_season.save.must_equal true
+  #   simple_season.add_event_member(users(:one)).must_equal true
+  #   simple_season.add_event_member(users(:two)).wont_equal true
+  #   simple_season.members.size.must_equal 1
+  # end
 
-  it 'is idempotent with saving the same event member' do
-    assert_no_difference('@season_one.members.size') do
-      success = @season_one.add_event_member(@first_user, admin_flag: false)
-      success.must_equal true
-    end
-  end
+  # it 'is idempotent with saving the same event member' do
+  #   assert_no_difference('@season_one.members.size') do
+  #     success = @season_one.add_event_member(@first_user, admin_flag: false)
+  #     success.must_equal true
+  #   end
+  # end
 
   it 'must at least have room for one team member if it is set' do
     simple_season.max_team_size = 0 

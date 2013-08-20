@@ -71,8 +71,8 @@ class EventsControllerTest < ActionController::TestCase
 
     new_event = assigns(:event)
     # should have the user that created it
-    new_event.members.admins.size.wont_equal 0
-    assert_redirected_to organization_season_path(new_event.organization, new_event)
+    new_event.members.admins.size.wont_equal 0 
+    assert_redirected_to organization_season_event_path(new_event.season.organization, new_event.season, new_event)
   end
 
   test "show event" do
@@ -101,7 +101,7 @@ class EventsControllerTest < ActionController::TestCase
   test "update event" do
     sign_in User.first
     put :update, organization_id: @event.season.organization_id, season_id: @event.season_id, id: @event, event: { about: @event.about, end: @event.end, location: @event.location, name: @event.name, start: @event.start }
-    assert_redirected_to organization_season_path(@event.organization, assigns(:event))
+    assert_redirected_to organization_season_event_path(@event.organization, @event.season, assigns(:event))
   end
 
   test "require login to destroy event" do
@@ -116,6 +116,6 @@ class EventsControllerTest < ActionController::TestCase
       delete :destroy, id: @event, organization_id: @event.season.organization_id, season_id: @event.season_id
     end
 
-    assert_redirected_to organization_seasons_path(@event.season.organization)
+    assert_redirected_to organization_season_events_path(@event.season.organization, @event.season)
   end
 end

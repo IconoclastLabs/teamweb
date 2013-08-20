@@ -73,6 +73,7 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @season = Season.find(params[:season_id])
+    @organization = @season.organization
     @event = @season.events.new(event_params)
 
     Event.transaction do
@@ -93,6 +94,8 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
+    @season = Season.find(params[:season_id])
+    @organization = @season.organization    
     @event = @season.events.find(params[:id])
 
     respond_to do |format|
