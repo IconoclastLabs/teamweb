@@ -6,6 +6,7 @@ Teamweb::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      resources :tokens,:only => [:create, :destroy]
       resources :organizations #do
         # resources :events do
         #   get 'add_user', on: :member

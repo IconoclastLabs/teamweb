@@ -21,7 +21,7 @@ gem "rails-boilerplate"
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 
-gem "devise", '~> 3.0.0.rc'
+gem "devise", '~> 3.1.0.rc2'
 gem 'puma'
 
 # rails 4
@@ -67,6 +67,8 @@ group :development, :test do
   gem 'minitest-spec-rails'
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
   gem 'pry-debugger'
   gem 'pry-doc'
   gem 'interactive_editor' # able to vi from irb
