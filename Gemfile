@@ -84,6 +84,7 @@ group :test do
   gem "better_errors"
   gem "binding_of_caller" # required for better_errors
   
+  gem 'simplecov', :require => false
 end
 
 group :development do

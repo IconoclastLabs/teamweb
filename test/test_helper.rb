@@ -1,4 +1,6 @@
-ENV["RAILS_ENV"] = "test"
+require 'simplecov'
+SimpleCov.start 'rails'
+SimpleCov.command_name 'Unit Tests'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/poltergeist'
@@ -20,7 +22,7 @@ end
 class ActionDispatch::IntegrationTest
   self.use_transactional_fixtures = false
 end
-# Clean DB because of the above capybara config code
+# Clean DB because of the above capybara config code. it's also the faster option
 DatabaseCleaner.strategy = :transaction
 
 class MiniTest::Spec
@@ -42,7 +44,7 @@ Turn.config do |c|
 #  # :pretty   - new pretty reporter
 #  # :marshal  - dump output as YAML (normal run mode only)
 #  # :cue      - interactive testing
-  c.format  = :progress
+  c.format  = :outline
 #  # turn on invoke/execute tracing, enable full backtrace
 #  c.trace   = true
 #  # use humanized test names (works only with :outline format)
