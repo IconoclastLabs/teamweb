@@ -82,10 +82,10 @@ group :development, :test do
   gem 'brakeman' # checks for security vulns
   gem 'guard-brakeman'
   #gem 'guard-test'
+  gem "sextant" # adds route display info to /rails/routes
   gem "better_errors"
   gem "binding_of_caller"
   gem 'annotate'
-  gem 'ruby-prof'
   #gem "literate_randomizer"
   # Filesystem notifiers
   #gem 'ruby_gntp' # Growl notification protocol

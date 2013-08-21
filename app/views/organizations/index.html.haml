@@ -15,7 +15,7 @@
       %td= org.contact
       %td.btn-group
         = link_to icon_tag("play") + 'Show', org, class: "btn btn-info"
-        = link_to icon_tag("calendar") + 'Events', organization_events_path(org), class: "btn btn-info"
+        = link_to icon_tag("calendar") + 'Seasons', organization_seasons_path(org), class: "btn btn-info"
         - if user_signed_in?
           = link_to icon_tag("wrench") + 'Edit', edit_organization_path(org), class: "btn btn-info"
           = link_to icon_tag("trash") + 'Delete', org, :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"

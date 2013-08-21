@@ -1,5 +1,5 @@
 class OrganizationsController < ApplicationController
-
+  before_action :set_org, only: [:show, :edit, :update, :destroy]
   #def index
   #  @organizations = Organization.all
 
@@ -13,10 +13,10 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization = Organization.friendly.find(params[:id])
-    @maps_json = @organization.events.to_gmaps4rails do |event, marker|
-      marker.title event.name 
-    end
+    # TODO rethink this
+    # @maps_json = @organization.seasons.first.events.to_gmaps4rails do |event, marker|
+    #   marker.title event.name 
+    # end
     
     respond_to do |format|
       format.html # show.html.erb
@@ -36,7 +36,6 @@ class OrganizationsController < ApplicationController
 
   # GET /organizations/1/edit
   def edit
-    @organization = Organization.friendly.find(params[:id])
   end
 
   # POST /organizations
@@ -63,8 +62,6 @@ class OrganizationsController < ApplicationController
   # PUT /organizations/1
   # PUT /organizations/1.json
   def update
-    @organization = Organization.friendly.find(params[:id])
-
     respond_to do |format|
       if @organization.update_attributes(organization_params)
         format.html { redirect_to organization_path(@organization), notice: 'Organization was successfully updated.'}
@@ -79,16 +76,20 @@ class OrganizationsController < ApplicationController
   # DELETE /organizations/1
   # DELETE /organizations/1.json
   def destroy
-    @organization = Organization.friendly.find(params[:id])
     @organization.destroy
-
     respond_to do |format|
       format.html { redirect_to organizations_url }
       format.json { head :no_content }
     end
   end
 
-  def organization_params
-    params.require(:organization).permit(:about, :contact, :location, :name)
-  end
+  private
+
+    def set_org
+      @organization = Organization.friendly.find(params[:id])
+    end
+
+    def organization_params
+      params.require(:organization).permit(:about, :contact, :location, :name)
+    end
 end

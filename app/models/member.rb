@@ -30,4 +30,5 @@ class Member < ActiveRecord::Base
     self.where(user_id: user.id).first_or_create(admin: admin_flag)
     true
   end
+
 end

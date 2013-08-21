@@ -4,22 +4,27 @@ namespace :db do
     require 'populator'
     require 'forgery'
 
+    @start_stamp = Time.zone.now
+
     # Create some users for login and admins (if they don't already exist)
-    admins = ensure_admins
+    @admins = ensure_admins
 
     # Randomly make other users
     add_users 
 
     # Everyone who is not in the admin array
-    non_admins = User.where.not(id: admins.map(&:id))
+    @non_admins = User.where.not(id: @admins.map(&:id))
 
     # Create some Organizations with Events with Teams with Members
-    add_full_org_stack(admins, non_admins)
+    #add_full_org_stack(admins, non_admins)
+    new_orgs = make_orgs
+    new_seasons = make_seasons(new_orgs)
+    new_events = make_events(new_seasons)
 
     # Force Organizations friendly_ids to get generated on new records
-    Organization.find_each(&:save)
+    new_orgs.find_each(&:save)
     # Force event maps to save, thus grab actual lat/long from google
-    Event.find_each(&:save)
+    new_events.find_each(&:save)
 
   end	
 
@@ -41,44 +46,65 @@ namespace :db do
     end
   end
 
-  def add_full_org_stack(admins, non_admins)
-    Organization.populate(5) do |org|
+  def make_orgs(quantity = 5)
+    Organization.populate(quantity) do |org|
       org.name = Forgery::Name.full_name
       org.about = Populator.sentences(1)
       org.location = Forgery::Address.state
       org.contact = Forgery::Internet.email_address
-      add_members(admins, "Organization", org, true)
-      add_members(non_admins, "Organization", org, false, 2)
-      Event.populate 0..5 do |event|
-        event.name = Populator.words(1..3).titleize
-        event.about = Populator.sentences(1..2)
-        event.organization_id = org.id 
-        event.location = Forgery::Address.state
-        event.start = Forgery::Date.date
-        event.end = event.start + rand(3)
-        add_members(admins, "Event", event, true)
+      add_members(@admins, "Organization", org, true)
+      add_members(@non_admins, "Organization", org, false, 2)
+    end
+    Organization.where("created_at > ?", @start_stamp)
+  end
+
+  def make_seasons(orgs, max = 5)
+    orgs.each do |org|
+      Season.populate 0..max do |season|
+        season.organization_id = org.id
+        season.name = Populator.words(1..3).titleize
+        season.start = Forgery::Date.date
+        season.end = season.start + rand(365)
+        add_members(@admins, "Season", season, true)
         
         #sometimes add non-admin members
-        event.members_allowed = Forgery::Basic.boolean
-        if event.members_allowed
-          add_members(non_admins, "Event", event, false, 2)
+        season.members_allowed = Forgery::Basic.boolean
+        if season.members_allowed
+          add_members(@non_admins, "Season", season, false, rand(0..5))
         end
 
         #sometimes add teams
-        event.teams_allowed = Forgery::Basic.boolean
-        if event.teams_allowed
-          event.max_teams = rand(6..12)
+        season.teams_allowed = Forgery::Basic.boolean
+        if season.teams_allowed
+          season.max_teams = rand(6..12)
           Team.populate 0..5 do |team|
             team.name = Populator.words(1..3).titleize
-            team.event_id = event.id 
+            team.season_id = season.id 
             team.max_members = sometimes(rand(3..20))
-            add_members(admins, "Team", team, true)
-            add_members(non_admins, "Team", team, false, 2)
+            add_members(@admins, "Team", team, true)
+            add_members(@non_admins, "Team", team, false, rand(1..3))
           end # /team
         end
+      end # /season
+    end
 
-      end # /event
-    end # /org
+    Season.where("created_at > ?", @start_stamp)
+  end
+
+  def make_events(seasons, max = 5)
+    seasons.each do |season|
+      Event.populate 0..max do |event|
+        event.name = Populator.words(1..3).titleize
+        event.about = Populator.sentences(1..2)
+        event.season_id = season.id
+        event.location = Forgery::Address.state
+        event.start = Forgery::Date.date
+        event.end = event.start + rand(3)   
+        add_members(@admins, "Event", event, true)
+      end #/ event
+    end
+
+    Event.where("created_at > ?", @start_stamp)
   end
 
   # return a value half the time

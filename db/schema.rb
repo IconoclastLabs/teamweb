@@ -11,12 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819173421) do
+ActiveRecord::Schema.define(version: 20130819154746) do
 
   create_table "events", force: true do |t|
     t.string   "name"
     t.string   "about"
-    t.integer  "organization_id"
     t.string   "location"
     t.date     "start"
     t.date     "end"
@@ -25,14 +24,20 @@ ActiveRecord::Schema.define(version: 20130819173421) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
-    t.integer  "max_members"
-    t.boolean  "members_allowed", default: true
-    t.boolean  "teams_allowed",   default: true
-    t.integer  "max_teams"
-    t.integer  "max_team_size"
+    t.integer  "season_id"
   end
 
-  add_index "events", ["organization_id"], name: "index_events_on_organization_id"
+  add_index "events", ["season_id"], name: "index_events_on_season_id"
+
+  create_table "matchups", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "matchups", ["event_id"], name: "index_matchups_on_event_id"
+  add_index "matchups", ["team_id"], name: "index_matchups_on_team_id"
 
   create_table "members", force: true do |t|
     t.integer  "user_id"
@@ -57,16 +62,32 @@ ActiveRecord::Schema.define(version: 20130819173421) do
 
   add_index "organizations", ["slug"], name: "index_organizations_on_slug", unique: true
 
+  create_table "seasons", force: true do |t|
+    t.integer  "organization_id"
+    t.string   "name",                           null: false
+    t.date     "start"
+    t.date     "end"
+    t.boolean  "members_allowed", default: true, null: false
+    t.integer  "max_members"
+    t.boolean  "teams_allowed",   default: true, null: false
+    t.integer  "max_teams"
+    t.integer  "max_team_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "seasons", ["organization_id"], name: "index_seasons_on_organization_id"
+
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.integer  "event_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "max_members"
     t.integer  "rank"
+    t.integer  "season_id"
   end
 
-  add_index "teams", ["event_id"], name: "index_teams_on_event_id"
+  add_index "teams", ["season_id"], name: "index_teams_on_season_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -86,7 +107,6 @@ ActiveRecord::Schema.define(version: 20130819173421) do
     t.string   "name"
     t.string   "provider"
     t.string   "uid"
-    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
