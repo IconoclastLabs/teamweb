@@ -1,5 +1,6 @@
 class SeasonsController < ApplicationController
-  before_action :set_parents, only: [:show, :edit, :update, :destroy]
+  before_action :set_parents
+  before_action :set_season, only: [:show, :edit, :update, :destroy]
   
   # GET /seasons
   # GET /seasons.json
@@ -14,8 +15,7 @@ class SeasonsController < ApplicationController
 
   # GET /seasons/new
   def new
-    @organization = Organization.friendly.find(params[:organization_id])
-    @season = @organization.seasons.build(params[:event])
+    @season = @organization.seasons.build(params[:season])
   end
 
   # GET /seasons/1/edit
@@ -25,7 +25,6 @@ class SeasonsController < ApplicationController
   # POST /seasons
   # POST /seasons.json
   def create
-    @organization = Organization.friendly.find(params[:organization_id])
     @season = @organization.seasons.build(season_params)
 
     respond_to do |format|
@@ -64,10 +63,13 @@ class SeasonsController < ApplicationController
   end
 
   private
+    def set_season
+      @season = Season.find(params[:id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_parents
       @organization = Organization.friendly.find(params[:organization_id])
-      @season = Season.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

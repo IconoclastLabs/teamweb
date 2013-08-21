@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
-  before_action :set_parents, only: [:show, :edit, :update, :destroy, :add_user]
+  before_action :set_parents
+  before_action :set_team, only: [:show, :edit, :update, :destroy, :add_user]
 
   def add_user
     # Only add user if they won't blow out team size.
@@ -20,8 +21,6 @@ class TeamsController < ApplicationController
   #  end
   #end
   def index
-    @season = Season.find(params[:season_id])
-    @organization = @season.organization
     @teams = @season.teams.order(:name).page params[:page]
   end
 
@@ -37,8 +36,6 @@ class TeamsController < ApplicationController
   # GET /teams/new
   # GET /teams/new.json
   def new
-    @season = Season.find(params[:season_id])
-    @organization = @season.organization
     @team = @season.teams.build(params[:team])
 
     respond_to do |format|
@@ -54,8 +51,6 @@ class TeamsController < ApplicationController
   # POST /teams
   # POST /teams.json
   def create
-    @season = Season.find(params[:season_id])
-    @organization = @season.organization
     @team = @season.teams.new(team_params)
 
     Team.transaction do
@@ -78,7 +73,6 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1
   # PATCH/PUT /teams/1.json
   def update
-    @season = Season.find(params[:season_id])
     respond_to do |format|
       if @team.update_attributes(team_params)
         format.html { redirect_to [@organization, @season, @team], notice: 'Team was successfully updated.' }
@@ -102,8 +96,12 @@ class TeamsController < ApplicationController
   end
 
   private
-    def set_parents
+
+    def set_team
       @team = Team.find(params[:id])
+    end
+
+    def set_parents
       @season = Season.find(params[:season_id])
       @organization = @season.organization
     end
