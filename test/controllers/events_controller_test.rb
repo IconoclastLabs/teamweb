@@ -25,21 +25,6 @@ class EventsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:events)
   end
   
-  test "certain index buttons require login" do
-    get :index, organization_id: @event.season.organization_id, season_id: @event.season_id
-    assert_select "a", {count: 0, text: "New Event"}, "Shouldn't have a new button"
-    assert_select "a", {count: 0, text: "Edit"}, "Shouldn't have an edit button"
-    assert_select "a", {count: 0, text: "Delete"}, "Shouldn't have a delete button"
-  end
-
-  test "certain index buttons show with login" do
-    sign_in User.first
-    get :index, organization_id: @event.season.organization_id, season_id: @event.season_id
-    assert_select "a", "New Event", "Should have a new button"
-    assert_select "a", "Edit", "Should have an edit button"
-    assert_select "a", "Delete", "Should have a delete button"
-  end
-
   test "pagination happens" do
     get :index, organization_id: @event.season.organization_id, season_id: @event.season_id
     events = assigns(:events)

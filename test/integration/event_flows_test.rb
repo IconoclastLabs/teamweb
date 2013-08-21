@@ -8,9 +8,24 @@ class EventFlowTest < ActionDispatch::IntegrationTest
   setup do
     # Set up a user and his organization
     @user = User.where(email: "gant@iconoclastlabs.com").first_or_create(password: "fdsafdsa", name: "Gant Man", phone: "888-888-8888", address: "New Orleans")
-    @some_org = organizations(:coord_one)
-    @some_season = @some_org.seasons.first
+    @some_season = seasons(:season_one)
+    @some_org = @some_season.organization
     @some_org.members.add_member(@user, admin_flag: true)    
+  end
+  
+  test "certain index buttons require login" do
+    visit organization_season_events_path(@some_org, @some_season)
+    assert page.has_no_link?("New Event"), "Shouldn't have a new button"
+    assert page.has_no_link?("Edit"), "Shouldn't have a edit button"
+    assert page.has_no_link?("Delete"), "Shouldn't have a delete button"
+  end
+
+  test "certain index buttons show with login" do
+    capybara_sign_in(@user)
+    visit organization_season_events_path(@some_org, @some_season)
+    assert page.has_link?("New Event"), "Should have a new button"
+    assert page.has_link?("Edit"), "Should have a edit button"
+    assert page.has_link?("Delete"), "Should have a delete button"
   end
 
   test "Creating an Event" do
@@ -22,9 +37,13 @@ class EventFlowTest < ActionDispatch::IntegrationTest
     click_link_or_button('Save')
     assert page.has_content?('Event was successfully created.'), "Flash message should tell you success"
     # Teams and Members Tabs show
-    #assert page.has_link?('Teams'), "Teams tab should be visible"
+    assert @some_season.teams_allowed?, "Make sure this fixture allows teams"
+    assert page.has_link?('Teams'), "Teams tab should be visible"
+    assert @some_season.members_allowed?, "Make sure this fixture allows memebrs"
     assert page.has_link?('Members'), "Members tab should be visible"
   end
+
+
 
   # test "Events with Members disallowed, should hide the member tab" do
   #   capybara_sign_in(@user)
