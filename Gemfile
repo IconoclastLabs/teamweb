@@ -59,8 +59,34 @@ group :production do
   gem 'dalli'
 end
 
-group :development, :test do
+
+group :test do
   gem 'turn' # colored minitests
+  gem 'sqlite3'
+  gem 'awesome_print' # OF COURSE!
+  gem 'minitest-spec-rails'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
+  gem 'pry-doc'
+  gem 'interactive_editor' # able to vi from irb
+
+  # BDD
+  gem 'capybara'
+  gem 'capybara_minitest_spec' # for capybara integration and spec matchers
+  gem 'poltergeist' # for headless javascript testing. See Phantomjs.org for installation details
+  gem 'database_cleaner'
+  gem 'cucumber-rails', :require => false
+  
+
+  gem "better_errors"
+  gem "binding_of_caller" # required for better_errors
+  
+end
+
+group :development do
   gem 'rake'
   gem 'sqlite3'
 	gem 'awesome_print' # OF COURSE!
@@ -82,37 +108,27 @@ group :development, :test do
   gem 'brakeman' # checks for security vulns
   gem 'guard-brakeman'
   #gem 'guard-test'
-  gem "sextant" # adds route display info to /rails/routes
   gem "better_errors"
-  gem "binding_of_caller"
+  gem "binding_of_caller" # required for better_errors
   gem 'annotate'
   #gem "literate_randomizer"
-  # Filesystem notifiers
-  #gem 'ruby_gntp' # Growl notification protocol
-  #gem "growl", :git => "https://github.com/visionmedia/growl.git"
-  #gem 'libnotify'
+  # Filesystem notifiers, mostly for guard
   gem 'rb-inotify', :require => false
   gem 'rb-fsevent', :require => false
   gem 'rb-fchange', :require => false
-  # BDD
-  gem 'capybara'
-  gem 'capybara_minitest_spec' # for capybara integration and spec matchers
-  gem 'poltergeist' # for headless javascript testing. See Phantomjs.org for installation details
-  gem 'database_cleaner'
-  gem 'cucumber-rails', :require => false
   
   # Additions suggested by article 
   # http://www.codebeerstartups.com/2013/04/must-have-gems-for-development-machine-in-ruby-on-rails/
   gem 'bullet'
-  gem 'localtunnel' #exposes site as needed ($ localtunnel-beta 8000)
+  gem 'localtunnel', :require => false #exposes site as needed ($ localtunnel-beta 8000)
   # gem 'mailcatcher' opting for letter_opener instead
   gem "letter_opener"
   gem 'lol_dba' # site optimization? ($ rake db:find_indexes > $ )
   gem 'reek' # check for code smells ($ reek -q .)
-  gem 'rails_best_practices' # check for best practice fixes ($ rails_best_practices .)
-  gem 'request-log-analyzer' # check out the live website request logs for performance issues/info 
+  gem 'rails_best_practices', :require => false # check for best practice fixes ($ rails_best_practices .)
+  gem 'request-log-analyzer', :require => false # check out the live website request logs for performance issues/info 
   #                         ($ request-log-analyzer --parse-strategy assume-correct log/development.log)
-  gem 'smusher' # optimize images ($ smusher app/assets/images)
+  gem 'smusher', :require => false # optimize images ($ smusher app/assets/images)
 
 end
 

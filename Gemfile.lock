@@ -336,8 +336,6 @@ GEM
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     sexp_processor (4.2.1)
-    sextant (0.2.4)
-      rails (>= 3.2)
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
@@ -457,7 +455,6 @@ DEPENDENCIES
   reek
   request-log-analyzer
   sass-rails (~> 4.0.0)
-  sextant
   simple_form (~> 3.0.0.rc)
   smusher
   sqlite3
