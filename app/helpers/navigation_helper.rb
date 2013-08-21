@@ -1,11 +1,4 @@
 module NavigationHelper
-    def ensure_navigation
-        @navigation ||= [ ]
-    end
-
-    def navigation_add(title, url)
-        ensure_navigation << { :title => title, :url => url }
-    end
 
     def render_breadcrumbs
         # Build breadcrumbs along association when applicable
@@ -27,5 +20,15 @@ module NavigationHelper
       content_tag(:li, class: class_name) do 
         link_to link_text, link_path, link_options        
       end
+    end
+
+    private
+
+    def ensure_navigation
+        @navigation ||= [ ]
+    end
+
+    def navigation_add(title, url)
+        ensure_navigation << { :title => title, :url => url }
     end
 end
