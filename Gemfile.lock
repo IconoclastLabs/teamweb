@@ -324,7 +324,6 @@ GEM
       ruby_parser (~> 3.1.1)
       sexp_processor
     request-log-analyzer (1.12.9)
-    ruby-prof (0.13.0)
     ruby-progressbar (1.1.1)
     ruby2ruby (2.0.6)
       ruby_parser (~> 3.1)
@@ -337,6 +336,8 @@ GEM
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
     sexp_processor (4.2.1)
+    sextant (0.2.4)
+      rails (>= 3.2)
     simple_form (3.0.0.rc)
       actionpack (>= 4.0.0.rc1, < 4.1)
       activemodel (>= 4.0.0.rc1, < 4.1)
@@ -455,8 +456,8 @@ DEPENDENCIES
   rb-inotify
   reek
   request-log-analyzer
-  ruby-prof
   sass-rails (~> 4.0.0)
+  sextant
   simple_form (~> 3.0.0.rc)
   smusher
   sqlite3

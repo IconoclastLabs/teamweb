@@ -69,14 +69,13 @@ describe Api::V1::TokensController do
 
 		describe "delete" do
 			it "should complain if the token is not found" do
-				delete :destroy, api_v1_token_path(123), format: :json
+				delete :destroy, api_v1_token_path(id: 123), id: 123, format: :json
 				delete_response = JSON.parse response.body
 				delete_response['message'].must_match "Invalid token."
 				response.status.must_equal 404
 			end
 			it "respond with the token that is successfully delete" do
-				binding.pry
-				delete :destroy, api_v1_token_path(@token_response['token']), format: :json
+				delete :destroy, api_v1_token_path(@token_response['token']), id: @token_response['token'], format: :json
 				response.status.must_equal 200
 			end
 		end
