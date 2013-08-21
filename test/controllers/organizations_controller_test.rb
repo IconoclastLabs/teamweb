@@ -13,21 +13,6 @@ class OrganizationsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:organizations)
   end
 
-  test "certain index buttons require login" do
-    get :index
-    assert_select "a", {count: 0, text: "New Organization"}, "Shouldn't have a new button"
-    assert_select "a", {count: 0, text: "Edit"}, "Shouldn't have an edit button"
-    assert_select "a", {count: 0, text: "Delete"}, "Shouldn't have a delete button"
-  end
-
-  test "certain index buttons show with login" do
-    sign_in User.first
-    get :index
-    assert_select "a", "New Organization", "Should have a new button"
-    assert_select "a", "Edit", "Should have an edit button"
-    assert_select "a", "Delete", "Should have a delete button"
-  end
-
   test "require login to get new" do
     get :new
     assert_response :redirect #302
