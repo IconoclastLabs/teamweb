@@ -86,6 +86,8 @@ GEM
     coffee-script-source (1.6.2)
     colored (1.2)
     columnize (0.3.6)
+    commands (0.2.1)
+      rails (>= 3.2.0)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -402,6 +404,7 @@ DEPENDENCIES
   capybara
   capybara_minitest_spec
   coffee-rails (~> 4.0.0)
+  commands
   compass
   cucumber-rails
   dalli

@@ -33,7 +33,6 @@ describe Api::V1::OrganizationsController do
       end
 
       it "should contain at least one organization object" do
-        #binding.pry
         assigns(:organizations).wont_be_nil
         @json_response['organizations'].size.must_be(:>, 0)
       end

@@ -64,6 +64,26 @@ def capybara_sign_in(user)
   user
 end
 
+def omniauth_facebook_sign_in
+  OmniAuth.config.test_mode = true
+  # Doesn't really work yet
+  OmniAuth.config.mock_auth[:facebook] = {
+    'uid'       => "999999",
+    'provider'  => "facebook",
+    'extra'     => {
+      'user_hash' => {
+        'email'   => 'test1@test.com',
+        'first_name'  => 'First',
+        'last_name'   => 'Last',
+        'gender'  => 'Male'
+      }
+    },
+    'credentials' => {
+      'token' => "token1234qwert"
+    }
+  }
+end
+
 def capybara_facebook_sign_in
   OmniAuth.config.test_mode = true
   # Doesn't really work yet

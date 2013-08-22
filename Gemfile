@@ -90,6 +90,7 @@ end
 group :development do
   gem 'rake'
   gem 'sqlite3'
+  gem 'commands' # makes many of the rake commands available in the `rails c` console
 	gem 'awesome_print' # OF COURSE!
   gem 'minitest-spec-rails'
   gem 'pry'
