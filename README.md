@@ -59,3 +59,4 @@ Why do you hate yourself?
 * Testing History via [Travis-CI](https://travis-ci.org/GantMan/teamweb/builds)
 * Got ideas?  Add them to the [issues!](https://github.com/GantMan/teamweb/issues?state=open) 
 * Sometimes updated live site: [http://teamweb.heroku.com/](http://teamweb.heroku.com/)
+* We're using [simplecov](https://github.com/colszowka/simplecov). Run `rake test:all` and view results in the `coverage` directory.
