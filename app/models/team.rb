@@ -31,17 +31,19 @@ class Team < ActiveRecord::Base
     end # end Transaction
   end
 
-  def owner_allows_teams
-    if self.season.try(:teams_allowed?) == false # nil not false
-      errors.add(:season, "Teams are not allowed")
-    end
-  end
 
-  def owner_limits
-    
-    if self.season.try(:max_team_size) && self.max_members
-      errors.add(:team, "members may not exceed season limits") if self.max_members > self.season.max_team_size
+  private 
+    def owner_allows_teams
+      if self.season.try(:teams_allowed?) == false # nil not false
+        errors.add(:season, "Teams are not allowed")
+      end
     end
 
-  end
+    def owner_limits
+      
+      if self.season.try(:max_team_size) && self.max_members
+        errors.add(:team, "members may not exceed season limits") if self.max_members > self.season.max_team_size
+      end
+
+    end
 end

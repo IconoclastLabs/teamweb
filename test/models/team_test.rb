@@ -108,4 +108,16 @@ class TeamTest < ActiveSupport::TestCase
     simple_team.members.size.must_equal 1
   end
 
+  it 'private validation method owner_allows_teams generates errors' do
+    #season allows teams
+    @season_one.teams_allowed = true
+    simple_team.season = @season_one
+    simple_team.send(:owner_allows_teams) # Call to private method
+    simple_team.errors.size.must_equal 0
+    #season should disallow teams
+    @season_one.teams_allowed = false
+    simple_team.send(:owner_allows_teams) # Call to private method generates an error
+    simple_team.errors.size.must_equal 1
+  end
+
 end
