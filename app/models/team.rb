@@ -12,9 +12,8 @@
 #
 
 class Team < ActiveRecord::Base
+  include Groupable
   belongs_to :season
-  has_many :members, dependent: :destroy, as: :groupable
-  has_many :users, through: :members
   has_many :matchups, dependent: :destroy
   has_many :events, through: :matchups
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :season_id}

@@ -17,9 +17,8 @@
 #
 
 class Event < ActiveRecord::Base
+  include Groupable
   belongs_to :season
-  has_many :members, dependent: :destroy, as: :groupable
-  has_many :users, through: :members
   has_many :matchups, dependent: :destroy
   has_many :teams, through: :matchups
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :season_id}, length: {in: 2..255}
@@ -30,15 +29,6 @@ class Event < ActiveRecord::Base
 
   def geocode?
     (!location.blank? && (latitude.blank? || longitude.blank?)) || location_changed?
-  end
-
-  def add_event_member(user, admin_flag: false)
-    Member.transaction do
-      self.members.add_member(user, admin_flag: admin_flag)
-      #should_raise = self.max_members && self.members.size > self.max_members
-      #raise ActiveRecord::Rollback, "Max members met" if should_raise
-      true
-    end # end Transaction
   end
 
   def organization

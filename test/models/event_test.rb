@@ -73,14 +73,14 @@ class EventTest < ActiveSupport::TestCase
     event_two = events(:event_two)
     event_two.users.reload
     event_two.users.include?(@first_user).must_equal false
-    event_two.add_event_member(@first_user).must_equal true
+    event_two.add_member(@first_user).must_equal true
     event_two.users.reload
     event_two.users.include?(@first_user).must_equal true
   end
 
   it 'is idempotent with saving the same event member' do
     assert_no_difference('@event_one.members.size') do
-      success = @event_one.add_event_member(@first_user, admin_flag: false)
+      success = @event_one.add_member(@first_user, admin_flag: false)
       success.must_equal true
     end
   end

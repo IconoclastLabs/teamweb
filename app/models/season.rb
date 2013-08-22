@@ -17,11 +17,10 @@
 #
 
 class Season < ActiveRecord::Base
+  include Groupable
   belongs_to :organization
   has_many :events, dependent: :destroy
   has_many :teams, dependent: :destroy
-  has_many :members, dependent: :destroy, as: :groupable
-  has_many :users, through: :members
   validates :name, presence: true, uniqueness: {case_sensitive: false, scope: :organization_id}, length: {in: 2..40}
   validates_numericality_of :max_team_size, allow_nil: true, greater_than: 0
   validates_numericality_of :max_teams, allow_nil: true, greater_than: 0, if: -> {self.teams_allowed?}
