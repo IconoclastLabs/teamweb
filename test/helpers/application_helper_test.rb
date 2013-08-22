@@ -2,13 +2,15 @@ require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
 
-  it "renders an icon_tag html" do
-    icon_html = icon_tag("play")
-    icon_html.must_equal "<i class='icon-play icon-white'></i> "
-  end
+	describe "#icon_tag" do
+	  it "renders a white icon_tag for bootstrap" do
+	    icon_tag("play").must_match "<i class='icon-play icon-white'></i>"
+	  end
+	end
 
-  it "renders black_icon html" do
-    icon_html = black_icon("play")
-    icon_html.must_equal "<i class='icon-play'></i> "
+	describe "#black_icon" do
+    it "renders black icon_tag for bootstrap" do
+      black_icon("play").must_match "<i class='icon-play'></i>"
+  	end
   end
 end

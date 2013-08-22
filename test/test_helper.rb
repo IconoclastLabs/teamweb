@@ -1,6 +1,11 @@
 require 'simplecov'
-SimpleCov.start 'rails'
-SimpleCov.command_name 'Unit Tests'
+SimpleCov.use_merging true
+SimpleCov.start 'rails' do
+  #add_filter "lib"
+  #add_group "UserControllers", "app/controllers/users"
+end
+#SimpleCov.command_name 'Unit Tests'
+#SimpleCov.command_name 'Specs'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/poltergeist'
