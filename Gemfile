@@ -61,6 +61,7 @@ end
 
 
 group :test do
+  gem 'simplecov', :require => false
   gem 'turn' # colored minitests
   gem 'sqlite3'
   gem 'awesome_print' # OF COURSE!
@@ -72,7 +73,7 @@ group :test do
   gem 'pry-debugger'
   gem 'pry-doc'
   gem 'interactive_editor' # able to vi from irb
-
+  #gem "parallel_tests"
   # BDD
   gem 'capybara'
   gem 'capybara_minitest_spec' # for capybara integration and spec matchers
@@ -84,7 +85,6 @@ group :test do
   gem "better_errors"
   gem "binding_of_caller" # required for better_errors
   
-  gem 'simplecov', :require => false
 end
 
 group :development do

@@ -28,11 +28,13 @@ describe Api::V1::OrganizationsController do
       end
 
       it "responds with parsable JSON" do
+        assigns(:organizations).wont_be_nil
         @json_response.wont_be_nil
       end
 
       it "should contain at least one organization object" do
         #binding.pry
+        assigns(:organizations).wont_be_nil
         @json_response['organizations'].size.must_be(:>, 0)
       end
     end
