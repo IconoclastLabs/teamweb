@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('yeomanApp', [])
+angular.module('teamwebApp', [])
   .config ['$routeProvider', ($routeProvider) ->
     $routeProvider
       .when '/',
