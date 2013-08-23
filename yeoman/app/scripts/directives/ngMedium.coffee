@@ -1,5 +1,5 @@
 'use strict';
-
+#http://jakiestfu.github.io/Medium.js/docs/
 angular.module('teamwebApp')
   .directive 'ngMedium', [->
     restrict: 'EA'
