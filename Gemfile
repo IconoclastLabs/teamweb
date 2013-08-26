@@ -79,8 +79,6 @@ group :test do
   gem 'capybara_minitest_spec' # for capybara integration and spec matchers
   gem 'poltergeist' # for headless javascript testing. See Phantomjs.org for installation details
   gem 'database_cleaner'
-  gem 'cucumber-rails', :require => false
-  
 
   gem "better_errors"
   gem "binding_of_caller" # required for better_errors
