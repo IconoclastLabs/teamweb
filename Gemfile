@@ -107,6 +107,9 @@ group :development do
   gem 'guard-bundler', "~> 1.0.0"
   gem 'brakeman' # checks for security vulns
   gem 'guard-brakeman'
+  # Reload the browser automatically when viewstuff changes.
+  gem 'rack-livereload'
+  gem 'guard-livereload'
   #gem 'guard-test'
   gem "better_errors"
   gem "binding_of_caller" # required for better_errors

@@ -107,6 +107,9 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    em-websocket (0.5.0)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (1.4.0)
@@ -139,6 +142,10 @@ GEM
     guard-bundler (1.0.0)
       bundler (~> 1.0)
       guard (~> 1.1)
+    guard-livereload (1.4.0)
+      em-websocket (>= 0.5.0)
+      guard (>= 1.8.0)
+      multi_json (~> 1.7)
     guard-minitest (0.5.0)
       guard (>= 0.4)
     guard-puma (0.2.3)
@@ -274,6 +281,8 @@ GEM
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-livereload (0.3.15)
+      rack
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -406,6 +415,7 @@ DEPENDENCIES
   guard-annotate
   guard-brakeman
   guard-bundler (~> 1.0.0)
+  guard-livereload
   guard-minitest
   guard-puma
   guard-rails
@@ -438,6 +448,7 @@ DEPENDENCIES
   puma
   pygments.rb
   quiet_assets (>= 1.0.1)
+  rack-livereload
   rails (= 4.0.0)
   rails-boilerplate
   rails_best_practices
