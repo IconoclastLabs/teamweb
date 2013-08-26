@@ -29,3 +29,6 @@ rerun.txt
 pickle-email-*.html
 
 .idea
+*.sublime-project
+*.sublime-workspace
+
