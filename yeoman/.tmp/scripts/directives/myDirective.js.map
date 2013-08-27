@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "myDirective.js",
+  "sourceRoot": "",
+  "sources": [
+    "myDirective.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,CAAA,UAAA;CAAA,CAEA,IAAA,CAAO,EAAP,GAAA,CAAA;GAC6B,EAAA,IAAA;aACzB;CAAA,CAAU,MAAV,YAAA;CAAA,CACU,CADV,KACA;CAFyB;CAAD,IAAC;CAH7B,GAEA;CAFA"
+}
