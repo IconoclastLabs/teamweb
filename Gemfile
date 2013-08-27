@@ -80,11 +80,11 @@ group :test do
   gem 'poltergeist' # for headless javascript testing. See Phantomjs.org for installation details
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false
-  
+
 
   gem "better_errors"
   gem "binding_of_caller" # required for better_errors
-  
+
 end
 
 group :development do
@@ -106,20 +106,24 @@ group :development do
   gem 'guard-minitest'
   gem 'guard-annotate'
   gem 'guard-puma'
-  gem 'guard-bundler', "~> 1.0.0"
+  gem 'guard-bundler'
   gem 'brakeman' # checks for security vulns
   gem 'guard-brakeman'
-  #gem 'guard-test'
+
+  gem 'rack-livereload'
+  gem 'guard-livereload'
+
+  gem 'database_cleaner'
   gem "better_errors"
   gem "binding_of_caller" # required for better_errors
   gem 'annotate'
   #gem "literate_randomizer"
   # Filesystem notifiers, mostly for guard
-  gem 'rb-inotify', :require => false
-  gem 'rb-fsevent', :require => false
-  gem 'rb-fchange', :require => false
-  
-  # Additions suggested by article 
+  # gem 'rb-inotify', :require => false
+  # gem 'rb-fsevent', :require => false
+  # gem 'rb-fchange', :require => false
+
+  # Additions suggested by article
   # http://www.codebeerstartups.com/2013/04/must-have-gems-for-development-machine-in-ruby-on-rails/
   gem 'bullet'
   gem 'localtunnel', :require => false #exposes site as needed ($ localtunnel-beta 8000)
@@ -128,7 +132,7 @@ group :development do
   gem 'lol_dba' # site optimization? ($ rake db:find_indexes > $ )
   gem 'reek' # check for code smells ($ reek -q .)
   gem 'rails_best_practices', :require => false # check for best practice fixes ($ rails_best_practices .)
-  gem 'request-log-analyzer', :require => false # check out the live website request logs for performance issues/info 
+  gem 'request-log-analyzer', :require => false # check out the live website request logs for performance issues/info
   #                         ($ request-log-analyzer --parse-strategy assume-correct log/development.log)
   gem 'smusher', :require => false # optimize images ($ smusher app/assets/images)
 

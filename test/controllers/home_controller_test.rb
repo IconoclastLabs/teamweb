@@ -7,6 +7,7 @@ describe "HomeControllerTest" do
     get :index
     assert_response :success
     assert_not_nil assigns(:upcoming_events)
+    1.must_equal 2
   end
 
 end
