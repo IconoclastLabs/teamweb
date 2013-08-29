@@ -6,7 +6,7 @@
         %li= msg
 
   = f.input :name
-  = f.input :about
+  = f.input :about, label: "Describe the event", as: :text, input_html: { class: "wysihtml5"}
   = f.input :location
   = f.input :contact
   .actions

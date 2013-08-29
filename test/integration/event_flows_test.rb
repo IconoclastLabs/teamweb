@@ -43,6 +43,12 @@ class EventFlowTest < ActionDispatch::IntegrationTest
     assert page.has_link?('Members'), "Members tab should be visible"
   end
 
+  test "Automatically has wysihtml5 editor" do
+    capybara_sign_in(@user)
+    visit new_organization_season_event_path(@some_org, @some_season)
+
+    assert page.has_css?("textarea.wysihtml5"), "Page should have a wysihtml5 editor"
+  end
 
 
   # test "Events with Members disallowed, should hide the member tab" do
