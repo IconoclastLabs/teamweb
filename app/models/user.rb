@@ -20,6 +20,7 @@
 #  name                   :string(255)
 #  provider               :string(255)
 #  uid                    :string(255)
+#  authentication_token   :string(255)
 #
 
 class User < ActiveRecord::Base
