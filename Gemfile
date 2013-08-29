@@ -61,7 +61,7 @@ end
 
 
 group :test do
-  gem 'simplecov', :require => false
+  #gem 'simplecov', :require => false
   gem 'turn' # colored minitests
   gem 'sqlite3'
   gem 'awesome_print' # OF COURSE!
@@ -108,8 +108,8 @@ group :development do
   gem 'brakeman' # checks for security vulns
   gem 'guard-brakeman'
   # Reload the browser automatically when viewstuff changes.
-  gem 'rack-livereload'
-  gem 'guard-livereload'
+  # gem 'rack-livereload'
+  # gem 'guard-livereload'
   #gem 'guard-test'
   gem "better_errors"
   gem "binding_of_caller" # required for better_errors
