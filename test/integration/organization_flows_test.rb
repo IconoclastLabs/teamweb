@@ -23,4 +23,11 @@ class OrganizationFlowsTest < ActionDispatch::IntegrationTest
     assert page.has_link?("Edit"), "Should have a edit button"
     assert page.has_link?("Delete"), "Should have a delete button"
   end  
+
+  test "Automatically has wysihtml5 editor" do
+    capybara_sign_in(@user)
+    visit new_organization_path
+
+    assert page.has_css?("textarea.wysihtml5"), "Page should have a wysihtml5 editor"
+  end
 end

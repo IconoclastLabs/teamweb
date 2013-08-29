@@ -48,6 +48,7 @@ gem 'pygments.rb', :require => false
 
 
 gem 'kaminari' #allows for pagination
+gem 'bootstrap-wysihtml5-rails' #bootstrap html editor
 
 # OmniAuth stuff
 gem 'omniauth'
