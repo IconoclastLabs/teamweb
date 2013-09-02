@@ -5,7 +5,7 @@ class SeasonsController < ApplicationController
   # GET /seasons
   # GET /seasons.json
   def index
-    @seasons = Season.all
+    @seasons = Season.order(:name).page params[:page]
   end
 
   # GET /seasons/1
