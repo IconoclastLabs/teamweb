@@ -1,4 +1,5 @@
-%h1 List Seasons
+%h1 
+  = @organization.name.possessive + " Season".pluralize(@seasons.count)
 
 %table.table.table-striped
   %thead

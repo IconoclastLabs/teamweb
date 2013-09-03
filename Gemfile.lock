@@ -250,6 +250,7 @@ GEM
     polyglot (0.3.3)
     populator (1.0.0)
     posix-spawn (0.3.6)
+    possessive (1.0.1)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -428,6 +429,7 @@ DEPENDENCIES
   pg
   poltergeist
   populator
+  possessive
   pry
   pry-debugger
   pry-doc

@@ -1,5 +1,5 @@
 %h1 
-  = @season.name + pluralize(@events.count, 'Event')
+  = @season.name + " Event".pluralize(@events.count)
 
 %table.table.table-striped
   %thead
