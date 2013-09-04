@@ -2,7 +2,7 @@ require 'test_helper'
 
 describe "HomeControllerTest" do
   include Devise::TestHelpers
-  
+
   it "gets index" do
     get :index
     assert_response :success

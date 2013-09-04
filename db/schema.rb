@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(version: 20130819173421) do
 
+  create_table "coordinators", force: true do |t|
+    t.string   "name"
+    t.string   "about"
+    t.string   "location"
+    t.string   "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "name"
     t.string   "about"
