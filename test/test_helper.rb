@@ -10,6 +10,7 @@ SimpleCov.command_name 'Specs'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/poltergeist'
+require 'capybara/rails'
 require 'database_cleaner'
 require 'turn'
 require 'rack/test'
@@ -52,7 +53,7 @@ Turn.config do |c|
 #  # :pretty   - new pretty reporter
 #  # :marshal  - dump output as YAML (normal run mode only)
 #  # :cue      - interactive testing
-  c.format  = :progress
+  c.format  = :outline
 #  # turn on invoke/execute tracing, enable full backtrace
 #  c.trace   = true
 #  # use humanized test names (works only with :outline format)
