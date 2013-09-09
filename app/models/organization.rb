@@ -18,4 +18,6 @@ class Organization < ActiveRecord::Base
   friendly_id :name, use: :slugged
   has_many :seasons, dependent: :destroy
   validates :name, :contact, presence: true, length: {in: 2..38}
+  alias_attribute :org_name, :name
+  alias_attribute :org_about, :about
 end
