@@ -13,6 +13,7 @@
  *= require peek/views/performance_bar
  *= require peek/views/rblineprof
  *= require peek/views/rblineprof/pygments
- *= require bootstrap-wysihtml5
+ *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap/dist/css/bootstrap-theme
  *= require_tree .
  */

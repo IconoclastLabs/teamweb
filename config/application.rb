@@ -44,7 +44,15 @@ module Teamweb
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types
     # config.active_record.schema_format = :sql
+    
 
+    # Added 'components' to load Bower components to the asset pipeline
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+
+    # Precompile additional assets
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
+    
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
   end

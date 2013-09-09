@@ -3,6 +3,7 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 
+gem 'multi_json',   '~> 1.8.0'
 gem 'sass-rails',   '~> 4.0.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'bourbon'
@@ -14,7 +15,6 @@ gem 'compass'
 gem 'execjs'
 gem 'jquery-rails'
 gem "haml-rails"
-gem "bootstrap-sass", ">= 2.3.0.0"
 
 gem "rails-boilerplate"
 
@@ -48,7 +48,7 @@ gem 'pygments.rb', :require => false
 
 
 gem 'kaminari' #allows for pagination
-gem 'bootstrap-wysihtml5-rails' #bootstrap html editor
+#gem 'bootstrap-wysihtml5-rails' #bootstrap html editor
 gem 'possessive' # allow possesive strings automation
 
 # OmniAuth stuff
