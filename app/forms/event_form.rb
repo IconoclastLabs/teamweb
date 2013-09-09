@@ -20,7 +20,8 @@ class EventForm
   # end
 
   def submit(params)
-    event.attributes = params.slice(:name, :location, :about, :start, :end)
+    event.attributes = params.permit(:name, :location, :about, :start, :end)
+    #event.attributes = params.slice(:name, :location, :about, :start, :end)
     if event.valid?
       event.save!
       true

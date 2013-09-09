@@ -31,8 +31,10 @@ Teamweb::Application.routes.draw do
   end
 
 
-  match "create_event", to: "events#new_event", via: :all
-  match "events", to: "events#list", via: :all
+# Special sans-organization event data
+  match "new_event", to: "events#new_event", via: :all
+  match "events", to: "events#create_event", via: :all
+  match "all_events", to: "events#list", via: :all
 
   get "home/index"
 

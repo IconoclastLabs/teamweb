@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_parents, except: [:list, :new_event]
+  before_action :set_parents, except: [:list, :new_event, :create_event]
   before_action :set_event, only: [:show, :edit, :update, :destroy, :add_user]
 
   def add_user
@@ -12,14 +12,6 @@ class EventsController < ApplicationController
     redirect_to [@organization, @event], message 
   end
 
-  #def list
-  #  @events = Event.all
-
-  #  respond_to do |format|
-  #    format.html #{ render "events/index" }
-  #    format.json { render json: @events }
-  #  end
-  #end
   def list
     @events = Event.order(:name).page params[:page]
   end
@@ -28,14 +20,15 @@ class EventsController < ApplicationController
     @event_form = EventForm.new
   end
 
-  #def index
-  #  @events = @organization.events
+  def create_event
+    @event_form = EventForm.new
+    if @event_form.submit(params[:event])
+      redirect_to all_events_path, notice: 'Your event was successfully created.'
+    else
+      render "new_event"
+    end
+  end
 
-  #  respond_to do |format|
-  #    format.html # index.html.erb
-  #    format.json { render json: @events }
-  #  end
-  #end
   def index
     @events = @season.events.order(:name).page params[:page]
   end
@@ -71,7 +64,6 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    binding.pry
     @event = @season.events.new(event_params)
 
     Event.transaction do
@@ -124,6 +116,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:about, :end, :location, :name, :start, :max_members, :members_allowed, :teams_allowed, :max_teams, :max_team_size)
+      params.require(:event).permit(:about, :end, :location, :name, :start)
     end
 end
