@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_parents, except: [:list]
+  before_action :set_parents, except: [:list, :new_event]
   before_action :set_event, only: [:show, :edit, :update, :destroy, :add_user]
 
   def add_user
@@ -22,6 +22,10 @@ class EventsController < ApplicationController
   #end
   def list
     @events = Event.order(:name).page params[:page]
+  end
+
+  def new_event
+    @event_form = EventForm.new
   end
 
   #def index
@@ -67,6 +71,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+    binding.pry
     @event = @season.events.new(event_params)
 
     Event.transaction do

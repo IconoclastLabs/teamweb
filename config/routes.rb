@@ -30,6 +30,8 @@ Teamweb::Application.routes.draw do
     end
   end
 
+
+  match "create_event", to: "events#new_event", via: :all
   match "events", to: "events#list", via: :all
 
   get "home/index"
