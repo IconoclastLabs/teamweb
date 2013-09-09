@@ -11,6 +11,20 @@
   = f.input :start, as: :string, input_html: { type: "date"}
   = f.input :end, as: :string, input_html: { type: "date" }
 
+  = f.input :season_name
+  = f.input :season_start
+  = f.input :season_end
+  = f.input :members_allowed
+  = f.input :max_members
+  = f.input :teams_allowed
+  = f.input :max_teams
+  = f.input :max_team_size
+
+  = f.input :org_name
+  = f.input :org_about, as: :text, input_html: { class: "wysihtml5"}
+  = f.input :org_location
+  = f.input :contact
+
   .actions
     %button.btn.btn-info{type: "submit"}
       = icon_tag('thumbs-up') + 'Save'

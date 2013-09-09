@@ -20,4 +20,5 @@ class Organization < ActiveRecord::Base
   validates :name, :contact, presence: true, length: {in: 2..38}
   alias_attribute :org_name, :name
   alias_attribute :org_about, :about
+  alias_attribute :org_location, :location
 end
