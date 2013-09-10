@@ -1,7 +1,7 @@
 # TODO: Strongly consider https://github.com/apotonick/reform
 class EventForm
   include ActiveModel::Model
-
+  validate :all_parts_valid
   delegate :name, :location, :about, :start, :end, to: :event
   delegate :season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size, to: :season
   delegate :org_name, :org_about, :org_location, :contact, to: :organization
@@ -29,20 +29,23 @@ class EventForm
     season.attributes = params.slice(:season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size)
     event.attributes = params.slice(:name, :location, :about, :start, :end)
 
-    # TODO Move these 3 valid checks to EventForm valid check
-    if organization.valid? && season.valid? && event.valid?
+    if self.valid?
+      # TODO wrap in transaction?
+      # TODO Move to save method?
       organization.save!
       season.save!
       event.save!
       true
     else
-      # TODO handle errors correctly
-      self.errors[:base] << organization.errors.messages
-      self.errors[:base] << season.errors.messages
-      self.errors[:base] << event.errors.messages
       false
     end
   end
 
+  private
+    def all_parts_valid
+      self.errors[:base] << organization.errors.messages unless organization.valid?
+      self.errors[:base] << season.errors.messages unless season.valid?
+      self.errors[:base] << event.errors.messages unless event.valid?
+    end
 
 end
