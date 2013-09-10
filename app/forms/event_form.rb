@@ -6,6 +6,7 @@ class EventForm
   delegate :season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size, to: :season
   delegate :org_name, :org_about, :org_location, :contact, to: :organization
 
+  # TODO: move these attributes to attr_accessors with initialize method?
   def organization
     @organization ||= Organization.new
   end
@@ -31,7 +32,6 @@ class EventForm
 
     if self.valid?
       # TODO wrap in transaction?
-      # TODO Move to save method?
       organization.save!
       season.save!
       event.save!
