@@ -25,4 +25,8 @@ class Season < ActiveRecord::Base
   validates_numericality_of :max_team_size, allow_nil: true, greater_than: 0
   validates_numericality_of :max_teams, allow_nil: true, greater_than: 0, if: -> {self.teams_allowed?}
   validates_numericality_of :max_members, allow_nil: true, greater_than: 0, if: -> {self.members_allowed?}  
+  alias_attribute :season_name, :name
+  alias_attribute :season_start, :start
+  alias_attribute :season_end, :end
+
 end
