@@ -31,11 +31,11 @@ class EventForm
     event.attributes = params.slice(:name, :location, :about, :start, :end)
 
     if self.valid?
-      # TODO wrap in transaction?
-      organization.save!
-      season.save!
-      event.save!
-      true
+      Organization.transaction do
+        organization.save!
+        season.save!
+        event.save!
+      end
     else
       false
     end
