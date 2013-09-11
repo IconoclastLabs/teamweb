@@ -43,9 +43,16 @@ class EventForm
 
   private
     def all_parts_valid
-      self.errors[:base] << organization.errors.messages unless organization.valid?
-      self.errors[:base] << season.errors.messages unless season.valid?
-      self.errors[:base] << event.errors.messages unless event.valid?
+      check_model organization
+      check_model season
+      check_model event
+    end
+
+    def check_model model
+      model.valid?
+      model.errors.full_messages.each do |error|
+        self.errors.add(:event_form, error)
+      end
     end
 
 end
