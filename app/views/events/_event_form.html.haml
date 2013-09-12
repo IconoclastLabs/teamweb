@@ -20,6 +20,8 @@
   = f.input :max_teams, as: :integer, input_html: { :'data-maxable' => 'no-max'}
   = f.input :max_team_size, as: :integer, input_html: { :'data-maxable' => 'no-max'}
 
+  = f.input :owner, as: :boolean
+
   = f.input :org_name, label: "Organization Name"
   = f.input :org_about, as: :text, label: "About the Organization", input_html: { class: "wysihtml5"}
   = f.input :org_location, label: "Organization Location"

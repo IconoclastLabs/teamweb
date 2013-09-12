@@ -1,7 +1,11 @@
 # TODO: Strongly consider https://github.com/apotonick/reform
 class EventForm
   include ActiveModel::Model
+  # Objects
   attr_accessor :organization, :season, :event
+  # Properties
+  attr_accessor :owner
+
   validate :all_parts_valid
   delegate :name, :location, :about, :start, :end, to: :event
   delegate :season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size, to: :season
@@ -26,7 +30,14 @@ class EventForm
     @season.attributes = params.slice(:season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size)
     @event.attributes = params.slice(:name, :location, :about, :start, :end)
 
-    if self.valid?
+    # TODO Enforce this is unique name
+    if params[:owner] == '1'
+      binding.pry
+      @organization.org_name = @event.name
+      @organization.contact = @event.location
+    end
+
+    if valid?
       Organization.transaction do
         @organization.save!
         @season.save!
