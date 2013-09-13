@@ -5,27 +5,32 @@
       - @event_form.errors.full_messages.each do |msg|
         %li= msg
 
-  = f.input :name, label: "Name for this event"
+  = f.input :name, label: "Name for this event", required: true
   = f.input :location, label: "Location of event"
   = f.input :about, label: "Describe the event", as: :text, input_html: { class: "wysihtml5"}
   = f.input :start, as: :string, input_html: { type: "date"}
   = f.input :end, as: :string, input_html: { type: "date" }
 
-  = f.input :season_name
-  = f.input :season_start, input_html: { type: "date"}
-  = f.input :season_end, input_html: { type: "date"}
+  = f.input :season_allowed, as: :boolean, label: "Season?", hint: "Is this event part of a season?", input_html: { :'data-hide' => '.season_info'}
+  
+  .season_info
+    = f.input :season_name, required: true
+    = f.input :season_start, input_html: { type: "date"}
+    = f.input :season_end, input_html: { type: "date"}
+
   = f.input :members_allowed, as: :boolean, label: "Members allowed?", hint: "Can users join the season without a team?", input_html: { :'data-hide' => '.event_max_members'}
   = f.input :max_members, as: :integer, input_html: { :'data-maxable' => 'no-max'}
   = f.input :teams_allowed, as: :boolean, label: "Teams allowed?", hint: "Can users create teams?", input_html: { :'data-hide' => '.event_max_teams, .event_max_team_size'}
   = f.input :max_teams, as: :integer, input_html: { :'data-maxable' => 'no-max'}
   = f.input :max_team_size, as: :integer, input_html: { :'data-maxable' => 'no-max'}
 
-  = f.input :owner, as: :boolean
+  = f.input :owner, as: :radio_buttons, label: "Event Owner", collection: ["Me", "Organization"], hint: "Is this event by you or your organization?", input_html: { :'data-org' => '.org_info'}
 
-  = f.input :org_name, label: "Organization Name"
-  = f.input :org_about, as: :text, label: "About the Organization", input_html: { class: "wysihtml5"}
-  = f.input :org_location, label: "Organization Location"
-  = f.input :contact, label: "Organization Contact"
+  .org_info
+    = f.input :org_name, label: "Organization Name", required: true
+    = f.input :org_about, as: :text, label: "About the Organization", input_html: { class: "wysihtml5"}
+    = f.input :org_location, label: "Organization Location"
+    = f.input :contact, label: "Organization Contact", required: true
 
   .actions
     %button.btn.btn-info{type: "submit"}

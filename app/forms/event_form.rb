@@ -3,8 +3,8 @@ class EventForm
   include ActiveModel::Model
   # Objects
   attr_accessor :organization, :season, :event
-  # Properties
-  attr_accessor :owner
+  # Properties that don't come from objects
+  attr_accessor :owner, :season_allowed
 
   validate :all_parts_valid
   delegate :name, :location, :about, :start, :end, to: :event
@@ -17,6 +17,10 @@ class EventForm
     @organization ||= Organization.new
     @season = @organization.seasons.build
     @event = @season.events.build
+    # TODO: don't hardcode this
+    @owner = "Me"
+    @season.members_allowed = false
+    @season.teams_allowed = false
   end
 
   # so that URLs build correctly
@@ -30,10 +34,15 @@ class EventForm
     @season.attributes = params.slice(:season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size)
     @event.attributes = params.slice(:name, :location, :about, :start, :end)
 
+    # TODO: yeah.. just fix this stuff
+    if params[:season_allowed] == "0"
+      @season.season_name = @event.name
+    end
+
     # TODO Enforce this is unique name
-    if params[:owner] == '1'
-      binding.pry
+    if params[:owner] == 'Me'
       @organization.org_name = @event.name
+      @organization.org_about = @event.about
       @organization.contact = @event.location
     end
 
