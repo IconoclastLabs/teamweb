@@ -3,12 +3,10 @@ class EventForm
   include ActiveModel::Model
   # Objects
   attr_accessor :organization, :season, :event
-  # Properties that don't come from objects
-  attr_accessor :owner, :season_allowed
 
   validate :all_parts_valid
   delegate :name, :location, :about, :start, :end, to: :event
-  delegate :season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size, to: :season
+  delegate :season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size, :self_organized, :seasons_allowed, to: :season
   delegate :org_name, :org_about, :org_location, :contact, to: :organization
 
   def initialize(params=ActionController::Parameters.new({season_allowed: 0, owner: "Me", members_allowed: false, teams_allowed: false}))
@@ -16,12 +14,9 @@ class EventForm
     # params.permit! # no need for strong params, since we're handling what is accessed here.
     params.permit! 
     @organization ||= Organization.new(params.slice(:org_name, :org_about, :org_location, :contact))
-    @season = @organization.seasons.build(params.slice(:season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size))
+    @season = @organization.seasons.build(params.slice(:season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size, :self_organized, :seasons_allowed))
     @event = @season.events.build(params.slice(:name, :location, :about, :start, :end))
 
-    # TODO: don't hardcode this
-    @season_allowed ||= params[:season_allowed]
-    @owner ||= params[:owner]
   end
 
   # so that URLs build correctly
@@ -30,14 +25,13 @@ class EventForm
   end
 
   def save
-
     # TODO: yeah.. just fix this stuff
-    if @season_allowed == "0"
+    unless @season.seasons_allowed
       @season.season_name = @event.name
     end
 
     # TODO Enforce this is unique name
-    if @owner == 'Me'
+    if @season.self_organized
       @organization.org_name = @event.name
       @organization.org_about = @event.about
       @organization.contact = @event.location

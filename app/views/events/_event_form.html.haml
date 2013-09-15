@@ -11,7 +11,7 @@
   = f.input :start, as: :string, input_html: { type: "date"}
   = f.input :end, as: :string, input_html: { type: "date" }
 
-  = f.input :season_allowed, as: :boolean, label: "Season?", hint: "Is this event part of a season?", input_html: { :'data-hide' => '.season_info'}
+  = f.input :seasons_allowed, as: :boolean, label: "Season?", hint: "Is this event part of a season?", input_html: { :'data-hide' => '.season_info'}
   
   .season_info
     = f.input :season_name, required: true
@@ -24,7 +24,7 @@
   = f.input :max_teams, as: :integer, input_html: { :'data-maxable' => 'no-max'}
   = f.input :max_team_size, as: :integer, input_html: { :'data-maxable' => 'no-max'}
 
-  = f.input :owner, as: :radio_buttons, label: "Event Owner", collection: ["Me", "Organization"], hint: "Is this event by you or your organization?", input_html: { :'data-org' => '.org_info'}
+  = f.input :self_organized, as: :radio_buttons, label: "Event Owner", collection: [["Me", true], ["Organization", false]], hint: "Is this event by you or your organization?", input_html: { :'data-org' => '.org_info'}
 
   .org_info
     = f.input :org_name, label: "Organization Name", required: true
