@@ -21,8 +21,8 @@ class EventsController < ApplicationController
   end
 
   def create_event
-    @event_form = EventForm.new
-    if @event_form.submit(params[:event])
+    @event_form = EventForm.new(params[:event])
+    if @event_form.save
       redirect_to [@event_form.organization, @event_form.season, @event_form.event], notice: 'Event was successfully created.' 
     else
       render "new_event"
