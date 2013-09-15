@@ -14,6 +14,8 @@
 #  max_team_size   :integer
 #  created_at      :datetime
 #  updated_at      :datetime
+#  self_organized  :boolean          default(TRUE)
+#  seasons_allowed :boolean          default(FALSE)
 #
 
 class Season < ActiveRecord::Base

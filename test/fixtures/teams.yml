@@ -4,10 +4,10 @@
 #
 #  id          :integer          not null, primary key
 #  name        :string(255)
-#  created_at  :datetime
-#  updated_at  :datetime
-#  max_members :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #  rank        :integer
+#  max_members :integer
 #  season_id   :integer
 #
 

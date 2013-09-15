@@ -13,13 +13,14 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  created_at             :datetime
-#  updated_at             :datetime
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
 #  phone                  :string(255)
 #  address                :string(255)
 #  name                   :string(255)
 #  provider               :string(255)
 #  uid                    :string(255)
+#  authentication_token   :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
