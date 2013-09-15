@@ -50,15 +50,15 @@ class EventForm
 
   private
     def all_parts_valid
-      check_model @organization
-      check_model @season
       check_model @event
+      check_model @season unless self.errors.present?
+      check_model @organization unless self.errors.present?
     end
 
     def check_model model
       model.valid?
       model.errors.full_messages.each do |error|
-        self.errors.add(:event_form, error)
+        self.errors.add(:base, error)
       end
     end
 
