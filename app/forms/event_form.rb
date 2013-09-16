@@ -10,7 +10,7 @@ class EventForm
   delegate :org_name, :org_about, :org_location, :contact, to: :organization
 
   def initialize(params=ActionController::Parameters.new({season_allowed: 0, owner: "Me", members_allowed: false, teams_allowed: false}))
-
+    
     # params.permit! # no need for strong params, since we're handling what is accessed here.
     params.permit! 
     @organization ||= Organization.new(params.slice(:org_name, :org_about, :org_location, :contact))

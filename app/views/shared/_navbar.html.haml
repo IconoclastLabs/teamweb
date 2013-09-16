@@ -4,7 +4,7 @@
       %ul.nav
         = nav_link "Home", root_path
         = nav_link "Create Event", new_event_path
-        = nav_link "Events", events_path
+        = nav_link "Events", all_events_path
         = nav_link "Organizations", organizations_path
         - if user_signed_in?
           = nav_link "Profile", edit_user_registration_path
