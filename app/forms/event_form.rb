@@ -9,7 +9,7 @@ class EventForm
   delegate :season_name, :season_start, :season_end, :members_allowed, :max_members, :teams_allowed, :max_teams, :max_team_size, :self_organized, :seasons_allowed, to: :season
   delegate :org_name, :org_about, :org_location, :contact, to: :organization
 
-  def initialize(params=ActionController::Parameters.new({season_allowed: 0, owner: "Me", members_allowed: false, teams_allowed: false}))
+  def initialize(params=ActionController::Parameters.new({season_allowed: 0, members_allowed: false, teams_allowed: false}))
     
     # params.permit! # no need for strong params, since we're handling what is accessed here.
     params.permit! 
@@ -25,10 +25,7 @@ class EventForm
   end
 
   def save
-    # TODO: yeah.. just fix this stuff
-    unless @season.seasons_allowed
-      @season.season_name = @event.name
-    end
+    @season.season_name = @event.name unless @season.seasons_allowed
 
     # TODO Enforce this is unique name
     if @season.self_organized
