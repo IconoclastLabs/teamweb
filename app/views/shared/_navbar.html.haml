@@ -1,19 +1,38 @@
-.navbar
-  .navbar-inner
-    .container
-      %ul.nav
-        = nav_link "Home", root_path
-        = nav_link "Create Event", new_event_path
-        = nav_link "Events", all_events_path
-        = nav_link "Organizations", organizations_path
-        %span.glyphicon.glyphicon-phone-alt
-          = nav_link "Contact", '#'
-        - if user_signed_in?
-          = nav_link "Profile", edit_user_registration_path
-          = nav_link "Logout", destroy_user_session_path, method: :delete
-        - else
-          = nav_link "Sign Up", new_user_registration_path
-          = nav_link "Login", new_user_session_path
-/ /.navbar
-/ Breadcrumbs via helper
+.navbar-wrapper
+  .container
+    .navbar.navbar-inverse.navbar-static-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Teamweb", root_url, class: "navbar-brand"  
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li
+              = nav_link "Create Event", new_event_path
+            %li
+              = nav_link "Events", all_events_path
+            %li
+              = nav_link "Organizations", organizations_path
+            %li.dropdown
+              %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                Account
+                %b.caret
+              %ul.dropdown-menu
+                - if user_signed_in?
+                  %li
+                    = nav_link "Profile", edit_user_registration_path
+                  -#%li.dropdown-header Nav subheader
+                  %li.divider
+                  %li
+                    = nav_link "Logout", destroy_user_session_path, method: :delete
+                - else
+                  %li
+                    = nav_link "Sign Up", new_user_registration_path
+                  %li
+                    = nav_link "Login", new_user_session_path
+
 = render_breadcrumbs
+
