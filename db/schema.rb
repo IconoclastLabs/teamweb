@@ -13,14 +13,23 @@
 
 ActiveRecord::Schema.define(version: 20130915045718) do
 
+  create_table "coordinators", force: true do |t|
+    t.string   "name"
+    t.string   "about"
+    t.string   "location"
+    t.string   "contact"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "events", force: true do |t|
     t.string   "name"
     t.string   "about"
     t.string   "location"
     t.date     "start"
     t.date     "end"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
@@ -55,8 +64,8 @@ ActiveRecord::Schema.define(version: 20130915045718) do
     t.string   "about"
     t.string   "location"
     t.string   "contact"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "slug"
   end
 
@@ -82,10 +91,10 @@ ActiveRecord::Schema.define(version: 20130915045718) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "rank"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "max_members"
+    t.integer  "rank"
     t.integer  "season_id"
   end
 
@@ -102,8 +111,8 @@ ActiveRecord::Schema.define(version: 20130915045718) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "phone"
     t.string   "address"
     t.string   "name"

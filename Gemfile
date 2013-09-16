@@ -16,7 +16,7 @@ gem 'execjs'
 gem 'jquery-rails'
 gem "haml-rails"
 gem 'rack-rewrite'
-
+gem 'bootstrap-wysihtml5-rails'
 # To use Jbuilder templates for JSON
 gem 'jbuilder'
 
