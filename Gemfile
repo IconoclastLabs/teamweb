@@ -15,8 +15,7 @@ gem 'compass'
 gem 'execjs'
 gem 'jquery-rails'
 gem "haml-rails"
-
-gem "rails-boilerplate"
+gem 'rack-rewrite'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'

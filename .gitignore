@@ -28,5 +28,5 @@ capybara-*.html
 rerun.txt
 pickle-email-*.html
 
-.idea
+.idea/
 teamweb.sublime-*

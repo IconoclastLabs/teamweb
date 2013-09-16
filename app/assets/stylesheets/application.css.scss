@@ -8,12 +8,22 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require peek
  *= require peek/views/performance_bar
  *= require peek/views/rblineprof
  *= require peek/views/rblineprof/pygments
+ *= require_self
  *= require bootstrap/dist/css/bootstrap
  *= require bootstrap/dist/css/bootstrap-theme
  *= require_tree .
+
  */
+
+// @font-face {
+//   font-family: 'Glyphicons Halflings' !important;
+//   src: asset_path('glyphicons-halflings-regular.eot') !important;
+//   src: asset_path('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), 
+//        asset_path('glyphicons-halflings-regular.woff') format('woff'), 
+//        asset_path('glyphicons-halflings-regular.ttf') format('truetype'), 
+//        asset_path('glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg') !important;
+// }

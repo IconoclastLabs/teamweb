@@ -10,14 +10,14 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require plugins
+
 //= require jquery
 //= require jquery_ujs
 //= require peek
 //= require peek/views/performance_bar
 //= require peek/views/rblineprof
 //= require rails_javascript_log
-//= require modernizr
+//= require modernizr/modernizr
 //= require bootstrap/dist/js/bootstrap 
 //= require_tree .
 
