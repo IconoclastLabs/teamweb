@@ -11,16 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130819173421) do
-
-  create_table "coordinators", force: true do |t|
-    t.string   "name"
-    t.string   "about"
-    t.string   "location"
-    t.string   "contact"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(version: 20130915045718) do
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -28,8 +19,8 @@ ActiveRecord::Schema.define(version: 20130819173421) do
     t.string   "location"
     t.date     "start"
     t.date     "end"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "gmaps"
@@ -64,8 +55,8 @@ ActiveRecord::Schema.define(version: 20130819173421) do
     t.string   "about"
     t.string   "location"
     t.string   "contact"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string   "slug"
   end
 
@@ -73,26 +64,28 @@ ActiveRecord::Schema.define(version: 20130819173421) do
 
   create_table "seasons", force: true do |t|
     t.integer  "organization_id"
-    t.string   "name",                           null: false
+    t.string   "name",                            null: false
     t.date     "start"
     t.date     "end"
-    t.boolean  "members_allowed", default: true, null: false
+    t.boolean  "members_allowed", default: true,  null: false
     t.integer  "max_members"
-    t.boolean  "teams_allowed",   default: true, null: false
+    t.boolean  "teams_allowed",   default: true,  null: false
     t.integer  "max_teams"
     t.integer  "max_team_size"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "self_organized",  default: true
+    t.boolean  "seasons_allowed", default: false
   end
 
   add_index "seasons", ["organization_id"], name: "index_seasons_on_organization_id"
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "max_members"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "rank"
+    t.integer  "max_members"
     t.integer  "season_id"
   end
 
@@ -109,8 +102,8 @@ ActiveRecord::Schema.define(version: 20130819173421) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "phone"
     t.string   "address"
     t.string   "name"

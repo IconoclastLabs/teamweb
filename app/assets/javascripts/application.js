@@ -17,14 +17,15 @@
 //= require peek/views/performance_bar
 //= require peek/views/rblineprof
 //= require rails_javascript_log
+//= require bootstrap-wysihtml5
 //= require modernizr/modernizr
 //= require bootstrap/dist/js/bootstrap 
+
 //= require_tree .
 
 
 $(document).ready(function(){
 
-  Modernizr.load();
   $('.wysihtml5').each(function(i, elem) {
     $(elem).wysihtml5();
   });
