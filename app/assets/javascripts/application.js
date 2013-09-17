@@ -20,7 +20,6 @@
 //= require bootstrap-wysihtml5/b3
 //= require modernizr/modernizr
 //= require bootstrap/dist/js/bootstrap 
-
 //= require_tree .
 
 
