@@ -8,8 +8,8 @@
 #  location   :string(255)
 #  start      :date
 #  end        :date
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  created_at :datetime
+#  updated_at :datetime
 #  latitude   :float
 #  longitude  :float
 #  gmaps      :boolean
