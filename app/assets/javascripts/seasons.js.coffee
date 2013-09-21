@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # Form - Show and hide dependant form fields
-(($) ->
+jQuery ->
   # show if it is checked
   $("input[data-hide]").each (box) ->
     shown = $(@).prop('checked')
@@ -29,5 +29,3 @@
         $("#" + box_id).removeAttr('readonly')
     #if there's nothing in the box, then might as well check the box
     $("#" + checkbox_id).prop('checked', true).change() if @.value.length == 0
-
-) jQuery
