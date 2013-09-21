@@ -12,6 +12,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   # using capybara
   test "front page has a login button" do
     visit root_path
+    click_link_or_button('Account')
     click_link_or_button('Login')
     assert_equal page.current_path, user_session_path
   end
@@ -30,6 +31,7 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   # using capybara
   test "edit user page" do
     capybara_sign_in(@user)
+    click_link_or_button('Account')
     click_link_or_button('Profile')
     assert_equal page.current_path, edit_user_registration_path
     assert page.has_content?('DANGER ZONE!!!')
