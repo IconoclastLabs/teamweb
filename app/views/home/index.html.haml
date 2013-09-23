@@ -6,8 +6,8 @@
   = link_to "View Events", events_path, class: "btn btn-large btn-primary"
 %hr/
 / columns
-.row-fluid
-  .span4
+.row
+  .col-md-4
     %h2 Upcoming Events
     %ul.events-list
       - @upcoming_events.each do |event|
@@ -15,12 +15,12 @@
           %abbr{title: event.start.format_like("Jan 1st 2001")}
             = event.name
           -#= link_to icon_tag("play") + "Info", organization_event_path(event.organization, event), class: "btn btn-info btn-small pull-right"
-  .span4
+  .col-md-4
     %h2 Heading
     %p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
     %p
       %a.btn{:href => "#"} View details &raquo;
-  .span4
+  .col-md-4
     %h2 Heading
     %p Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.
     %p
