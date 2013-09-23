@@ -1,7 +1,7 @@
 %h2 
   Edit user
   = resource.email
-.span7
+.col-md-8
 
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f|
 
@@ -26,7 +26,7 @@
           = icon_tag('thumbs-up') + 'Update'
 
 
-.span3.alert.alert-error{style: "text-align: center;"}
+.col-md-offset-1.col-md-3.alert.alert-danger{style: "text-align: center;"}
   %h3 DANGER ZONE!!!
   %p 
     If you would like to remove your account from this site, you may do so here.  As of right now this will not delete any of your data, but simply remove access to this site.

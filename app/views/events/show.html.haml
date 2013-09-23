@@ -1,11 +1,11 @@
 %h1
   = @event.name
-.span7{style: "min-height:450px;"}
-  .span4
+.col-md-7{style: "min-height:450px;"}
+  .col-md-4
     %p
       %strong About:
       = @event.about
-  .span2.well
+  .col-md-2.well
     %p
       %strong Start Date:
       = @event.start.try(:format_like, "Jan 1st 2000")
@@ -18,14 +18,14 @@
   = render 'tab_details'
 
 / Map    
-.span4
+.col-md-4
   = gmaps4rails(@maps_json)
   %p
     %strong Location
     = @event.location
 
 / Organization Info
-.well.span3
+.well.col-md-3
   %h4 Organization info
   %p
     %strong
@@ -36,7 +36,7 @@
     = @organization.contact
 
 / Button bar
-.span12
+.col-md-12
   .btn-group
     = link_to icon_tag("hand-left") + 'Back', organization_season_events_path, class: "btn btn-primary"
     = link_to icon_tag("wrench") + 'Edit', edit_organization_season_event_path(@season.organization, @season, @event), class: "btn btn-info"

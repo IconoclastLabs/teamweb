@@ -6,7 +6,7 @@
     %strong teamweb.herokuapp.com 
     and Prod's Secret key will function.
 %h2 Sign in
-.span7
+.col-md-7
   = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal' }) do |f|
 
     = f.input :email, :required => false, :autofocus => true
@@ -17,7 +17,7 @@
       %button.btn.btn-primary{type: "submit"}
         = icon_tag('hand-right') + 'Sign in'
   = render "devise/shared/links"
-.span3.well.facebook
+.col-md-3.well.facebook
   %p You can sign in any of the following services
   = link_to image_tag("facebook.png") + "Facebook Login", user_omniauth_authorize_path(:facebook), class: "btn"
 

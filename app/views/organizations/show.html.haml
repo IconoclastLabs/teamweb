@@ -2,7 +2,7 @@
   %h1 
     Organization
     = @organization.name
-.span5
+.col-md-5
   %p
     %strong About:
     = @organization.about
@@ -12,7 +12,7 @@
   %p
     %strong Main Contact:
     = @organization.contact
-.span6
+.col-md-6
   %p
     %strong Members
     %ol
@@ -22,7 +22,7 @@
           - if member.admin
             %span.badge.badge-success
               Admin
-.span11
+.col-md-11
   %strong
     = link_to "#{@organization.name} Seasons", organization_seasons_path(@organization)
   %span.badge 

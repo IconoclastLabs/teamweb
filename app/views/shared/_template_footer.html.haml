@@ -1,11 +1,9 @@
 %p.clearfix
 .footer.well
-  .span3
-    %p 
-      &copy; TeamWeb
-      = Time.zone.now.year
-  .span8
-    %p.pull-right
-      %a{href: "https://github.com/iconoclastlabs/teamweb/issues?state=open"}
-        Github
+  %p.pull-right
+    %a{href: "https://github.com/iconoclastlabs/teamweb/issues?state=open"}
+      = image_tag "github.png", width: 30
+  %p 
+    &copy; TeamWeb
+    = Time.zone.now.year
 / /container
