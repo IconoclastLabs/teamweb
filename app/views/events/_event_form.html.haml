@@ -6,10 +6,10 @@
         %li= msg
 
   = f.input :name, label: "Name for this event", required: true
-  = f.input :location, label: "Location of event"
+  = f.input :location, label: "Location of event", required: true
   = f.input :about, label: "Describe the event", as: :text, input_html: { class: "wysihtml5"}
-  = f.input :start, as: :string, input_html: { type: "date"}
-  = f.input :end, as: :string, input_html: { type: "date" }
+  = f.input :start, as: :string, input_html: { type: "datetime-local"}
+  = f.input :end, as: :string, input_html: { type: "datetime-local" }
 
   = f.input :seasons_allowed, as: :boolean, label: "Season?", hint: "Is this event part of a season?", input_html: { :'data-hide' => '.season_info'}
   

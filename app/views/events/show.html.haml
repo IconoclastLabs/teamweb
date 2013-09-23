@@ -1,11 +1,11 @@
 %h1
   = @event.name
-.col-md-7{style: "min-height:450px;"}
-  .col-md-4
+.col-md-8{style: "min-height:450px;"}
+  .col-md-5
     %p
       %strong About:
       = @event.about
-  .col-md-2.well
+  .col-md-offset-2.col-md-5.well
     %p
       %strong Start Date:
       = @event.start.try(:format_like, "Jan 1st 2000")
@@ -25,7 +25,7 @@
     = @event.location
 
 / Organization Info
-.well.col-md-3
+.well.col-md-4
   %h4 Organization info
   %p
     %strong
