@@ -21,9 +21,9 @@
 
     .actions
       .btn-group
-        = link_to icon_tag("hand-left") + 'Back', root_path, class: "btn btn-info"
+        = link_to fa_icon_tag("hand-left") + 'Back', root_path, class: "btn btn-info"
         %button.btn.btn-primary{type: "submit"}
-          = icon_tag('thumbs-up') + 'Update'
+          = fa_icon_tag('thumbs-up') + 'Update'
 
 
 .col-md-offset-1.col-md-3.alert.alert-danger{style: "text-align: center;"}
@@ -31,4 +31,4 @@
   %p 
     If you would like to remove your account from this site, you may do so here.  As of right now this will not delete any of your data, but simply remove access to this site.
   %p  
-    = link_to icon_tag("warning-sign") + 'Cancel my account?', registration_path(resource_name), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+    = link_to bs_icon_tag("warning-sign") + 'Cancel my account?', registration_path(resource_name), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"

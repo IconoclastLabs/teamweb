@@ -24,15 +24,20 @@
                   %b.caret
                 %ul.dropdown-menu
                   %li
-                    = link_to "Profile", edit_user_registration_path
+                    = link_to edit_user_registration_path do
+                      = bs_icon_tag 'eject'
+                      Profile
                   %li.divider
                   %li
-                    %i.icon-signout
-                    = link_to "Logout", destroy_user_session_path, method: :delete
+                    = link_to destroy_user_session_path, method: :delete do
+                      = bs_icon_tag 'eject'
+                      Logout
               - else
                 %ul.nav.navbar-nav
                   %li
-                    = link_to "Sign Up", new_user_registration_path
+                    = link_to new_user_registration_path do
+                      = bs_icon_tag 'eject'
+                      Sign Up
                   %li                    
                     %i.icon-signup
                     = link_to "Login", new_user_session_path

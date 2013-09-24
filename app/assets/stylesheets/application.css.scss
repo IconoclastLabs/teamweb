@@ -11,10 +11,10 @@
  *= require peek
  *= require peek/views/performance_bar
  *= require peek/views/rblineprof
- *= require peek/views/rblineprof/pygments
- *= require bootstrap-wysihtml5/b3
+ *= require peek/views/rblineprof/pygments 
  *= require bootstrap/dist/css/bootstrap
  *= require bootstrap/dist/css/bootstrap-theme
+ *= require bootstrap-wysihtml5/b3
  *= require font-awesome/scss/font-awesome
  *= require_tree .
 

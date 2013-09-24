@@ -51,7 +51,7 @@ module Teamweb
     
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'font-awesome', 'scss')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'font-awesome', 'font')
-    # config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'bootstrap', 'dist', 'fonts')
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'bootstrap', 'dist', 'fonts')
     config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
     # Precompile additional assets
     config.assets.precompile += %w( .svg .eot .woff .ttf )
