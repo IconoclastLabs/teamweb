@@ -20,52 +20,31 @@
             - if user_signed_in?
               %li.dropdown
                 %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                  Account
+                  = fa_icon_tag 'user'
+                  My Account
                   %b.caret
                 %ul.dropdown-menu
                   %li
                     = link_to edit_user_registration_path do
-                      = bs_icon_tag 'eject'
+                      = fa_icon_tag 'user'
                       Profile
                   %li.divider
                   %li
                     = link_to destroy_user_session_path, method: :delete do
-                      = bs_icon_tag 'eject'
+                      = fa_icon_tag 'signout'
                       Logout
             - else
               %li
-                = link_to new_user_registration_path do
-                  = bs_icon_tag 'eject'
+                = link_to new_user_registration_path do                  
+                  -#%button.btn.btn-default.navbar-btn{type: "button"}
+                  = bs_icon_tag 'star'
                   Sign Up
+
               %li                    
                 %i.icon-signup
-                = link_to "Login", new_user_session_path
-
-          -#%ul.nav.navbar-right
-            %li.dropdown
-              - if user_signed_in?
-                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
-                  Account
-                  %b.caret
-                %ul.dropdown-menu
-                  %li
-                    = link_to edit_user_registration_path do
-                      = bs_icon_tag 'eject'
-                      Profile
-                  %li.divider
-                  %li
-                    = link_to destroy_user_session_path, method: :delete do
-                      = bs_icon_tag 'eject'
-                      Logout
-              - else
-                %ul.nav.navbar-nav
-                  %li
-                    = link_to new_user_registration_path do
-                      = bs_icon_tag 'eject'
-                      Sign Up
-                  %li                    
-                    %i.icon-signup
-                    = link_to "Login", new_user_session_path
+                = link_to new_user_session_path do
+                  = fa_icon_tag 'user'
+                  Login
                
 
     = render_breadcrumbs
