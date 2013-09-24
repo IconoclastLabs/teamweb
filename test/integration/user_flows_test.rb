@@ -12,7 +12,6 @@ class UserFlowsTest < ActionDispatch::IntegrationTest
   # using capybara
   test "front page has a login button" do
     visit root_path
-    click_link_or_button('Account')
     click_link_or_button('Login')
     assert_equal page.current_path, user_session_path
   end
