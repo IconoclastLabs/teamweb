@@ -16,7 +16,32 @@
               = nav_link "Events", all_events_path
             %li
               = nav_link "Organizations", organizations_path
-          %ul.nav.navbar-right
+          %ul.nav.navbar-nav.navbar-right
+            - if user_signed_in?
+              %li.dropdown
+                %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
+                  Account
+                  %b.caret
+                %ul.dropdown-menu
+                  %li
+                    = link_to edit_user_registration_path do
+                      = bs_icon_tag 'eject'
+                      Profile
+                  %li.divider
+                  %li
+                    = link_to destroy_user_session_path, method: :delete do
+                      = bs_icon_tag 'eject'
+                      Logout
+            - else
+              %li
+                = link_to new_user_registration_path do
+                  = bs_icon_tag 'eject'
+                  Sign Up
+              %li                    
+                %i.icon-signup
+                = link_to "Login", new_user_session_path
+
+          -#%ul.nav.navbar-right
             %li.dropdown
               - if user_signed_in?
                 %a.dropdown-toggle{"data-toggle" => "dropdown", href: "#"}
