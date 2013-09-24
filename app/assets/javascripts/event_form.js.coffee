@@ -1,5 +1,5 @@
 # Really crappy code to hide / show for Me/Org please refactor at some point
-(($) ->
+jQuery ->
   # show if it is checked
   $("input[data-org]").each (box) ->
     shown = $(@).prop('value') == "Me"
@@ -9,5 +9,3 @@
   $("input[data-org]").change ->
     to_hide = $(@).data('org')
     $(to_hide).fadeToggle()  
-
-) jQuery

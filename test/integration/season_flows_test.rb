@@ -51,7 +51,7 @@ class SeasonFlowTest < ActionDispatch::IntegrationTest
     # hide it
     uncheck 'season_teams_allowed'
     #should be hidden
-    assert page.has_no_content?('Maximum teams')
+    assert page.has_no_content?('Max teams')
     assert page.has_no_content?('Max team size')
     check 'season_teams_allowed'
     #shows again

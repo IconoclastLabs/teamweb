@@ -43,6 +43,31 @@ class EventFlowTest < ActionDispatch::IntegrationTest
     assert page.has_link?('Members'), "Members tab should be visible"
   end
 
+  test "Creating FULL Event" do
+    Capybara.current_driver = :poltergeist 
+    capybara_sign_in(@user)
+    visit new_event_path
+
+    #Starting Assertions
+    assert page.has_no_content?('Max teams')
+    assert page.has_no_content?('Max team size')
+    assert page.has_no_content?('Season name')
+    assert page.has_no_content?('Organization Name')
+    fill_in 'Name for this event', with: Forgery::Name.full_name + "_event"
+    fill_in 'Location of event', with: "New Orleans"
+
+    # Seasons
+    check 'event_seasons_allowed'
+    assert page.has_content?('Season name')
+    fill_in 'Season name', with: Forgery::Name.full_name + "_season"
+
+
+    click_link_or_button('Save')
+    assert page.has_content?('Event was successfully created.'), "Flash message should tell you success"
+
+    Capybara.use_default_driver 
+  end
+
   test "Automatically has wysihtml5 editor" do
     capybara_sign_in(@user)
     visit new_organization_season_event_path(@some_org, @some_season)
