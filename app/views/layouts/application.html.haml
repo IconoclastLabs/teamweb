@@ -37,7 +37,7 @@
     .container
       .masthead.clearfix
         - if alert
-          .alert
+          .alert.alert-warning
             %button.close{:type => "button", :"data-dismiss" => "alert"} &times;
             %strong ALERT:
             = alert
