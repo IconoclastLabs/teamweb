@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def new_event
-    @event_form = EventForm.new || session[:event_form] 
+    @event_form = session[:event_form] || EventForm.new
   end
 
   def create_event
