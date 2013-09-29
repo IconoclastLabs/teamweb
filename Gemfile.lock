@@ -5,6 +5,15 @@ GIT
   specs:
     friendly_id (5.0.0.alpha1)
 
+GIT
+  remote: git://github.com/rails/activerecord-session_store.git
+  revision: 022d45b4ae9b7e862ee92ea8871c9bf4c2d93106
+  specs:
+    activerecord-session_store (0.0.1)
+      actionpack (>= 4.0.0.beta, < 5)
+      activerecord (>= 4.0.0.beta, < 5)
+      railties (>= 4.0.0.beta, < 5)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -382,6 +391,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-session_store!
   annotate
   awesome_print
   better_errors

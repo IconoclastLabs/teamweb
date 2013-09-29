@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   # This is our new function that comes before Devise's one
   before_filter :authenticate_user_from_token!
-  before_filter :authenticate_user!, except: [:index, :show, :list, :new_event]
+  before_filter :authenticate_user!, except: [:index, :show, :list, :new_event, :create_event]
   before_filter :configure_permitted_parameters, if: :devise_controller?
 
   protected

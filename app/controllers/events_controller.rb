@@ -17,7 +17,7 @@ class EventsController < ApplicationController
   end
 
   def new_event
-    @event_form = EventForm.new
+    @event_form = EventForm.new || session[:event_form] 
   end
 
   def create_event
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
       @event_form.save
       redirect_to [@event_form.organization, @event_form.season, @event_form.event], notice: 'Event was successfully created.' 
     else
-      session[event_form] = @event_form
+      session[:event_form] = @event_form
       binding.pry
       redirect_to root_path
     end
