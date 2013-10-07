@@ -27,4 +27,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_in_path_for(resource)
+    if session[:event_form]
+      new_event_path
+    else
+      root_path
+    end
+  end
+
 end

@@ -23,12 +23,13 @@ class EventsController < ApplicationController
   def create_event
     @event_form = EventForm.new(params[:event])
     if user_signed_in?
-      @event_form.save
-      redirect_to [@event_form.organization, @event_form.season, @event_form.event], notice: 'Event was successfully created.' 
+      if @event_form.save
+        session.delete(:event_form) # remove session data if it exists
+        redirect_to [@event_form.organization, @event_form.season, @event_form.event], notice: 'Event was successfully created.' 
+      end
     else
       session[:event_form] = @event_form
-      binding.pry
-      redirect_to root_path
+      redirect_to new_user_registration_path
     end
   end
 
