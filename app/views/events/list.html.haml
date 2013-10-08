@@ -4,7 +4,7 @@
   %thead
     %tr
       %th Name
-      %th Organization
+      %th.hidden-xs Organization
       %th Location
       %th Start
       %th
@@ -12,7 +12,7 @@
   - @events.each do |event|
     %tr
       %td= event.name
-      %td= link_to event.season.name, organization_seasons_path(event.season.organization)
+      %td.hidden-xs= link_to event.season.name, organization_seasons_path(event.season.organization)
       %td= event.location
       %td= event.start.try(:format_like, "Jan 1st")
       = render partial: 'buttons', locals: {event: event}

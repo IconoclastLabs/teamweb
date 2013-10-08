@@ -1,4 +1,4 @@
-%td.btn-group
+%td.btn-group.col-md-5
   = link_to bs_icon_tag("play") + 'Show', organization_season_event_path(event.organization, event.season, event), class: "btn btn-info"
   - if event.season.teams_allowed?
     = link_to bs_icon_tag("flag") + 'Teams', organization_season_teams_path(event.organization, event.season, event), class: "btn btn-info"
