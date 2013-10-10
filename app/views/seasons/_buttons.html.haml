@@ -1,0 +1,27 @@
+%td.btn-group.col-md-5.visible-md.visible-lg
+  = link_to bs_icon_tag("play") + 'Show', organization_season_path(season.organization, season), class: "btn btn-info"
+-#  = link_to "Events", organization_season_events_path(season.organization, season), class: "btn btn-info"
+  - if season.teams_allowed?
+    = link_to bs_icon_tag("flag") + 'Teams', organization_season_teams_path(season.organization, season), class: "btn btn-info"
+  - else
+    = link_to bs_icon_tag("flag") + 'Teams', "#", class: "btn btn-info", disabled: "disabled"    
+  - if user_signed_in?
+    = link_to bs_icon_tag("wrench") + 'Edit', edit_organization_season_path(season.organization, season), class: "btn btn-info"
+    = link_to bs_icon_tag("trash") + 'Delete', organization_season_path(season.organization, season), :method => :delete, :data => { :confirm => 'Are you sure?' }, :class => "btn btn-danger"
+%td.col-xs-2.hidden-md.hidden-lg
+  .btn-group
+    %button{:class =>"btn btn-info dropdown-toggle", :"data-toggle" => "dropdown"}
+      Actions
+      %span.caret
+    %ul.dropdown-menu{role:"menu"}
+      %li 
+        = link_to bs_icon_tag("play") + 'Show', organization_season_path(season.organization, season)
+-#        = link_to "Events", organization_season_events_path(season.organization, season)
+      - if season.teams_allowed?
+        %li
+          = link_to bs_icon_tag("flag") + 'Teams', organization_season_teams_path(season.organization, season)
+      - if user_signed_in?
+        %li
+          = link_to bs_icon_tag("wrench") + 'Edit', edit_organization_season_path(season.organization, season)
+        %li
+          = link_to bs_icon_tag("trash") + 'Delete', organization_season_path(season.organization, season), :method => :delete, :data => { :confirm => 'Are you sure?' }
