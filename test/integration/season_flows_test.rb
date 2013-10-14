@@ -110,5 +110,22 @@ class SeasonFlowTest < ActionDispatch::IntegrationTest
     Capybara.use_default_driver 
   end
 
+  test "Changes event tables buttons to fit on smaller displays" do
+    Capybara.current_driver = :poltergeist 
+    capybara_sign_in(@user)    
+    visit organization_seasons_path(@some_org)
+
+    assert page.has_link?("Edit"), "Should have an edit button"
+    assert page.has_no_button?("Actions"), "Should NOT have actions button"
+
+    capybara_resize SMALL_SCREENSIZE
+
+    assert page.has_no_link?("Edit"), "Should NOT have an edit button after resize"
+    assert page.has_button?("Actions"), "Should have actions button after resize"
+
+    capybara_resize LARGE_SCREENSIZE
+
+    Capybara.use_default_driver
+  end
 
 end

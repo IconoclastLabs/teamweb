@@ -12,7 +12,7 @@ class OrganizationFlowsTest < ActionDispatch::IntegrationTest
   test "certain index buttons require login" do
     visit organizations_path
     assert page.has_no_link?("New Organization"), "Shouldn't have a new button"
-    assert page.has_no_link?("Edit"), "Shouldn't have a edit button"
+    assert page.has_no_link?("Edit"), "Shouldn't have an edit button"
     assert page.has_no_link?("Delete"), "Shouldn't have a delete button"
   end
 
@@ -20,7 +20,7 @@ class OrganizationFlowsTest < ActionDispatch::IntegrationTest
     capybara_sign_in(@user)
     visit organizations_path
     assert page.has_link?("New Organization"), "Should have a new button"
-    assert page.has_link?("Edit"), "Should have a edit button"
+    assert page.has_link?("Edit"), "Should have an edit button"
     assert page.has_link?("Delete"), "Should have a delete button"
   end  
 
@@ -29,5 +29,23 @@ class OrganizationFlowsTest < ActionDispatch::IntegrationTest
     visit new_organization_path
 
     assert page.has_css?("textarea.wysihtml5"), "Page should have a wysihtml5 editor"
+  end
+
+  test "Changes event tables buttons to fit on smaller displays" do
+    Capybara.current_driver = :poltergeist 
+    capybara_sign_in(@user)    
+    visit organizations_path
+
+    assert page.has_link?("Edit"), "Should have an edit button"
+    assert page.has_no_button?("Actions"), "Should NOT have actions button"
+
+    capybara_resize SMALL_SCREENSIZE
+
+    assert page.has_no_link?("Edit"), "Should NOT have an edit button after resize"
+    assert page.has_button?("Actions"), "Should have actions button after resize"
+
+    capybara_resize LARGE_SCREENSIZE
+
+    Capybara.use_default_driver
   end
 end

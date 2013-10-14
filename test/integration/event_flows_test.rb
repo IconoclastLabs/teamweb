@@ -16,7 +16,7 @@ class EventFlowTest < ActionDispatch::IntegrationTest
   test "certain index buttons require login" do
     visit organization_season_events_path(@some_org, @some_season)
     assert page.has_no_link?("New Event"), "Shouldn't have a new button"
-    assert page.has_no_link?("Edit"), "Shouldn't have a edit button"
+    assert page.has_no_link?("Edit"), "Shouldn't have an edit button"
     assert page.has_no_link?("Delete"), "Shouldn't have a delete button"
   end
 
