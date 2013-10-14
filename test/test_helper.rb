@@ -15,7 +15,6 @@ require 'database_cleaner'
 require 'turn'
 require 'rack/test'
 
-
 class ActiveSupport::TestCase
   include Rack::Test::Methods
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
@@ -66,6 +65,17 @@ def capybara_sign_in(user)
   fill_in 'Password', with: user.password
   click_link_or_button 'Sign in'
   user
+end
+
+# Resolutions that fit Bootstrap dynamics
+LARGE_SCREENSIZE = { :width => 1280, :height => 1024 }
+MEDIUM_SCREENSIZE = { :width => 1024, :height => 768 }
+SMALL_SCREENSIZE = { :width => 768, :height => 1024 }
+EXTRA_SMALL_SCREENSIZE = { :width => 320, :height => 480 }
+
+def capybara_resize(size)
+  # specific to poltergeist - https://github.com/jonleighton/poltergeist#resizing-the-window
+  Capybara.current_session.driver.resize(size[:width], size[:height])
 end
 
 def omniauth_facebook_sign_in
