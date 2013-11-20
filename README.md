@@ -1,6 +1,7 @@
 Team Web
 =======
 [![Travis-CI Build Status](https://api.travis-ci.org/IconoclastLabs/teamweb.png)](https://travis-ci.org/IconoclastLabs/teamweb)
+Crushed, by Crusher.io
 
 ## 1: Qu'est-ce que c'est?
 ####Simple yet fully tested Rails 4 app for managing signups for events.  
