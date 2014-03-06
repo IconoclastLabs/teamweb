@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.1'
 
 gem 'rails', '4.0.0'
 
@@ -72,7 +72,7 @@ group :test do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'pry-stack_explorer'
-  gem 'pry-debugger'
+  #gem 'pry-debugger'
   gem 'pry-doc'
   gem 'interactive_editor' # able to vi from irb
   #gem "parallel_tests"
@@ -95,7 +95,7 @@ group :development do
   gem 'pry-rails'
   gem 'pry-remote'
   gem 'pry-stack_explorer'
-  gem 'pry-debugger'
+  #gem 'pry-debugger'
   gem 'pry-doc'
   gem 'interactive_editor' # able to vi from irb
   gem "quiet_assets", ">= 1.0.1"
