@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.2.0'
 
 gem 'rails', '4.0.0'
 
@@ -123,7 +123,7 @@ group :development do
   # Additions suggested by article
   # http://www.codebeerstartups.com/2013/04/must-have-gems-for-development-machine-in-ruby-on-rails/
   gem 'bullet'
-  gem 'localtunnel', :require => false #exposes site as needed ($ localtunnel-beta 8000)
+  #gem 'localtunnel', :require => false #exposes site as needed ($ localtunnel-beta 8000)
   # gem 'mailcatcher' opting for letter_opener instead
   gem "letter_opener"
   gem 'lol_dba' # site optimization? ($ rake db:find_indexes > $ )
