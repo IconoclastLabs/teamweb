@@ -11,16 +11,17 @@
 .tab-content#eventTabContent
   .tab-pane.fade.in.active#info
     = LiterateRandomizer.paragraphs(paragraphs: 4)
-  .tab-pane.fade#teams 
-    %ol
-      - @event.teams.each do |team|
-        %li
-          = link_to team.name, organization_season_team_path(@organization, @season, team)
+  - if @event.teams.count > 0
+    .tab-pane.fade#teams
+      %ol
+        - @event.teams.each do |team|
+          %li
+            = link_to team.name, organization_season_team_path(@organization, @season, team)
 
-  .tab-pane.fade#members 
+  .tab-pane.fade#members
     %ol
       - @event.members.each do |member|
-        %li 
+        %li
           = "#{member.user.name} - #{member.user.email}"
           - if member.admin
             %span.badge.badge-success
