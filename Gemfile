@@ -22,7 +22,6 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'jbuilder'
 
 gem "devise", '~> 3.1.0.rc2'
-#gem 'puma'
 
 # rails 4
 gem "simple_form", "~> 3.0.0.rc"
@@ -54,15 +53,13 @@ gem 'omniauth-facebook'
 group :production do
   gem 'pg'
   gem 'dalli'
+  # gem 'puma'
 end
 
-
-group :test do
-  #gem 'simplecov', :require => false
-  gem 'turn' # colored minitests
+group :test, :development do
+  gem 'thin'
   gem 'sqlite3'
   gem 'awesome_print' # OF COURSE!
-  gem 'minitest-spec-rails'
   gem 'pry'
   gem 'pry-rails'
   gem 'pry-remote'
@@ -70,29 +67,25 @@ group :test do
   #gem 'pry-debugger'
   gem 'pry-doc'
   gem 'interactive_editor' # able to vi from irb
+end
+
+group :test do
+  #gem 'simplecov', :require => false
+  gem 'turn' # colored minitests
+  gem 'minitest-spec-rails'
   #gem "parallel_tests"
   # BDD
   gem 'capybara'
   gem 'capybara_minitest_spec' # for capybara integration and spec matchers
   gem 'poltergeist' # for headless javascript testing. See Phantomjs.org for installation details
   gem 'database_cleaner'
-
   gem "simplecov",  :require => false
 end
 
 group :development do
   gem 'rake'
-  gem 'sqlite3'
   gem 'commands' # makes many of the rake commands available in the `rails c` console
-	gem 'awesome_print' # OF COURSE!
   gem 'minitest-spec-rails'
-  gem 'pry'
-  gem 'pry-rails'
-  gem 'pry-remote'
-  gem 'pry-stack_explorer'
-  #gem 'pry-debugger'
-  gem 'pry-doc'
-  gem 'interactive_editor' # able to vi from irb
   gem "quiet_assets", ">= 1.0.1"
   gem 'guard'
   gem 'guard-rails'
