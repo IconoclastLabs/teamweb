@@ -53,7 +53,7 @@ gem 'omniauth-facebook'
 group :production do
   gem 'pg'
   gem 'dalli'
-  # gem 'puma'
+  gem 'puma'
 end
 
 group :test, :development do
