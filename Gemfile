@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+# ruby '2.2.0'
 
 gem 'rails', '4.0.0'
 
@@ -22,7 +22,7 @@ gem 'bootstrap-wysihtml5-rails'
 gem 'jbuilder'
 
 gem "devise", '~> 3.1.0.rc2'
-gem 'puma'
+#gem 'puma'
 
 # rails 4
 gem "simple_form", "~> 3.0.0.rc"
@@ -39,11 +39,6 @@ gem "literate_randomizer"
 
 #Performance Inspection Gems
 gem 'rails_javascript_log' # allows browser independent logging for js with styles `log('what *is* this?')`
-gem 'peek' # awesome magic- https://github.com/peek/peek
-gem 'peek-git'
-gem 'peek-performance_bar'
-gem 'peek-gc'
-gem 'peek-rblineprof'
 gem 'pygments.rb', :require => false
 
 
@@ -103,7 +98,7 @@ group :development do
   gem 'guard-rails'
   gem 'guard-minitest'
   gem 'guard-annotate'
-  gem 'guard-puma'
+  #gem 'guard-puma'
   gem 'guard-bundler', "~> 1.0.0"
   gem 'brakeman' # checks for security vulns
   gem 'guard-brakeman'
